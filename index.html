@@ -20,6 +20,119 @@
     a:hover { color: #d1301d; }
     @keyframes cinta { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     @keyframes parpadeo { 0%, 100% { opacity: .9; } 7% { opacity: .55; } 11% { opacity: .95; } 38% { opacity: .7; } 41% { opacity: .92; } 74% { opacity: .6; } 78% { opacity: .88; } }
+    .hero-photo {
+      position: absolute;
+      top: 0;
+      right: -3%;
+      width: min(82%, 1200px);
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: .82;
+      filter: brightness(1.06) contrast(1.03) saturate(.96);
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.36) 14%, #000 40%, #000 100%);
+      mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.36) 14%, #000 40%, #000 100%);
+      pointer-events: none;
+    }
+
+    .cover-triptych-photo {
+      filter: brightness(1.08) contrast(1.04) saturate(.98);
+      -webkit-mask-image: radial-gradient(ellipse 88% 88% at 50% 50%, #000 52%, rgba(0,0,0,.82) 76%, transparent 96%);
+      mask-image: radial-gradient(ellipse 88% 88% at 50% 50%, #000 52%, rgba(0,0,0,.82) 76%, transparent 96%);
+    }
+
+    .members-photo,
+    .history-photo,
+    .archive-photo,
+    .coda-photo {
+      position: absolute;
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    .members-photo {
+      top: 0;
+      left: 50%;
+      width: min(1280px, 104%);
+      height: 100%;
+      transform: translateX(-50%);
+      opacity: .68;
+      filter: brightness(1.03) contrast(1.03) saturate(.92);
+      -webkit-mask-image: radial-gradient(ellipse 78% 78% at 50% 48%, #000 40%, rgba(0,0,0,.74) 68%, transparent 92%);
+      mask-image: radial-gradient(ellipse 78% 78% at 50% 48%, #000 40%, rgba(0,0,0,.74) 68%, transparent 92%);
+    }
+
+    .history-photo {
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: .56;
+      filter: brightness(1.02) contrast(1.02) saturate(.9);
+      -webkit-mask-image: radial-gradient(ellipse 82% 82% at 50% 44%, #000 38%, rgba(0,0,0,.72) 69%, transparent 94%);
+      mask-image: radial-gradient(ellipse 82% 82% at 50% 44%, #000 38%, rgba(0,0,0,.72) 69%, transparent 94%);
+    }
+
+    .story-photo {
+      position: relative;
+      display: block;
+      width: min(1100px, 100%);
+      height: auto;
+      margin: 7vh auto 0;
+      filter: brightness(1.08) contrast(1.04) saturate(.98);
+      box-shadow: 0 20px 64px rgba(0,0,0,.5), 0 0 0 1px rgba(232,219,188,.12);
+    }
+
+    .archive-photo {
+      width: 48%;
+      opacity: .66;
+      filter: brightness(1.04) contrast(1.03) saturate(.94);
+      -webkit-mask-image: radial-gradient(ellipse 86% 86% at 50% 50%, #000 42%, rgba(0,0,0,.76) 70%, transparent 94%);
+      mask-image: radial-gradient(ellipse 86% 86% at 50% 50%, #000 42%, rgba(0,0,0,.76) 70%, transparent 94%);
+    }
+
+    .archive-photo--right { top: 2vh; right: -2%; }
+    .archive-photo--left { bottom: 0; left: -2%; }
+
+    .coda-photo {
+      opacity: .66;
+      filter: brightness(1.04) contrast(1.03) saturate(.94);
+      -webkit-mask-image: radial-gradient(ellipse 88% 88% at 50% 50%, #000 42%, rgba(0,0,0,.74) 72%, transparent 95%);
+      mask-image: radial-gradient(ellipse 88% 88% at 50% 50%, #000 42%, rgba(0,0,0,.74) 72%, transparent 95%);
+    }
+
+    .coda-photo--left { bottom: -5%; left: -2%; width: 70%; }
+    .coda-photo--right { top: -1%; right: -2%; width: 54%; }
+
+    @media (max-width: 640px) {
+      .hero-photo {
+        right: -32%;
+        width: 132%;
+        opacity: .74;
+        object-position: 54% 50%;
+        -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.3) 11%, #000 38%, #000 100%);
+        mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.3) 11%, #000 38%, #000 100%);
+      }
+
+      .members-photo { width: 126%; opacity: .62; }
+      .history-photo { opacity: .5; }
+      .story-photo { width: 100%; margin-top: 5vh; }
+      .archive-photo { width: 64%; opacity: .6; }
+      .archive-photo--right { right: -1%; }
+      .archive-photo--left { left: -1%; }
+      .coda-photo--left { bottom: -2%; left: -1%; width: 84%; }
+      .coda-photo--right { top: 0; right: -1%; width: 66%; }
+
+      .history-date-note,
+      .archive-fragment-note {
+        position: relative !important;
+        inset: auto !important;
+        display: block;
+        width: fit-content;
+        margin: 1.5rem 0 0 auto !important;
+      }
+
+      .archive-fragment-note { margin-bottom: 1.5rem !important; }
+    }
   </style>
 </helmet>
 
@@ -28,7 +141,7 @@
   <!-- ══════════ PORTADA I · LA LUZ ROJA ══════════ -->
   <sc-if value="{{ pA }}" hint-placeholder-val="{{ true }}">
     <section data-screen-label="Portada — la luz roja" style="position:relative; min-height:100svh; overflow:hidden; display:flex; flex-direction:column; justify-content:center; padding:4vh 5vw 5vh">
-      <img src="fotos/f03.png" alt="" style="position:absolute; top:0; right:-12%; width:78%; height:100%; object-fit:cover; opacity:0.6; filter:brightness(0.92) saturate(0.85); -webkit-mask-image:radial-gradient(ellipse 68% 80% at 58% 45%, #000 22%, transparent 74%); mask-image:radial-gradient(ellipse 68% 80% at 58% 45%, #000 22%, transparent 74%)">
+      <img class="hero-photo" src="fotos/f03.png" alt="" decoding="async">
       <div style="position:absolute; top:-22%; left:-14%; width:76vmin; height:76vmin; border-radius:50%; background:radial-gradient(circle, rgba(255,42,23,0.26) 0%, rgba(255,42,23,0.08) 40%, transparent 68%); animation:parpadeo 9s infinite; pointer-events:none"></div>
       <div style="position:absolute; top:11%; left:9%; width:7px; height:7px; border-radius:50%; background:#ff3a24; box-shadow:0 0 22px 8px rgba(255,42,23,0.55); animation:parpadeo 9s infinite"></div>
 
@@ -92,16 +205,16 @@
         <div style="margin-top:1vh; font-size:13px; letter-spacing:0.16em; color:#b3a184">así empezó todo. así acabó en un sótano de las rozas.</div>
       </div>
       <div style="display:flex; gap:0; margin:0 -6vw; align-items:flex-end">
-        <img src="fotos/f03.png" alt="el búnker, luz roja" style="width:34%; transform:translateY(12px); filter:contrast(1.06) saturate(0.9); -webkit-mask-image:radial-gradient(ellipse 74% 74% at 50% 50%, #000 40%, transparent 78%); mask-image:radial-gradient(ellipse 74% 74% at 50% 50%, #000 40%, transparent 78%)">
-        <img src="fotos/f07.png" alt="el búnker desde la puerta" style="width:38%; transform:translateY(30px); filter:contrast(1.06) saturate(0.9); -webkit-mask-image:radial-gradient(ellipse 74% 74% at 50% 50%, #000 40%, transparent 78%); mask-image:radial-gradient(ellipse 74% 74% at 50% 50%, #000 40%, transparent 78%); z-index:2">
-        <img src="fotos/f04.png" alt="papeles y cables en el suelo" style="width:34%; transform:translateY(10px); filter:contrast(1.06) saturate(0.9); -webkit-mask-image:radial-gradient(ellipse 74% 74% at 50% 50%, #000 40%, transparent 78%); mask-image:radial-gradient(ellipse 74% 74% at 50% 50%, #000 40%, transparent 78%)">
+        <img class="cover-triptych-photo" src="fotos/f03.png" alt="el búnker, luz roja" loading="lazy" decoding="async" style="width:34%; transform:translateY(12px)">
+        <img class="cover-triptych-photo" src="fotos/f07.png" alt="el búnker desde la puerta" loading="lazy" decoding="async" style="width:38%; transform:translateY(30px); z-index:2">
+        <img class="cover-triptych-photo" src="fotos/f04.png" alt="papeles y cables en el suelo" loading="lazy" decoding="async" style="width:34%; transform:translateY(10px)">
       </div>
     </section>
   </sc-if>
 
   <!-- ══════════ LOS TRES ══════════ -->
   <section data-screen-label="Los tres" style="position:relative; padding:7vh 6vw 7vh; border-top:1px solid #3a2b1f; overflow:hidden">
-    <img src="fotos/f02.png" alt="" style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:min(1200px, 100%); height:100%; object-fit:cover; opacity:0.5; filter:brightness(0.95) saturate(0.8); -webkit-mask-image:radial-gradient(ellipse 62% 56% at 50% 46%, #000 18%, transparent 72%); mask-image:radial-gradient(ellipse 62% 56% at 50% 46%, #000 18%, transparent 72%)">
+    <img class="members-photo" src="fotos/f02.png" alt="" loading="lazy" decoding="async">
     <div style="position:relative; font-size:11px; letter-spacing:0.3em; color:#7a6a52">— los tres —</div>
 
     <div style="position:relative; margin:6vh 0 0 2vw">
@@ -125,17 +238,17 @@
 
   <!-- ══════════ LA HISTORIA ══════════ -->
   <section data-screen-label="La historia" style="position:relative; padding:6vh 6vw 7vh; border-top:1px solid #3a2b1f; overflow:hidden">
-    <img src="fotos/f07.png" alt="" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.36; filter:brightness(0.88) saturate(0.8); -webkit-mask-image:radial-gradient(ellipse 60% 52% at 50% 42%, #000 14%, transparent 70%); mask-image:radial-gradient(ellipse 60% 52% at 50% 42%, #000 14%, transparent 70%)">
+    <img class="history-photo" src="fotos/f07.png" alt="" loading="lazy" decoding="async">
     <div style="font-size:12px; letter-spacing:0.3em; color:#7a6a52; margin-bottom:4vh">— lo que se recuerda · lo que se olvidó —</div>
 
     <div style="position:relative; max-width:52ch">
       <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(24px, 2.6vw, 38px); color:#b7a684; line-height:1.4">un bar detrás del teatro lope de vega. copas a doscientas pesetas.</div>
       <div style="font-size:13px; line-height:1.9; color:#9b8a6f; margin:26px 0 0 8vw; max-width:34ch">cerraron el local con la gente dentro. en el encierro, una chica se puso a cantar coplas, sola, a capela.</div>
       <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(20px, 2vw, 28px); color:#b3a184; margin:30px 0 0 16vw">se llamaba noelia.</div>
-      <div style="position:absolute; top:-10px; right:-9vw; background:#ddc87e; color:#332a18; font-family:'La Belle Aurore', cursive; font-size:16px; line-height:1.3; padding:12px 14px 18px; max-width:13ch; box-shadow:0 8px 20px rgba(0,0,0,0.55)">¿el 98? ¿el 99? aún en pesetas</div>
+      <div class="history-date-note" style="position:absolute; top:-10px; right:-9vw; background:#ddc87e; color:#332a18; font-family:'La Belle Aurore', cursive; font-size:16px; line-height:1.3; padding:12px 14px 18px; max-width:13ch; box-shadow:0 8px 20px rgba(0,0,0,0.55)">¿el 98? ¿el 99? aún en pesetas</div>
     </div>
 
-    <img src="fotos/f01.png" alt="" style="display:block; width:min(520px, 58%); margin:6vh 0 0 auto; filter:brightness(1) contrast(1.08) saturate(0.85); -webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, #000 40%, transparent 80%); mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, #000 40%, transparent 80%)">
+    <img class="story-photo" src="fotos/f01.png" alt="el local de ensayo, con la batería, las guitarras y la pedalera" loading="lazy" decoding="async">
 
     <div style="position:relative; max-width:52ch; margin:4vh 0 0 auto">
       <div style="font-size:13px; line-height:1.9; color:#9b8a6f; max-width:32ch">un sótano bajo un chalet de las rozas, forrado de cajas de huevos. montado para tocar doom metal; acabó siendo otra cosa.</div>
@@ -144,7 +257,7 @@
       <div style="position:absolute; bottom:-4vh; left:-5vw; background:#c4ad5c; color:#332a18; font-family:'La Belle Aurore', cursive; font-size:16px; line-height:1.3; padding:12px 14px 18px; max-width:13ch; box-shadow:0 8px 20px rgba(0,0,0,0.55)">bajo tierra, sin ventanas</div>
     </div>
 
-    <img src="fotos/f08.png" alt="" style="display:block; width:min(460px, 50%); margin:6vh auto 0 1vw; filter:brightness(1) contrast(1.08) saturate(0.85); -webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, #000 40%, transparent 80%); mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, #000 40%, transparent 80%)">
+    <img class="story-photo" src="fotos/f08.png" alt="la batería y los amplificadores del local vistos desde arriba" loading="lazy" decoding="async">
 
     <div style="position:relative; max-width:52ch; margin:4vh 0 0 8vw">
       <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(24px, 2.6vw, 38px); color:#b7a684; line-height:1.4">siete meses, quizá ocho.</div>
@@ -153,7 +266,7 @@
       <div style="display:inline-block; background:#d3bd6b; color:#332a18; font-family:'La Belle Aurore', cursive; font-size:16px; line-height:1.3; padding:12px 14px 18px; max-width:16ch; box-shadow:0 8px 20px rgba(0,0,0,0.55); margin:22px 0 0 2vw">trece canciones grabadas con lo que había</div>
     </div>
 
-    <img src="fotos/f10.png" alt="" style="display:block; width:min(420px, 46%); margin:6vh 9vw 0 auto; filter:brightness(1) contrast(1.08) saturate(0.85); -webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, #000 40%, transparent 80%); mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, #000 40%, transparent 80%)">
+    <img class="story-photo" src="fotos/f10.png" alt="el búnker con la luz roja encendida y los instrumentos preparados" loading="lazy" decoding="async">
 
     <div style="position:relative; max-width:52ch; margin:4vh 3vw 0 auto">
       <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(24px, 2.6vw, 38px); color:#b7a684; line-height:1.4">un día decidió irse a vivir al extranjero, y se fue.</div>
@@ -167,8 +280,8 @@
 
   <!-- ══════════ EL ARCHIVO ══════════ -->
   <section data-screen-label="El archivo — trece canciones" style="position:relative; padding:6vh 6vw 8vh; border-top:1px solid #3a2b1f; overflow:hidden">
-    <img src="fotos/f06.png" alt="" style="position:absolute; top:4vh; right:-8%; width:44%; opacity:0.4; filter:brightness(0.9) saturate(0.8); -webkit-mask-image:radial-gradient(ellipse 70% 70% at 50% 50%, #000 25%, transparent 75%); mask-image:radial-gradient(ellipse 70% 70% at 50% 50%, #000 25%, transparent 75%); pointer-events:none">
-    <img src="fotos/f05.png" alt="" style="position:absolute; bottom:2vh; left:-7%; width:40%; opacity:0.38; filter:brightness(0.9) saturate(0.8); -webkit-mask-image:radial-gradient(ellipse 70% 70% at 50% 50%, #000 25%, transparent 75%); mask-image:radial-gradient(ellipse 70% 70% at 50% 50%, #000 25%, transparent 75%); pointer-events:none">
+    <img class="archive-photo archive-photo--right" src="fotos/f06.png" alt="" loading="lazy" decoding="async">
+    <img class="archive-photo archive-photo--left" src="fotos/f05.png" alt="" loading="lazy" decoding="async">
     <div style="position:relative; display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:12px; margin-bottom:2vh">
       <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(44px, 6.5vw, 100px); color:#e8dbbc">el archivo</div>
       <div style="font-size:12px; letter-spacing:0.24em; color:#7a6a52">trece canciones · 1999–2001 · transcripción con lo que se oye</div>
@@ -177,7 +290,7 @@
     <div style="position:relative; font-size:13px; color:#9b8a6f; max-width:60ch; line-height:1.8; margin-bottom:3vh">Lo que va entre corchetes no se entiende. Se deja así: el olvido también forma parte de la grabación. Toca una canción para abrirla.</div>
 
     <sc-if value="{{ fragmentos }}" hint-placeholder-val="{{ true }}">
-      <div style="position:absolute; top:15vh; right:3vw; background:linear-gradient(115deg, rgba(0,0,0,0.16) 0%, transparent 14%), linear-gradient(245deg, rgba(0,0,0,0.12) 0%, transparent 20%), linear-gradient(65deg, rgba(255,255,255,0.14) 0%, transparent 24%), linear-gradient(160deg, #cfc0a0 0%, #b3a37c 55%, #c8b992 100%); clip-path:polygon(2% 6%, 12% 1%, 38% 4%, 62% 0%, 88% 5%, 98% 2%, 100% 30%, 96% 55%, 100% 78%, 94% 98%, 60% 95%, 34% 100%, 10% 96%, 0% 88%, 3% 52%); padding:24px 22px 28px; max-width:18ch; font-family:'La Belle Aurore', cursive; color:#42361f; font-size:17px; line-height:1.5; filter:drop-shadow(0 12px 20px rgba(0,0,0,0.55)); pointer-events:none">maldito el día que te conocí. ¿por qué sin ti no quiero vivir?</div>
+      <div class="archive-fragment-note" style="position:absolute; top:15vh; right:3vw; background:linear-gradient(115deg, rgba(0,0,0,0.16) 0%, transparent 14%), linear-gradient(245deg, rgba(0,0,0,0.12) 0%, transparent 20%), linear-gradient(65deg, rgba(255,255,255,0.14) 0%, transparent 24%), linear-gradient(160deg, #cfc0a0 0%, #b3a37c 55%, #c8b992 100%); clip-path:polygon(2% 6%, 12% 1%, 38% 4%, 62% 0%, 88% 5%, 98% 2%, 100% 30%, 96% 55%, 100% 78%, 94% 98%, 60% 95%, 34% 100%, 10% 96%, 0% 88%, 3% 52%); padding:24px 22px 28px; max-width:18ch; font-family:'La Belle Aurore', cursive; color:#42361f; font-size:17px; line-height:1.5; filter:drop-shadow(0 12px 20px rgba(0,0,0,0.55)); pointer-events:none">maldito el día que te conocí. ¿por qué sin ti no quiero vivir?</div>
     </sc-if>
 
     <div style="position:relative; border-bottom:1px solid #3a2b1f">
@@ -216,8 +329,8 @@
 
   <!-- ══════════ CODA ══════════ -->
   <section data-screen-label="Coda" style="position:relative; border-top:1px solid #3a2b1f; display:flex; flex-direction:column; justify-content:center; padding:9vh 8vw; overflow:hidden">
-    <img src="fotos/f04.png" alt="" style="position:absolute; bottom:-14%; left:-8%; width:68%; opacity:0.45; filter:brightness(0.92) saturate(0.8); -webkit-mask-image:radial-gradient(ellipse 70% 70% at 45% 55%, #000 26%, transparent 74%); mask-image:radial-gradient(ellipse 70% 70% at 45% 55%, #000 26%, transparent 74%)">
-    <img src="fotos/f09.png" alt="" style="position:absolute; top:-4%; right:-9%; width:50%; opacity:0.38; filter:brightness(0.9) saturate(0.8); -webkit-mask-image:radial-gradient(ellipse 70% 70% at 55% 45%, #000 25%, transparent 75%); mask-image:radial-gradient(ellipse 70% 70% at 55% 45%, #000 25%, transparent 75%); pointer-events:none">
+    <img class="coda-photo coda-photo--left" src="fotos/f04.png" alt="" loading="lazy" decoding="async">
+    <img class="coda-photo coda-photo--right" src="fotos/f09.png" alt="" loading="lazy" decoding="async">
     <div style="position:absolute; bottom:-30%; right:-16%; width:70vmin; height:70vmin; border-radius:50%; background:radial-gradient(circle, rgba(255,42,23,0.16) 0%, transparent 65%); animation:parpadeo 11s infinite; pointer-events:none"></div>
     <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(44px, 7vw, 110px); line-height:1; color:#e8dbbc; max-width:14ch; position:relative">Un día, Noelia se fue.</div>
     <div style="position:relative; margin:4vh 0 0 4vw; display:flex; flex-direction:column; gap:14px; font-size:14px; letter-spacing:0.14em; color:#9b8a6f">
