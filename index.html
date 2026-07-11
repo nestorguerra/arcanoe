@@ -41,6 +41,12 @@
       mask-image: radial-gradient(ellipse 88% 88% at 50% 50%, #000 52%, rgba(0,0,0,.82) 76%, transparent 96%);
     }
 
+    .blended-photo {
+      mix-blend-mode: screen;
+    }
+
+    .photo-stage { isolation: isolate; }
+
     .members-photo,
     .history-photo,
     .archive-photo,
@@ -72,14 +78,88 @@
       mask-image: radial-gradient(ellipse 82% 82% at 50% 44%, #000 38%, rgba(0,0,0,.72) 69%, transparent 94%);
     }
 
-    .story-photo {
+    .polaroid {
+      --tape-tilt: -2deg;
       position: relative;
+      z-index: 2;
+      box-sizing: border-box;
+      width: min(1000px, 90%);
+      margin-top: clamp(3.75rem, 7vh, 6rem);
+      padding: clamp(.55rem, 1vw, .9rem) clamp(.55rem, 1vw, .9rem) clamp(1.25rem, 2.5vw, 2.4rem);
+      color: #3c3020;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(92,69,39,.1) 0 .5px, transparent .8px) 0 0 / 8px 10px,
+        linear-gradient(145deg, #eee7d7 0%, #d8cfba 100%);
+      box-shadow: 0 1.8rem 4.5rem rgba(0,0,0,.58), 0 0 0 1px rgba(232,219,188,.18), inset 0 0 2rem rgba(255,255,255,.13);
+      transform-origin: 50% 50%;
+      isolation: isolate;
+    }
+
+    .polaroid::before {
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      content: '';
+      pointer-events: none;
+      opacity: .09;
+      background: repeating-linear-gradient(102deg, rgba(83,61,32,.2) 0, rgba(83,61,32,.2) 1px, transparent 1px, transparent 5px);
+      mix-blend-mode: multiply;
+    }
+
+    .polaroid::after {
+      position: absolute;
+      z-index: 3;
+      top: clamp(-.7rem, -1vw, -.4rem);
+      left: 50%;
+      width: clamp(4.8rem, 10vw, 7.5rem);
+      height: clamp(1rem, 1.8vw, 1.5rem);
+      content: '';
+      pointer-events: none;
+      background: rgba(199,178,120,.7);
+      box-shadow: 0 .2rem .55rem rgba(0,0,0,.22);
+      transform: translateX(-50%) rotate(var(--tape-tilt));
+    }
+
+    .polaroid--left {
+      --tape-tilt: -2deg;
+      margin-right: auto;
+      margin-left: 1vw;
+      transform: rotate(-1.65deg);
+    }
+
+    .polaroid--right {
+      --tape-tilt: 1.5deg;
+      margin-right: 1vw;
+      margin-left: auto;
+      transform: rotate(1.35deg);
+    }
+
+    .polaroid--center {
+      --tape-tilt: -.8deg;
+      margin-right: auto;
+      margin-left: auto;
+      transform: rotate(-.55deg);
+    }
+
+    .polaroid__image {
+      position: relative;
+      z-index: 2;
       display: block;
-      width: min(1100px, 100%);
+      width: 100%;
       height: auto;
-      margin: 7vh auto 0;
       filter: brightness(1.08) contrast(1.04) saturate(.98);
-      box-shadow: 0 20px 64px rgba(0,0,0,.5), 0 0 0 1px rgba(232,219,188,.12);
+      box-shadow: 0 0 0 1px rgba(55,39,22,.28);
+    }
+
+    .polaroid figcaption {
+      position: relative;
+      z-index: 2;
+      margin-top: clamp(.65rem, 1.4vw, 1.15rem);
+      color: #443624;
+      font-family: 'La Belle Aurore', cursive;
+      font-size: clamp(1rem, 1.4vw, 1.3rem);
+      line-height: 1.15;
+      text-align: right;
     }
 
     .archive-photo {
@@ -103,6 +183,11 @@
     .coda-photo--left { bottom: -5%; left: -2%; width: 70%; }
     .coda-photo--right { top: -1%; right: -2%; width: 54%; }
 
+    .members-photo.blended-photo { opacity: .56; }
+    .history-photo.blended-photo { opacity: .44; }
+    .archive-photo.blended-photo { opacity: .5; }
+    .coda-photo.blended-photo { opacity: .48; }
+
     @media (max-width: 640px) {
       .hero-photo {
         right: -32%;
@@ -115,15 +200,36 @@
 
       .members-photo { width: 126%; opacity: .62; }
       .history-photo { opacity: .5; }
-      .story-photo { width: 100%; margin-top: 5vh; }
+      .polaroid {
+        width: calc(100% - 1.25rem);
+        margin-top: 3.5rem;
+        padding: .5rem .5rem 1.25rem;
+      }
+
+      .polaroid--left,
+      .polaroid--right,
+      .polaroid--center {
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      .polaroid--left { transform: rotate(-.7deg); }
+      .polaroid--right { transform: rotate(.65deg); }
+      .polaroid--center { transform: rotate(-.35deg); }
+      .polaroid figcaption { margin-top: .65rem; font-size: 1rem; }
       .archive-photo { width: 64%; opacity: .6; }
       .archive-photo--right { right: -1%; }
       .archive-photo--left { left: -1%; }
       .coda-photo--left { bottom: -2%; left: -1%; width: 84%; }
       .coda-photo--right { top: 0; right: -1%; width: 66%; }
+      .history-photo.blended-photo { opacity: .4; }
+      .archive-photo.blended-photo { opacity: .46; }
+      .coda-photo.blended-photo { opacity: .44; }
 
       .history-date-note,
-      .archive-fragment-note {
+      .archive-fragment-note,
+      .history-basement-note,
+      .history-awake-note {
         position: relative !important;
         inset: auto !important;
         display: block;
@@ -131,6 +237,7 @@
         margin: 1.5rem 0 0 auto !important;
       }
 
+      .history-basement-note { margin-left: 0 !important; }
       .archive-fragment-note { margin-bottom: 1.5rem !important; }
     }
   </style>
@@ -140,8 +247,8 @@
 
   <!-- ══════════ PORTADA I · LA LUZ ROJA ══════════ -->
   <sc-if value="{{ pA }}" hint-placeholder-val="{{ true }}">
-    <section data-screen-label="Portada — la luz roja" style="position:relative; min-height:100svh; overflow:hidden; display:flex; flex-direction:column; justify-content:center; padding:4vh 5vw 5vh">
-      <img class="hero-photo" src="fotos/f03.png" alt="" decoding="async">
+    <section class="photo-stage" data-screen-label="Portada — la luz roja" style="position:relative; min-height:100svh; overflow:hidden; display:flex; flex-direction:column; justify-content:center; padding:4vh 5vw 5vh">
+      <img class="hero-photo blended-photo" src="fotos/f03.png" alt="" decoding="async">
       <div style="position:absolute; top:-22%; left:-14%; width:76vmin; height:76vmin; border-radius:50%; background:radial-gradient(circle, rgba(255,42,23,0.26) 0%, rgba(255,42,23,0.08) 40%, transparent 68%); animation:parpadeo 9s infinite; pointer-events:none"></div>
       <div style="position:absolute; top:11%; left:9%; width:7px; height:7px; border-radius:50%; background:#ff3a24; box-shadow:0 0 22px 8px rgba(255,42,23,0.55); animation:parpadeo 9s infinite"></div>
 
@@ -213,8 +320,8 @@
   </sc-if>
 
   <!-- ══════════ LOS TRES ══════════ -->
-  <section data-screen-label="Los tres" style="position:relative; padding:7vh 6vw 7vh; border-top:1px solid #3a2b1f; overflow:hidden">
-    <img class="members-photo" src="fotos/f02.png" alt="" loading="lazy" decoding="async">
+  <section class="photo-stage" data-screen-label="Los tres" style="position:relative; padding:7vh 6vw 7vh; border-top:1px solid #3a2b1f; overflow:hidden">
+    <img class="members-photo blended-photo" src="fotos/f02.png" alt="" loading="lazy" decoding="async">
     <div style="position:relative; font-size:11px; letter-spacing:0.3em; color:#7a6a52">— los tres —</div>
 
     <div style="position:relative; margin:6vh 0 0 2vw">
@@ -237,8 +344,8 @@
   </section>
 
   <!-- ══════════ LA HISTORIA ══════════ -->
-  <section data-screen-label="La historia" style="position:relative; padding:6vh 6vw 7vh; border-top:1px solid #3a2b1f; overflow:hidden">
-    <img class="history-photo" src="fotos/f07.png" alt="" loading="lazy" decoding="async">
+  <section class="photo-stage" data-screen-label="La historia" style="position:relative; padding:6vh 6vw 7vh; border-top:1px solid #3a2b1f; overflow:hidden">
+    <img class="history-photo blended-photo" src="fotos/f07.png" alt="" loading="lazy" decoding="async">
     <div style="font-size:12px; letter-spacing:0.3em; color:#7a6a52; margin-bottom:4vh">— lo que se recuerda · lo que se olvidó —</div>
 
     <div style="position:relative; max-width:52ch">
@@ -248,16 +355,22 @@
       <div class="history-date-note" style="position:absolute; top:-10px; right:-9vw; background:#ddc87e; color:#332a18; font-family:'La Belle Aurore', cursive; font-size:16px; line-height:1.3; padding:12px 14px 18px; max-width:13ch; box-shadow:0 8px 20px rgba(0,0,0,0.55)">¿el 98? ¿el 99? aún en pesetas</div>
     </div>
 
-    <img class="story-photo" src="fotos/f01.png" alt="el local de ensayo, con la batería, las guitarras y la pedalera" loading="lazy" decoding="async">
+    <figure class="polaroid polaroid--left">
+      <img class="polaroid__image" src="fotos/f01.png" alt="el local de ensayo, con la batería, las guitarras y la pedalera" loading="lazy" decoding="async">
+      <figcaption>guitarras, batería y pedalera</figcaption>
+    </figure>
 
     <div style="position:relative; max-width:52ch; margin:4vh 0 0 auto">
       <div style="font-size:13px; line-height:1.9; color:#9b8a6f; max-width:32ch">un sótano bajo un chalet de las rozas, forrado de cajas de huevos. montado para tocar doom metal; acabó siendo otra cosa.</div>
       <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(24px, 2.6vw, 38px); color:#b7a684; line-height:1.4; margin:28px 0 0 10vw">de madrugada, a oscuras, con una luz roja siempre encendida.</div>
       <div style="font-size:13px; color:#7a6a52; margin:24px 14vw 0 0">sesiones de muchas horas que nadie medía.</div>
-      <div style="position:absolute; bottom:-4vh; left:-5vw; background:#c4ad5c; color:#332a18; font-family:'La Belle Aurore', cursive; font-size:16px; line-height:1.3; padding:12px 14px 18px; max-width:13ch; box-shadow:0 8px 20px rgba(0,0,0,0.55)">bajo tierra, sin ventanas</div>
+      <div class="history-basement-note" style="position:absolute; bottom:-4vh; left:-5vw; background:#c4ad5c; color:#332a18; font-family:'La Belle Aurore', cursive; font-size:16px; line-height:1.3; padding:12px 14px 18px; max-width:13ch; box-shadow:0 8px 20px rgba(0,0,0,0.55)">bajo tierra, sin ventanas</div>
     </div>
 
-    <img class="story-photo" src="fotos/f08.png" alt="la batería y los amplificadores del local vistos desde arriba" loading="lazy" decoding="async">
+    <figure class="polaroid polaroid--right">
+      <img class="polaroid__image" src="fotos/f08.png" alt="la batería y los amplificadores del local vistos desde arriba" loading="lazy" decoding="async">
+      <figcaption>batería y amplificadores</figcaption>
+    </figure>
 
     <div style="position:relative; max-width:52ch; margin:4vh 0 0 8vw">
       <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(24px, 2.6vw, 38px); color:#b7a684; line-height:1.4">siete meses, quizá ocho.</div>
@@ -266,22 +379,25 @@
       <div style="display:inline-block; background:#d3bd6b; color:#332a18; font-family:'La Belle Aurore', cursive; font-size:16px; line-height:1.3; padding:12px 14px 18px; max-width:16ch; box-shadow:0 8px 20px rgba(0,0,0,0.55); margin:22px 0 0 2vw">trece canciones grabadas con lo que había</div>
     </div>
 
-    <img class="story-photo" src="fotos/f10.png" alt="el búnker con la luz roja encendida y los instrumentos preparados" loading="lazy" decoding="async">
+    <figure class="polaroid polaroid--center">
+      <img class="polaroid__image" src="fotos/f10.png" alt="el búnker con la luz roja encendida y los instrumentos preparados" loading="lazy" decoding="async">
+      <figcaption>la luz roja, siempre encendida</figcaption>
+    </figure>
 
     <div style="position:relative; max-width:52ch; margin:4vh 3vw 0 auto">
       <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(24px, 2.6vw, 38px); color:#b7a684; line-height:1.4">un día decidió irse a vivir al extranjero, y se fue.</div>
       <div style="font-size:13px; line-height:1.9; color:#9b8a6f; margin:24px 0 0 12vw; max-width:30ch">venía de una casa compleja y destructiva. no hubo despedida a la altura.</div>
       <div style="font-size:13px; color:#7a6a52; margin:22px 0 0 4vw">nunca volvieron a tocar juntos.</div>
       <sc-if value="{{ fragmentos }}" hint-placeholder-val="{{ true }}">
-        <div style="position:absolute; bottom:-4vh; right:2vw; background:linear-gradient(115deg, rgba(0,0,0,0.16) 0%, transparent 14%), linear-gradient(245deg, rgba(0,0,0,0.12) 0%, transparent 20%), linear-gradient(65deg, rgba(255,255,255,0.14) 0%, transparent 24%), linear-gradient(160deg, #cfc0a0 0%, #b3a37c 55%, #c8b992 100%); clip-path:polygon(2% 6%, 12% 1%, 38% 4%, 62% 0%, 88% 5%, 98% 2%, 100% 30%, 96% 55%, 100% 78%, 94% 98%, 60% 95%, 34% 100%, 10% 96%, 0% 88%, 3% 52%); padding:24px 22px 28px; max-width:19ch; font-family:'La Belle Aurore', cursive; color:#42361f; font-size:17px; line-height:1.5; filter:drop-shadow(0 12px 20px rgba(0,0,0,0.55)); pointer-events:none">sola, sola, me vuelvo a despertar.</div>
+        <div class="history-awake-note" style="position:absolute; bottom:-4vh; right:2vw; background:linear-gradient(115deg, rgba(0,0,0,0.16) 0%, transparent 14%), linear-gradient(245deg, rgba(0,0,0,0.12) 0%, transparent 20%), linear-gradient(65deg, rgba(255,255,255,0.14) 0%, transparent 24%), linear-gradient(160deg, #cfc0a0 0%, #b3a37c 55%, #c8b992 100%); clip-path:polygon(2% 6%, 12% 1%, 38% 4%, 62% 0%, 88% 5%, 98% 2%, 100% 30%, 96% 55%, 100% 78%, 94% 98%, 60% 95%, 34% 100%, 10% 96%, 0% 88%, 3% 52%); padding:24px 22px 28px; max-width:19ch; font-family:'La Belle Aurore', cursive; color:#42361f; font-size:17px; line-height:1.5; filter:drop-shadow(0 12px 20px rgba(0,0,0,0.55)); pointer-events:none">sola, sola, me vuelvo a despertar.</div>
       </sc-if>
     </div>
   </section>
 
   <!-- ══════════ EL ARCHIVO ══════════ -->
-  <section data-screen-label="El archivo — trece canciones" style="position:relative; padding:6vh 6vw 8vh; border-top:1px solid #3a2b1f; overflow:hidden">
-    <img class="archive-photo archive-photo--right" src="fotos/f06.png" alt="" loading="lazy" decoding="async">
-    <img class="archive-photo archive-photo--left" src="fotos/f05.png" alt="" loading="lazy" decoding="async">
+  <section class="photo-stage" data-screen-label="El archivo — trece canciones" style="position:relative; padding:6vh 6vw 8vh; border-top:1px solid #3a2b1f; overflow:hidden">
+    <img class="archive-photo archive-photo--right blended-photo" src="fotos/f06.png" alt="" loading="lazy" decoding="async">
+    <img class="archive-photo archive-photo--left blended-photo" src="fotos/f05.png" alt="" loading="lazy" decoding="async">
     <div style="position:relative; display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:12px; margin-bottom:2vh">
       <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(44px, 6.5vw, 100px); color:#e8dbbc">el archivo</div>
       <div style="font-size:12px; letter-spacing:0.24em; color:#7a6a52">trece canciones · 1999–2001 · transcripción con lo que se oye</div>
@@ -328,9 +444,9 @@
   </section>
 
   <!-- ══════════ CODA ══════════ -->
-  <section data-screen-label="Coda" style="position:relative; border-top:1px solid #3a2b1f; display:flex; flex-direction:column; justify-content:center; padding:9vh 8vw; overflow:hidden">
-    <img class="coda-photo coda-photo--left" src="fotos/f04.png" alt="" loading="lazy" decoding="async">
-    <img class="coda-photo coda-photo--right" src="fotos/f09.png" alt="" loading="lazy" decoding="async">
+  <section class="photo-stage" data-screen-label="Coda" style="position:relative; border-top:1px solid #3a2b1f; display:flex; flex-direction:column; justify-content:center; padding:9vh 8vw; overflow:hidden">
+    <img class="coda-photo coda-photo--left blended-photo" src="fotos/f04.png" alt="" loading="lazy" decoding="async">
+    <img class="coda-photo coda-photo--right blended-photo" src="fotos/f09.png" alt="" loading="lazy" decoding="async">
     <div style="position:absolute; bottom:-30%; right:-16%; width:70vmin; height:70vmin; border-radius:50%; background:radial-gradient(circle, rgba(255,42,23,0.16) 0%, transparent 65%); animation:parpadeo 11s infinite; pointer-events:none"></div>
     <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(44px, 7vw, 110px); line-height:1; color:#e8dbbc; max-width:14ch; position:relative">Un día, Noelia se fue.</div>
     <div style="position:relative; margin:4vh 0 0 4vw; display:flex; flex-direction:column; gap:14px; font-size:14px; letter-spacing:0.14em; color:#9b8a6f">
