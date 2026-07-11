@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=La+Belle+Aurore&display=swap" rel="stylesheet">
   <style>
-    html, body { margin: 0; padding: 0; background: #070504; }
+    html, body { margin: 0; padding: 0; background: #100b08; }
     body { overflow-x: hidden; }
     ::selection { background: #6b1a12; color: #e8dcc0; }
     a { color: #c98a3a; text-decoration: none; }
@@ -28,15 +28,15 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
-      opacity: .82;
-      filter: brightness(1.06) contrast(1.03) saturate(.96);
-      -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.36) 14%, #000 40%, #000 100%);
-      mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.36) 14%, #000 40%, #000 100%);
+      opacity: .96;
+      filter: brightness(1.28) contrast(1) saturate(1.02);
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 13%, #000 35%, #000 100%);
+      mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 13%, #000 35%, #000 100%);
       pointer-events: none;
     }
 
     .cover-triptych-photo {
-      filter: brightness(1.08) contrast(1.04) saturate(.98);
+      filter: brightness(1.24) contrast(1) saturate(1.02);
       -webkit-mask-image: radial-gradient(ellipse 88% 88% at 50% 50%, #000 52%, rgba(0,0,0,.82) 76%, transparent 96%);
       mask-image: radial-gradient(ellipse 88% 88% at 50% 50%, #000 52%, rgba(0,0,0,.82) 76%, transparent 96%);
     }
@@ -45,11 +45,43 @@
       mix-blend-mode: screen;
     }
 
-    .photo-stage { isolation: isolate; }
+    .photo-stage {
+      isolation: isolate;
+      background: radial-gradient(circle at 72% 38%, rgba(111,58,30,.13), transparent 58%), #100b08;
+    }
 
     .site-shell {
+      background: #100b08 !important;
+      color: #eadfc8 !important;
       font-size: clamp(17px, 1.25vw, 20px);
       line-height: 1.45;
+    }
+
+    .site-shell [style*="color: rgb(155, 138, 111)"] {
+      color: #c8b58f !important;
+      text-shadow: 0 1px 2px rgba(0,0,0,.95), 0 0 14px rgba(0,0,0,.72);
+    }
+
+    .site-shell [style*="color: rgb(122, 106, 82)"] {
+      color: #ad9876 !important;
+      text-shadow: 0 1px 2px rgba(0,0,0,.95), 0 0 14px rgba(0,0,0,.72);
+    }
+
+    .site-shell [style*="color: rgb(179, 161, 132)"],
+    .site-shell [style*="color: rgb(183, 166, 132)"],
+    .site-shell [style*="color: rgb(165, 142, 102)"] {
+      text-shadow: 0 1px 2px rgba(0,0,0,.95), 0 0 16px rgba(0,0,0,.68);
+    }
+
+    .site-shell [style*="color: rgb(179, 161, 132)"] { color: #d3c09e !important; }
+    .site-shell [style*="color: rgb(183, 166, 132)"] { color: #dac8a6 !important; }
+    .site-shell [style*="color: rgb(165, 142, 102)"] { color: #cbb181 !important; }
+    .site-shell [style*="color: rgb(90, 69, 48)"] { color: #967554 !important; }
+    .site-shell [style*="color: rgb(163, 80, 46)"] { color: #c66f49 !important; }
+
+    .site-shell [style*="border-top: 1px solid rgb(58, 43, 31)"],
+    .site-shell [style*="border-bottom: 1px solid rgb(58, 43, 31)"] {
+      border-color: #5d4531 !important;
     }
 
     .site-shell [style*="font-size: 11px"] { font-size: clamp(14px, 1vw, 16px) !important; }
@@ -153,20 +185,20 @@
       width: min(1280px, 104%);
       height: 100%;
       transform: translateX(-50%);
-      opacity: .68;
-      filter: brightness(1.03) contrast(1.03) saturate(.92);
-      -webkit-mask-image: radial-gradient(ellipse 78% 78% at 50% 48%, #000 40%, rgba(0,0,0,.74) 68%, transparent 92%);
-      mask-image: radial-gradient(ellipse 78% 78% at 50% 48%, #000 40%, rgba(0,0,0,.74) 68%, transparent 92%);
+      opacity: .8;
+      filter: brightness(1.26) contrast(1) saturate(1.01);
+      -webkit-mask-image: radial-gradient(ellipse 86% 86% at 50% 48%, #000 48%, rgba(0,0,0,.88) 76%, transparent 100%);
+      mask-image: radial-gradient(ellipse 86% 86% at 50% 48%, #000 48%, rgba(0,0,0,.88) 76%, transparent 100%);
     }
 
     .history-photo {
       inset: 0;
       width: 100%;
       height: 100%;
-      opacity: .56;
-      filter: brightness(1.02) contrast(1.02) saturate(.9);
-      -webkit-mask-image: radial-gradient(ellipse 82% 82% at 50% 44%, #000 38%, rgba(0,0,0,.72) 69%, transparent 94%);
-      mask-image: radial-gradient(ellipse 82% 82% at 50% 44%, #000 38%, rgba(0,0,0,.72) 69%, transparent 94%);
+      opacity: .7;
+      filter: brightness(1.3) contrast(.98) saturate(1.01);
+      -webkit-mask-image: radial-gradient(ellipse 90% 90% at 50% 44%, #000 48%, rgba(0,0,0,.86) 78%, transparent 100%);
+      mask-image: radial-gradient(ellipse 90% 90% at 50% 44%, #000 48%, rgba(0,0,0,.86) 78%, transparent 100%);
     }
 
     .polaroid {
@@ -181,7 +213,7 @@
       background:
         radial-gradient(circle at 20% 30%, rgba(92,69,39,.1) 0 .5px, transparent .8px) 0 0 / 8px 10px,
         linear-gradient(145deg, #eee7d7 0%, #d8cfba 100%);
-      box-shadow: 0 1.8rem 4.5rem rgba(0,0,0,.58), 0 0 0 1px rgba(232,219,188,.18), inset 0 0 2rem rgba(255,255,255,.13);
+      box-shadow: 0 1.8rem 4.5rem rgba(0,0,0,.44), 0 0 0 1px rgba(232,219,188,.18), inset 0 0 2rem rgba(255,255,255,.13);
       transform-origin: 50% 50%;
       isolation: isolate;
     }
@@ -238,7 +270,7 @@
       display: block;
       width: 100%;
       height: auto;
-      filter: brightness(1.08) contrast(1.04) saturate(.98);
+      filter: brightness(1.22) contrast(1) saturate(1.02);
       box-shadow: 0 0 0 1px rgba(55,39,22,.28);
     }
 
@@ -255,42 +287,42 @@
 
     .archive-photo {
       width: 48%;
-      opacity: .66;
-      filter: brightness(1.04) contrast(1.03) saturate(.94);
-      -webkit-mask-image: radial-gradient(ellipse 86% 86% at 50% 50%, #000 42%, rgba(0,0,0,.76) 70%, transparent 94%);
-      mask-image: radial-gradient(ellipse 86% 86% at 50% 50%, #000 42%, rgba(0,0,0,.76) 70%, transparent 94%);
+      opacity: .74;
+      filter: brightness(1.28) contrast(.98) saturate(1.01);
+      -webkit-mask-image: radial-gradient(ellipse 92% 92% at 50% 50%, #000 52%, rgba(0,0,0,.88) 80%, transparent 100%);
+      mask-image: radial-gradient(ellipse 92% 92% at 50% 50%, #000 52%, rgba(0,0,0,.88) 80%, transparent 100%);
     }
 
     .archive-photo--right { top: 2vh; right: -2%; }
     .archive-photo--left { bottom: 0; left: -2%; }
 
     .coda-photo {
-      opacity: .66;
-      filter: brightness(1.04) contrast(1.03) saturate(.94);
-      -webkit-mask-image: radial-gradient(ellipse 88% 88% at 50% 50%, #000 42%, rgba(0,0,0,.74) 72%, transparent 95%);
-      mask-image: radial-gradient(ellipse 88% 88% at 50% 50%, #000 42%, rgba(0,0,0,.74) 72%, transparent 95%);
+      opacity: .74;
+      filter: brightness(1.28) contrast(.98) saturate(1.01);
+      -webkit-mask-image: radial-gradient(ellipse 94% 94% at 50% 50%, #000 52%, rgba(0,0,0,.88) 80%, transparent 100%);
+      mask-image: radial-gradient(ellipse 94% 94% at 50% 50%, #000 52%, rgba(0,0,0,.88) 80%, transparent 100%);
     }
 
     .coda-photo--left { bottom: -5%; left: -2%; width: 70%; }
     .coda-photo--right { top: -1%; right: -2%; width: 54%; }
 
-    .members-photo.blended-photo { opacity: .56; }
-    .history-photo.blended-photo { opacity: .44; }
-    .archive-photo.blended-photo { opacity: .5; }
-    .coda-photo.blended-photo { opacity: .48; }
+    .members-photo.blended-photo { opacity: .78; }
+    .history-photo.blended-photo { opacity: .66; }
+    .archive-photo.blended-photo { opacity: .72; }
+    .coda-photo.blended-photo { opacity: .7; }
 
     @media (max-width: 640px) {
       .hero-photo {
         right: -32%;
         width: 132%;
-        opacity: .74;
+        opacity: .92;
         object-position: 54% 50%;
-        -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.3) 11%, #000 38%, #000 100%);
-        mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.3) 11%, #000 38%, #000 100%);
+        -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.48) 10%, #000 31%, #000 100%);
+        mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.48) 10%, #000 31%, #000 100%);
       }
 
-      .members-photo { width: 126%; opacity: .62; }
-      .history-photo { opacity: .5; }
+      .members-photo { width: 126%; opacity: .76; }
+      .history-photo { opacity: .64; }
       .polaroid {
         width: calc(100% - 1.25rem);
         margin-top: 1.5rem;
@@ -321,14 +353,15 @@
       }
 
       [data-screen-label="Coda"] > div > div { margin-left: 0 !important; }
-      .archive-photo { width: 64%; opacity: .6; }
+      .archive-photo { width: 64%; opacity: .7; }
       .archive-photo--right { right: -1%; }
       .archive-photo--left { left: -1%; }
       .coda-photo--left { bottom: -2%; left: -1%; width: 84%; }
       .coda-photo--right { top: 0; right: -1%; width: 66%; }
-      .history-photo.blended-photo { opacity: .4; }
-      .archive-photo.blended-photo { opacity: .46; }
-      .coda-photo.blended-photo { opacity: .44; }
+      .members-photo.blended-photo { opacity: .74; }
+      .history-photo.blended-photo { opacity: .62; }
+      .archive-photo.blended-photo { opacity: .68; }
+      .coda-photo.blended-photo { opacity: .66; }
 
       .history-date-note,
       .archive-fragment-note,
@@ -571,7 +604,7 @@
 
   <!-- grano -->
   <sc-if value="{{ granulado }}" hint-placeholder-val="{{ true }}">
-    <div style="position:fixed; inset:0; pointer-events:none; z-index:50; opacity:0.055; mix-blend-mode:overlay; background-image:url('data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%27300%27%20height=%27300%27%3E%3Cfilter%20id=%27n%27%3E%3CfeTurbulence%20type=%27fractalNoise%27%20baseFrequency=%270.85%27%20numOctaves=%272%27%20stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect%20width=%27300%27%20height=%27300%27%20filter=%27url(%23n)%27/%3E%3C/svg%3E')"></div>
+    <div style="position:fixed; inset:0; pointer-events:none; z-index:50; opacity:0.025; mix-blend-mode:overlay; background-image:url('data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%27300%27%20height=%27300%27%3E%3Cfilter%20id=%27n%27%3E%3CfeTurbulence%20type=%27fractalNoise%27%20baseFrequency=%270.85%27%20numOctaves=%272%27%20stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect%20width=%27300%27%20height=%27300%27%20filter=%27url(%23n)%27/%3E%3C/svg%3E')"></div>
   </sc-if>
 </div>
 </x-dc>
