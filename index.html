@@ -20,6 +20,55 @@
     a:hover { color: #d1301d; }
     @keyframes cinta { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     @keyframes parpadeo { 0%, 100% { opacity: .9; } 7% { opacity: .55; } 11% { opacity: .95; } 38% { opacity: .7; } 41% { opacity: .92; } 74% { opacity: .6; } 78% { opacity: .88; } }
+    @keyframes pulso-luz-roja {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      8% { opacity: .82; transform: scale(.985); }
+      12% { opacity: 1; transform: scale(1.015); }
+      40% { opacity: .88; transform: scale(.995); }
+      44% { opacity: 1; transform: scale(1.01); }
+      76% { opacity: .84; transform: scale(.99); }
+      80% { opacity: .98; transform: scale(1.005); }
+    }
+
+    .hero-red-glow {
+      position: absolute;
+      top: -27%;
+      left: -18%;
+      width: 92vmin;
+      height: 92vmin;
+      border-radius: 50%;
+      background: radial-gradient(circle at 39% 37%, rgba(255,92,65,.5) 0%, rgba(255,42,23,.34) 14%, rgba(190,24,12,.2) 38%, rgba(130,12,7,.09) 58%, transparent 76%);
+      filter: blur(3px);
+      mix-blend-mode: screen;
+      animation: pulso-luz-roja 8s infinite;
+      pointer-events: none;
+    }
+
+    .hero-red-bulb {
+      position: absolute;
+      top: 10.7%;
+      left: 8.8%;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ff5a42;
+      box-shadow:
+        0 0 7px 3px rgba(255,135,105,.98),
+        0 0 28px 14px rgba(255,55,32,.78),
+        0 0 72px 36px rgba(255,36,20,.46),
+        0 0 150px 76px rgba(210,24,13,.24);
+      animation: pulso-luz-roja 8s infinite;
+      pointer-events: none;
+    }
+
+    .hero-red-bulb::after {
+      position: absolute;
+      inset: -48px;
+      border-radius: 50%;
+      content: '';
+      background: radial-gradient(circle, rgba(255,96,68,.32) 0%, rgba(255,42,23,.16) 30%, transparent 72%);
+      filter: blur(4px);
+    }
     .hero-photo {
       position: absolute;
       top: 0;
@@ -386,8 +435,8 @@
   <sc-if value="{{ pA }}" hint-placeholder-val="{{ true }}">
     <section class="photo-stage" data-screen-label="Portada — la luz roja" style="position:relative; min-height:100svh; overflow:hidden; display:flex; flex-direction:column; justify-content:center; padding:4vh 5vw 5vh">
       <img class="hero-photo blended-photo" src="fotos/f03.png" alt="" decoding="async">
-      <div style="position:absolute; top:-22%; left:-14%; width:76vmin; height:76vmin; border-radius:50%; background:radial-gradient(circle, rgba(255,42,23,0.26) 0%, rgba(255,42,23,0.08) 40%, transparent 68%); animation:parpadeo 9s infinite; pointer-events:none"></div>
-      <div style="position:absolute; top:11%; left:9%; width:7px; height:7px; border-radius:50%; background:#ff3a24; box-shadow:0 0 22px 8px rgba(255,42,23,0.55); animation:parpadeo 9s infinite"></div>
+      <div class="hero-red-glow"></div>
+      <div class="hero-red-bulb"></div>
 
       <div style="position:absolute; top:6vh; right:4.5vw; font-size:12px; letter-spacing:0.3em; color:#7a6a52; writing-mode:vertical-rl">madrid · 1999 – 2001</div>
 
