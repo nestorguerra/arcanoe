@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>el arca de noé — archivo 1999–2001</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=La+Belle+Aurore&display=swap" rel="stylesheet">
+  <style>
+    html, body { margin: 0; padding: 0; background: #070504; }
+    body { overflow-x: hidden; }
+    ::selection { background: #6b1a12; color: #e8dcc0; }
+    a { color: #c98a3a; text-decoration: none; }
+    a:hover { color: #d1301d; }
+    @keyframes cinta { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes parpadeo { 0%, 100% { opacity: .9; } 7% { opacity: .55; } 11% { opacity: .95; } 38% { opacity: .7; } 41% { opacity: .92; } 74% { opacity: .6; } 78% { opacity: .88; } }
+  </style>
+</helmet>
+
+<div style="background:#070504; color:#ded1b5; font-family:'Courier Prime', monospace; min-height:100vh; position:relative; overflow:hidden; text-transform:lowercase">
+
+  <!-- ══════════ PORTADA I · LA LUZ ROJA ══════════ -->
+  <sc-if value="{{ pA }}" hint-placeholder-val="{{ true }}">
+    <section data-screen-label="Portada — la luz roja" style="position:relative; min-height:100svh; overflow:hidden; display:flex; flex-direction:column; justify-content:center; padding:4vh 5vw 5vh">
+      <img src="fotos/f03.png" alt="" style="position:absolute; top:0; right:-12%; width:78%; height:100%; object-fit:cover; opacity:0.6; filter:brightness(0.92) saturate(0.85); -webkit-mask-image:radial-gradient(ellipse 68% 80% at 58% 45%, #000 22%, transparent 74%); mask-image:radial-gradient(ellipse 68% 80% at 58% 45%, #000 22%, transparent 74%)">
+      <div style="position:absolute; top:-22%; left:-14%; width:76vmin; height:76vmin; border-radius:50%; background:radial-gradient(circle, rgba(255,42,23,0.26) 0%, rgba(255,42,23,0.08) 40%, transparent 68%); animation:parpadeo 9s infinite; pointer-events:none"></div>
+      <div style="position:absolute; top:11%; left:9%; width:7px; height:7px; border-radius:50%; background:#ff3a24; box-shadow:0 0 22px 8px rgba(255,42,23,0.55); animation:parpadeo 9s infinite"></div>
+
+      <div style="position:absolute; top:6vh; right:4.5vw; font-size:12px; letter-spacing:0.3em; color:#7a6a52; writing-mode:vertical-rl">madrid · 1999 – 2001</div>
+
+      <div style="position:relative; margin-top:2vh">
+        <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:500; font-size:clamp(84px, 16.5vw, 290px); line-height:0.82; color:#e8dbbc; letter-spacing:-0.03em">el arca</div>
+        <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:500; font-size:clamp(84px, 16.5vw, 290px); line-height:0.82; letter-spacing:-0.03em; color:transparent; -webkit-text-stroke:1.5px #a8895c; margin-left:14vw; margin-top:-0.38em; position:relative; z-index:2">de noé</div>
+      </div>
+
+      <div style="position:relative; margin-top:3vh; margin-left:2vw; font-size:13px; letter-spacing:0.14em; color:#b3a184">trece canciones · búnker · nunca</div>
+
+      <div style="position:absolute; bottom:16%; right:7vw; background:linear-gradient(115deg, rgba(0,0,0,0.16) 0%, transparent 14%), linear-gradient(245deg, rgba(0,0,0,0.12) 0%, transparent 20%), linear-gradient(65deg, rgba(255,255,255,0.14) 0%, transparent 24%), linear-gradient(160deg, #cfc0a0 0%, #b3a37c 55%, #c8b992 100%); clip-path:polygon(2% 6%, 12% 1%, 38% 4%, 62% 0%, 88% 5%, 98% 2%, 100% 30%, 96% 55%, 100% 78%, 94% 98%, 60% 95%, 34% 100%, 10% 96%, 0% 88%, 3% 52%); padding:26px 24px 30px; max-width:20ch; font-family:'La Belle Aurore', cursive; color:#42361f; font-size:17px; line-height:1.5; filter:drop-shadow(0 12px 20px rgba(0,0,0,0.55)); pointer-events:none">e son a última merda no blues.</div>
+
+
+      <div style="position:absolute; bottom:5vh; left:6vw; font-size:12px; letter-spacing:0.2em; color:#7a6a52">↓ baja al búnker</div>
+      <div style="position:absolute; bottom:7%; right:15vw; background:#d3bd6b; color:#332a18; font-family:'La Belle Aurore', cursive; font-size:16px; line-height:1.3; padding:12px 14px 18px; max-width:15ch; box-shadow:0 8px 20px rgba(0,0,0,0.55)">faltan las cintas por digitalizar</div>
+    </section>
+  </sc-if>
+
+  <!-- ══════════ PORTADA II · EL INVENTARIO ══════════ -->
+  <sc-if value="{{ pB }}" hint-placeholder-val="{{ false }}">
+    <section data-screen-label="Portada — el inventario" style="position:relative; min-height:100svh; overflow:hidden; padding:7vh 7vw">
+      <div style="display:flex; justify-content:space-between; font-size:12px; letter-spacing:0.2em; color:#9b8a6f; border-bottom:1px solid #3a2b1f; padding-bottom:14px">
+        <span>el arca de noé</span>
+        <span>archivo de letras</span>
+        <span>1999 – 2001</span>
+      </div>
+      <div style="margin-top:7vh; font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(52px, 8.5vw, 150px); line-height:0.9; color:#e8dbbc">trece<br>canciones</div>
+      <div style="margin-top:4vh; column-count:2; column-gap:6vw; max-width:900px; font-size:clamp(13px, 1.3vw, 17px); line-height:2.2; color:#b3a184">
+        <div>01 &nbsp;bolboretas</div>
+        <div>02 &nbsp;de ti y de mí</div>
+        <div>03 &nbsp;ioeo</div>
+        <div>04 &nbsp;irmán de breogán</div>
+        <div>05 &nbsp;mía</div>
+        <div>06 &nbsp;no quiero vivir</div>
+        <div>07 &nbsp;por haberte perdido</div>
+        <div>08 &nbsp;rompiendo los cristales</div>
+        <div>09 &nbsp;sin ti me muero</div>
+        <div>10 &nbsp;sola</div>
+        <div>11 &nbsp;soños</div>
+        <div>12 &nbsp;tequila y ron</div>
+        <div>13 &nbsp;un día</div>
+      </div>
+      <div style="position:absolute; top:30%; right:5vw; border:2px solid #d1301d; color:#d1301d; padding:14px 22px; font-size:clamp(12px, 1.4vw, 18px); letter-spacing:0.28em; opacity:0.85">NUNCA TOCAMOS UN CONCIERTO</div>
+      <div style="position:absolute; bottom:14%; right:8vw; font-family:'La Belle Aurore', cursive; font-size:clamp(18px, 2vw, 26px); color:#a58e66">grabado con lo que había</div>
+      <div style="position:absolute; bottom:5vh; left:7vw; font-size:12px; letter-spacing:0.2em; color:#7a6a52">↓ baja al búnker</div>
+    </section>
+  </sc-if>
+
+  <!-- ══════════ PORTADA III · A CAPELA ══════════ -->
+  <sc-if value="{{ pC }}" hint-placeholder-val="{{ false }}">
+    <section data-screen-label="Portada — a capela" style="position:relative; min-height:100svh; overflow:hidden; display:flex; flex-direction:column; justify-content:space-between; padding:6vh 6vw 0">
+      <div style="display:flex; justify-content:space-between; font-size:12px; letter-spacing:0.2em; color:#9b8a6f">
+        <span>el arca de noé · 1999–2001</span>
+        <span>madrid</span>
+      </div>
+      <div style="max-width:22ch; margin:0 auto">
+        <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(40px, 6.2vw, 96px); line-height:1.06; color:#e8dbbc">«una chica cantando coplas, sola, a&nbsp;capela, en un bar que ya había cerrado.»</div>
+        <div style="margin-top:3vh; font-size:13px; letter-spacing:0.16em; color:#9b8a6f">el beni · detrás del teatro lope de vega · copas a 200 ptas.</div>
+        <div style="margin-top:1vh; font-size:13px; letter-spacing:0.16em; color:#b3a184">así empezó todo. así acabó en un sótano de las rozas.</div>
+      </div>
+      <div style="display:flex; gap:0; margin:0 -6vw; align-items:flex-end">
+        <img src="fotos/f03.png" alt="el búnker, luz roja" style="width:34%; transform:translateY(12px); filter:contrast(1.06) saturate(0.9); -webkit-mask-image:radial-gradient(ellipse 74% 74% at 50% 50%, #000 40%, transparent 78%); mask-image:radial-gradient(ellipse 74% 74% at 50% 50%, #000 40%, transparent 78%)">
+        <img src="fotos/f07.png" alt="el búnker desde la puerta" style="width:38%; transform:translateY(30px); filter:contrast(1.06) saturate(0.9); -webkit-mask-image:radial-gradient(ellipse 74% 74% at 50% 50%, #000 40%, transparent 78%); mask-image:radial-gradient(ellipse 74% 74% at 50% 50%, #000 40%, transparent 78%); z-index:2">
+        <img src="fotos/f04.png" alt="papeles y cables en el suelo" style="width:34%; transform:translateY(10px); filter:contrast(1.06) saturate(0.9); -webkit-mask-image:radial-gradient(ellipse 74% 74% at 50% 50%, #000 40%, transparent 78%); mask-image:radial-gradient(ellipse 74% 74% at 50% 50%, #000 40%, transparent 78%)">
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- ══════════ LOS TRES ══════════ -->
+  <section data-screen-label="Los tres" style="position:relative; padding:7vh 6vw 7vh; border-top:1px solid #3a2b1f; overflow:hidden">
+    <img src="fotos/f02.png" alt="" style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:min(1200px, 100%); height:100%; object-fit:cover; opacity:0.5; filter:brightness(0.95) saturate(0.8); -webkit-mask-image:radial-gradient(ellipse 62% 56% at 50% 46%, #000 18%, transparent 72%); mask-image:radial-gradient(ellipse 62% 56% at 50% 46%, #000 18%, transparent 72%)">
+    <div style="position:relative; font-size:11px; letter-spacing:0.3em; color:#7a6a52">— los tres —</div>
+
+    <div style="position:relative; margin:6vh 0 0 2vw">
+      <span style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(19px, 1.9vw, 25px); color:#a58e66">rober</span>
+      <div style="font-size:11px; letter-spacing:0.22em; color:#7a6a52; margin:8px 0 0 6vw">guitarras, pulso y memoria</div>
+    </div>
+
+    <div style="position:relative; margin:4vh 13vw 0 auto; text-align:right; max-width:36ch">
+      <span style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(19px, 1.9vw, 25px); color:#a58e66">noelia</span>
+      <div style="font-size:11px; letter-spacing:0.22em; color:#7a6a52; margin:8px 4vw 0 0">voz, melodía y heridas</div>
+      <div style="display:inline-block; background:#d3bd6b; color:#332a18; font-family:'La Belle Aurore', cursive; font-size:16px; line-height:1.3; padding:12px 14px 18px; max-width:17ch; box-shadow:0 8px 20px rgba(0,0,0,0.55); margin-top:14px; text-align:left">tenía 19 años y una voz desgarrada</div>
+    </div>
+
+    <div style="position:relative; margin:5vh 0 0 24vw">
+      <span style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(19px, 1.9vw, 25px); color:#a58e66">néstor</span>
+      <div style="font-size:11px; letter-spacing:0.22em; color:#7a6a52; margin:8px 0 0 5vw">letras, guitarras y ausencias</div>
+    </div>
+
+    <div style="position:relative; width:fit-content; margin:6vh 6vw 0 auto; background:linear-gradient(115deg, rgba(0,0,0,0.16) 0%, transparent 14%), linear-gradient(245deg, rgba(0,0,0,0.12) 0%, transparent 20%), linear-gradient(65deg, rgba(255,255,255,0.14) 0%, transparent 24%), linear-gradient(160deg, #cfc0a0 0%, #b3a37c 55%, #c8b992 100%); clip-path:polygon(2% 6%, 12% 1%, 38% 4%, 62% 0%, 88% 5%, 98% 2%, 100% 30%, 96% 55%, 100% 78%, 94% 98%, 60% 95%, 34% 100%, 10% 96%, 0% 88%, 3% 52%); padding:24px 22px 28px; max-width:20ch; font-family:'La Belle Aurore', cursive; color:#42361f; font-size:17px; line-height:1.5; filter:drop-shadow(0 12px 20px rgba(0,0,0,0.55))">uns berros entre catro paredes, bolboretas loitan pola fiestra.</div>
+  </section>
+
+  <!-- ══════════ LA HISTORIA ══════════ -->
+  <section data-screen-label="La historia" style="position:relative; padding:6vh 6vw 7vh; border-top:1px solid #3a2b1f; overflow:hidden">
+    <img src="fotos/f07.png" alt="" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.36; filter:brightness(0.88) saturate(0.8); -webkit-mask-image:radial-gradient(ellipse 60% 52% at 50% 42%, #000 14%, transparent 70%); mask-image:radial-gradient(ellipse 60% 52% at 50% 42%, #000 14%, transparent 70%)">
+    <div style="font-size:12px; letter-spacing:0.3em; color:#7a6a52; margin-bottom:4vh">— lo que se recuerda · lo que se olvidó —</div>
+
+    <div style="position:relative; max-width:52ch">
+      <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(24px, 2.6vw, 38px); color:#b7a684; line-height:1.4">un bar detrás del teatro lope de vega. copas a doscientas pesetas.</div>
+      <div style="font-size:13px; line-height:1.9; color:#9b8a6f; margin:26px 0 0 8vw; max-width:34ch">cerraron el local con la gente dentro. en el encierro, una chica se puso a cantar coplas, sola, a capela.</div>
+      <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(20px, 2vw, 28px); color:#b3a184; margin:30px 0 0 16vw">se llamaba noelia.</div>
+      <div style="position:absolute; top:-10px; right:-9vw; background:#ddc87e; color:#332a18; font-family:'La Belle Aurore', cursive; font-size:16px; line-height:1.3; padding:12px 14px 18px; max-width:13ch; box-shadow:0 8px 20px rgba(0,0,0,0.55)">¿el 98? ¿el 99? aún en pesetas</div>
+    </div>
+
+    <img src="fotos/f01.png" alt="" style="display:block; width:min(520px, 58%); margin:6vh 0 0 auto; filter:brightness(1) contrast(1.08) saturate(0.85); -webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, #000 40%, transparent 80%); mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, #000 40%, transparent 80%)">
+
+    <div style="position:relative; max-width:52ch; margin:4vh 0 0 auto">
+      <div style="font-size:13px; line-height:1.9; color:#9b8a6f; max-width:32ch">un sótano bajo un chalet de las rozas, forrado de cajas de huevos. montado para tocar doom metal; acabó siendo otra cosa.</div>
+      <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(24px, 2.6vw, 38px); color:#b7a684; line-height:1.4; margin:28px 0 0 10vw">de madrugada, a oscuras, con una luz roja siempre encendida.</div>
+      <div style="font-size:13px; color:#7a6a52; margin:24px 14vw 0 0">sesiones de muchas horas que nadie medía.</div>
+      <div style="position:absolute; bottom:-4vh; left:-5vw; background:#c4ad5c; color:#332a18; font-family:'La Belle Aurore', cursive; font-size:16px; line-height:1.3; padding:12px 14px 18px; max-width:13ch; box-shadow:0 8px 20px rgba(0,0,0,0.55)">bajo tierra, sin ventanas</div>
+    </div>
+
+    <img src="fotos/f08.png" alt="" style="display:block; width:min(460px, 50%); margin:6vh auto 0 1vw; filter:brightness(1) contrast(1.08) saturate(0.85); -webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, #000 40%, transparent 80%); mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, #000 40%, transparent 80%)">
+
+    <div style="position:relative; max-width:52ch; margin:4vh 0 0 8vw">
+      <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(24px, 2.6vw, 38px); color:#b7a684; line-height:1.4">siete meses, quizá ocho.</div>
+      <div style="font-size:13px; line-height:1.9; color:#9b8a6f; margin:24px 0 0 6vw; max-width:36ch">fados, coplas, canciones tristes que salían solas — en gallego, en castellano, en sílabas que no eran de ningún idioma.</div>
+      <div style="font-size:13px; line-height:1.9; color:#7a6a52; margin:22px 0 0 18vw; max-width:30ch">carreras a medio querer, relaciones desordenadas, sustancias. y en medio, el mejor momento compositivo.</div>
+      <div style="display:inline-block; background:#d3bd6b; color:#332a18; font-family:'La Belle Aurore', cursive; font-size:16px; line-height:1.3; padding:12px 14px 18px; max-width:16ch; box-shadow:0 8px 20px rgba(0,0,0,0.55); margin:22px 0 0 2vw">trece canciones grabadas con lo que había</div>
+    </div>
+
+    <img src="fotos/f10.png" alt="" style="display:block; width:min(420px, 46%); margin:6vh 9vw 0 auto; filter:brightness(1) contrast(1.08) saturate(0.85); -webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, #000 40%, transparent 80%); mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, #000 40%, transparent 80%)">
+
+    <div style="position:relative; max-width:52ch; margin:4vh 3vw 0 auto">
+      <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(24px, 2.6vw, 38px); color:#b7a684; line-height:1.4">un día decidió irse a vivir al extranjero, y se fue.</div>
+      <div style="font-size:13px; line-height:1.9; color:#9b8a6f; margin:24px 0 0 12vw; max-width:30ch">venía de una casa compleja y destructiva. no hubo despedida a la altura.</div>
+      <div style="font-size:13px; color:#7a6a52; margin:22px 0 0 4vw">nunca volvieron a tocar juntos.</div>
+      <sc-if value="{{ fragmentos }}" hint-placeholder-val="{{ true }}">
+        <div style="position:absolute; bottom:-4vh; right:2vw; background:linear-gradient(115deg, rgba(0,0,0,0.16) 0%, transparent 14%), linear-gradient(245deg, rgba(0,0,0,0.12) 0%, transparent 20%), linear-gradient(65deg, rgba(255,255,255,0.14) 0%, transparent 24%), linear-gradient(160deg, #cfc0a0 0%, #b3a37c 55%, #c8b992 100%); clip-path:polygon(2% 6%, 12% 1%, 38% 4%, 62% 0%, 88% 5%, 98% 2%, 100% 30%, 96% 55%, 100% 78%, 94% 98%, 60% 95%, 34% 100%, 10% 96%, 0% 88%, 3% 52%); padding:24px 22px 28px; max-width:19ch; font-family:'La Belle Aurore', cursive; color:#42361f; font-size:17px; line-height:1.5; filter:drop-shadow(0 12px 20px rgba(0,0,0,0.55)); pointer-events:none">sola, sola, me vuelvo a despertar.</div>
+      </sc-if>
+    </div>
+  </section>
+
+  <!-- ══════════ EL ARCHIVO ══════════ -->
+  <section data-screen-label="El archivo — trece canciones" style="position:relative; padding:6vh 6vw 8vh; border-top:1px solid #3a2b1f; overflow:hidden">
+    <img src="fotos/f06.png" alt="" style="position:absolute; top:4vh; right:-8%; width:44%; opacity:0.4; filter:brightness(0.9) saturate(0.8); -webkit-mask-image:radial-gradient(ellipse 70% 70% at 50% 50%, #000 25%, transparent 75%); mask-image:radial-gradient(ellipse 70% 70% at 50% 50%, #000 25%, transparent 75%); pointer-events:none">
+    <img src="fotos/f05.png" alt="" style="position:absolute; bottom:2vh; left:-7%; width:40%; opacity:0.38; filter:brightness(0.9) saturate(0.8); -webkit-mask-image:radial-gradient(ellipse 70% 70% at 50% 50%, #000 25%, transparent 75%); mask-image:radial-gradient(ellipse 70% 70% at 50% 50%, #000 25%, transparent 75%); pointer-events:none">
+    <div style="position:relative; display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:12px; margin-bottom:2vh">
+      <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(44px, 6.5vw, 100px); color:#e8dbbc">el archivo</div>
+      <div style="font-size:12px; letter-spacing:0.24em; color:#7a6a52">trece canciones · 1999–2001 · transcripción con lo que se oye</div>
+      <div style="background:#c4ad5c; color:#332a18; font-family:'La Belle Aurore', cursive; font-size:16px; line-height:1.3; padding:12px 14px 18px; max-width:13ch; box-shadow:0 8px 20px rgba(0,0,0,0.55)">pendiente: subir los audios</div>
+    </div>
+    <div style="position:relative; font-size:13px; color:#9b8a6f; max-width:60ch; line-height:1.8; margin-bottom:3vh">Lo que va entre corchetes no se entiende. Se deja así: el olvido también forma parte de la grabación. Toca una canción para abrirla.</div>
+
+    <sc-if value="{{ fragmentos }}" hint-placeholder-val="{{ true }}">
+      <div style="position:absolute; top:15vh; right:3vw; background:linear-gradient(115deg, rgba(0,0,0,0.16) 0%, transparent 14%), linear-gradient(245deg, rgba(0,0,0,0.12) 0%, transparent 20%), linear-gradient(65deg, rgba(255,255,255,0.14) 0%, transparent 24%), linear-gradient(160deg, #cfc0a0 0%, #b3a37c 55%, #c8b992 100%); clip-path:polygon(2% 6%, 12% 1%, 38% 4%, 62% 0%, 88% 5%, 98% 2%, 100% 30%, 96% 55%, 100% 78%, 94% 98%, 60% 95%, 34% 100%, 10% 96%, 0% 88%, 3% 52%); padding:24px 22px 28px; max-width:18ch; font-family:'La Belle Aurore', cursive; color:#42361f; font-size:17px; line-height:1.5; filter:drop-shadow(0 12px 20px rgba(0,0,0,0.55)); pointer-events:none">maldito el día que te conocí. ¿por qué sin ti no quiero vivir?</div>
+    </sc-if>
+
+    <div style="position:relative; border-bottom:1px solid #3a2b1f">
+      <sc-for list="{{ canciones }}" as="c" hint-placeholder-count="13">
+        <div style="{{ c.st }}">
+          <div onClick="{{ c.abrir }}" style="display:grid; grid-template-columns:clamp(70px, 8vw, 130px) 1fr auto; gap:2vw; align-items:baseline; border-top:1px solid #3a2b1f; padding:15px 0 13px; cursor:pointer" style-hover="background:rgba(209,48,29,0.04)">
+            <div style="font-family:'Cormorant Garamond', serif; font-size:clamp(40px, 5vw, 76px); line-height:1; color:transparent; -webkit-text-stroke:1px #5a4530">{{ c.n }}</div>
+            <div>
+              <div style="font-family:'Cormorant Garamond', serif; font-size:clamp(28px, 3.4vw, 52px); line-height:1.05; color:#e8dbbc">{{ c.t }}<span style="color:#a3502e; font-style:italic; font-size:0.55em">{{ c.vozTag }}</span></div>
+              <div style="font-size:12px; letter-spacing:0.14em; color:#9b8a6f; margin-top:8px">{{ c.idioma }} · {{ c.conf }}</div>
+            </div>
+            <div style="font-size:13px; color:#7a6a52">{{ c.dur }}</div>
+          </div>
+          <sc-if value="{{ c.activa }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:0 0 4vh clamp(70px, 8vw, 130px)">
+              <sc-if value="{{ c.tieneNota }}" hint-placeholder-val="{{ false }}">
+                <div style="font-size:12px; font-style:italic; color:#7a6a52; max-width:52ch; line-height:1.8; margin-bottom:26px">nota del archivo — {{ c.nota }}</div>
+              </sc-if>
+              <div style="display:inline-block; border:1px dashed #5a4530; color:#9b8a6f; font-size:12px; letter-spacing:0.18em; padding:12px 20px; margin-bottom:34px">[ cinta pendiente de digitalizar — audio próximamente ]</div>
+              <div style="font-family:'Cormorant Garamond', serif; font-size:clamp(19px, 1.9vw, 25px); line-height:1.55; max-width:44ch">
+                <sc-for list="{{ c.lineas }}" as="v" hint-placeholder-count="4">
+                  <div style="{{ v.st }}">{{ v.t }}</div>
+                </sc-for>
+              </div>
+              <div style="font-size:11px; letter-spacing:0.22em; color:#5a4530; margin-top:36px">archivo de letras · trece canciones · 1999–2001</div>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+
+    <sc-if value="{{ fragmentos }}" hint-placeholder-val="{{ true }}">
+      <div style="position:absolute; bottom:5vh; left:4vw; background:linear-gradient(115deg, rgba(0,0,0,0.16) 0%, transparent 14%), linear-gradient(245deg, rgba(0,0,0,0.12) 0%, transparent 20%), linear-gradient(65deg, rgba(255,255,255,0.14) 0%, transparent 24%), linear-gradient(160deg, #cfc0a0 0%, #b3a37c 55%, #c8b992 100%); clip-path:polygon(2% 6%, 12% 1%, 38% 4%, 62% 0%, 88% 5%, 98% 2%, 100% 30%, 96% 55%, 100% 78%, 94% 98%, 60% 95%, 34% 100%, 10% 96%, 0% 88%, 3% 52%); padding:24px 22px 28px; max-width:19ch; font-family:'La Belle Aurore', cursive; color:#42361f; font-size:17px; line-height:1.5; filter:drop-shadow(0 12px 20px rgba(0,0,0,0.55)); pointer-events:none">mientras asoman en tus uñas, jirones de mi piel.</div>
+    </sc-if>
+  </section>
+
+  <!-- ══════════ CODA ══════════ -->
+  <section data-screen-label="Coda" style="position:relative; border-top:1px solid #3a2b1f; display:flex; flex-direction:column; justify-content:center; padding:9vh 8vw; overflow:hidden">
+    <img src="fotos/f04.png" alt="" style="position:absolute; bottom:-14%; left:-8%; width:68%; opacity:0.45; filter:brightness(0.92) saturate(0.8); -webkit-mask-image:radial-gradient(ellipse 70% 70% at 45% 55%, #000 26%, transparent 74%); mask-image:radial-gradient(ellipse 70% 70% at 45% 55%, #000 26%, transparent 74%)">
+    <img src="fotos/f09.png" alt="" style="position:absolute; top:-4%; right:-9%; width:50%; opacity:0.38; filter:brightness(0.9) saturate(0.8); -webkit-mask-image:radial-gradient(ellipse 70% 70% at 55% 45%, #000 25%, transparent 75%); mask-image:radial-gradient(ellipse 70% 70% at 55% 45%, #000 25%, transparent 75%); pointer-events:none">
+    <div style="position:absolute; bottom:-30%; right:-16%; width:70vmin; height:70vmin; border-radius:50%; background:radial-gradient(circle, rgba(255,42,23,0.16) 0%, transparent 65%); animation:parpadeo 11s infinite; pointer-events:none"></div>
+    <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(44px, 7vw, 110px); line-height:1; color:#e8dbbc; max-width:14ch; position:relative">Un día, Noelia se fue.</div>
+    <div style="position:relative; margin:4vh 0 0 4vw; display:flex; flex-direction:column; gap:14px; font-size:14px; letter-spacing:0.14em; color:#9b8a6f">
+      <div>nunca tocamos un concierto.</div>
+      <div style="margin-left:5vw">nunca salimos del búnker.</div>
+      <div style="margin-left:11vw">nunca se volvieron a ver.</div>
+    </div>
+    <div style="margin:5vh 0 0 auto; max-width:30ch; text-align:right; font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(22px, 2.6vw, 36px); line-height:1.3; color:#b3a184; position:relative">Veintisiete años después quedan trece canciones, diez fotos y esta página.</div>
+    <div style="position:relative; width:fit-content; margin:6vh 0 0 10vw; background:linear-gradient(115deg, rgba(0,0,0,0.16) 0%, transparent 14%), linear-gradient(245deg, rgba(0,0,0,0.12) 0%, transparent 20%), linear-gradient(65deg, rgba(255,255,255,0.14) 0%, transparent 24%), linear-gradient(160deg, #cfc0a0 0%, #b3a37c 55%, #c8b992 100%); clip-path:polygon(2% 6%, 12% 1%, 38% 4%, 62% 0%, 88% 5%, 98% 2%, 100% 30%, 96% 55%, 100% 78%, 94% 98%, 60% 95%, 34% 100%, 10% 96%, 0% 88%, 3% 52%); padding:24px 22px 28px; max-width:21ch; font-family:'La Belle Aurore', cursive; color:#42361f; font-size:17px; line-height:1.5; filter:drop-shadow(0 12px 20px rgba(0,0,0,0.55))">de mucho, de poco, de nada y de todo, de ti y de mí.</div>
+    <div style="position:absolute; bottom:12vh; left:8vw; width:6px; height:6px; border-radius:50%; background:#ff3a24; box-shadow:0 0 18px 7px rgba(255,42,23,0.45); animation:parpadeo 6s infinite"></div>
+  </section>
+
+  <!-- ══════════ PIE ══════════ -->
+  <footer data-screen-label="Pie" style="border-top:1px solid #3a2b1f; padding:26px 6vw; display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; font-size:11px; letter-spacing:0.2em; color:#7a6a52">
+    <span>el arca de noé — rober · noelia · néstor</span>
+    <span>madrid, 1999–2001</span>
+  </footer>
+
+  <!-- grano -->
+  <sc-if value="{{ granulado }}" hint-placeholder-val="{{ true }}">
+    <div style="position:fixed; inset:0; pointer-events:none; z-index:50; opacity:0.055; mix-blend-mode:overlay; background-image:url('data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%27300%27%20height=%27300%27%3E%3Cfilter%20id=%27n%27%3E%3CfeTurbulence%20type=%27fractalNoise%27%20baseFrequency=%270.85%27%20numOctaves=%272%27%20stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect%20width=%27300%27%20height=%27300%27%20filter=%27url(%23n)%27/%3E%3C/svg%3E')"></div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;portada&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;la luz roja&quot;, &quot;el inventario&quot;, &quot;a capela&quot;], &quot;default&quot;: &quot;la luz roja&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;portada&quot; },
+  &quot;granulado&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;atmósfera&quot; },
+  &quot;fragmentos&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;atmósfera&quot; }
+}">
+class Component extends DCLogic {
+  state = { open: null, songs: [] };
+
+  async componentDidMount() {
+    try {
+      const m = await import('./canciones.js');
+      this.setState({ songs: m.CANCIONES });
+    } catch (e) {
+      console.error('No se pudo cargar canciones.js', e);
+    }
+  }
+
+  renderVals() {
+    const portada = this.props.portada ?? 'la luz roja';
+    const open = this.state.open;
+
+    const canciones = this.state.songs.map((s, i) => {
+      const activa = open === i;
+      const lineas = activa
+        ? s.letra.map((l) => {
+            const dudosa = l.includes('[') || l.includes('¿');
+            return {
+              t: l === '' ? '\u00a0' : l,
+              st: dudosa
+                ? { color: '#8a7a60', fontStyle: 'italic' }
+                : { color: '#e0d3b6' },
+            };
+          })
+        : [];
+      return {
+        n: s.n,
+        t: s.t,
+        vozTag: '',
+        idioma: s.idioma,
+        dur: s.dur,
+        conf: s.conf,
+        nota: s.nota,
+        tieneNota: !!s.nota,
+        activa,
+        lineas,
+        st: {
+          marginLeft: ((i % 5) * 2.8) + 'vw',
+          marginRight: (((i * 7) % 5) * 1.4) + 'vw',
+        },
+        abrir: () => this.setState({ open: this.state.open === i ? null : i }),
+      };
+    });
+
+    return {
+      pA: portada === 'la luz roja',
+      pB: portada === 'el inventario',
+      pC: portada === 'a capela',
+      granulado: this.props.granulado ?? true,
+      fragmentos: this.props.fragmentos ?? true,
+      canciones,
+    };
+  }
+}
+</script>
+</body>
+</html>
