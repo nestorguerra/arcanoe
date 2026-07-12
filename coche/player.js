@@ -88,7 +88,7 @@ function updateMediaMetadata(track) {
   navigator.mediaSession.metadata = new MediaMetadata({
     title: track.t,
     artist: 'el arca de noé',
-    album: 'trece canciones · 1999–2000',
+    album: 'trece canciones · febrero–octubre de 2002',
   });
 }
 
