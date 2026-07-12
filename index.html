@@ -69,6 +69,7 @@
 
     .site-shell {
       min-height: 100vh;
+      padding-bottom: calc(76px + env(safe-area-inset-bottom));
       overflow: hidden;
       color: var(--ink);
       background: var(--black);
@@ -693,20 +694,36 @@
     }
 
     .song-player {
-      display: block;
+      display: grid;
+      grid-template-columns: 20px auto minmax(64px, 1fr) auto;
+      align-items: center;
+      gap: 9px;
       width: 100%;
-      height: 34px;
-      color-scheme: dark;
-      accent-color: var(--red);
+      min-height: 34px;
+      padding: 5px 11px;
+      border: 1px solid rgba(151,111,76,.42);
+      border-radius: 999px;
+      color: #bca783;
+      background: rgba(28,21,16,.9);
+      font: 400 12px/1 'Courier Prime', monospace;
+      text-align: left;
+      cursor: pointer;
       opacity: .84;
-      filter: sepia(.32) saturate(.82) contrast(.96);
-      transition: opacity .2s ease, filter .2s ease;
+      transition: opacity .2s ease, color .2s ease, border-color .2s ease, background .2s ease;
     }
 
     .song-player:hover,
     .song-player:focus-visible {
       opacity: 1;
-      filter: sepia(.2) saturate(.95) contrast(1);
+      color: #ead9b8;
+      border-color: rgba(216,75,55,.7);
+    }
+
+    .song-player.is-active {
+      opacity: 1;
+      color: #ead9b8;
+      border-color: rgba(216,75,55,.76);
+      background: rgba(46,13,8,.88);
     }
 
     .song-player:focus-visible {
@@ -714,10 +731,37 @@
       outline-offset: 3px;
     }
 
-    .song-player::-webkit-media-controls-enclosure {
-      border: 1px solid rgba(151,111,76,.42);
-      border-radius: 999px;
-      background: rgba(28,21,16,.9);
+    .song-player-icon {
+      color: var(--red);
+      font-size: 11px;
+      text-align: center;
+      text-shadow: 0 0 10px rgba(216,75,55,.68);
+    }
+
+    .song-player-action {
+      letter-spacing: .06em;
+      white-space: nowrap;
+    }
+
+    .song-player-rail {
+      position: relative;
+      height: 2px;
+      overflow: hidden;
+      border-radius: 99px;
+      background: rgba(151,111,76,.28);
+    }
+
+    .song-player-fill {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 0;
+      background: var(--red);
+      box-shadow: 0 0 8px rgba(216,75,55,.45);
+    }
+
+    .song-player-duration {
+      color: #8f7a5c;
+      font-variant-numeric: tabular-nums;
     }
 
     .song-open {
@@ -798,6 +842,142 @@
       z-index: 2;
     }
 
+    .sticky-player {
+      position: fixed;
+      z-index: 45;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: grid;
+      grid-template-columns: minmax(180px, .8fr) auto minmax(260px, 1.4fr) auto;
+      align-items: center;
+      gap: clamp(10px, 2vw, 26px);
+      min-height: 64px;
+      padding: 8px clamp(14px, 3vw, 46px) calc(8px + env(safe-area-inset-bottom));
+      border-top: 1px solid rgba(151,111,76,.58);
+      color: var(--ink);
+      background: linear-gradient(90deg, rgba(0,0,0,.97), rgba(22,8,5,.93) 52%, rgba(0,0,0,.97));
+      box-shadow: 0 -10px 34px rgba(0,0,0,.66);
+      backdrop-filter: blur(14px);
+      text-transform: lowercase;
+    }
+
+    .sticky-player-track {
+      min-width: 0;
+    }
+
+    .sticky-player-meta {
+      display: block;
+      margin-bottom: 2px;
+      overflow: hidden;
+      color: #a78e6c;
+      font-size: clamp(10px, .74vw, 12px);
+      letter-spacing: .09em;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .sticky-player-title {
+      display: block;
+      overflow: hidden;
+      color: #ead9b8;
+      font: italic 500 clamp(19px, 1.8vw, 27px)/.92 'Cormorant Garamond', serif;
+      letter-spacing: -.015em;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .sticky-player[data-active="false"] .sticky-player-title { color: #9c8969; }
+
+    .sticky-player-controls {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .sticky-player-button {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      padding: 0;
+      place-items: center;
+      border: 1px solid rgba(151,111,76,.46);
+      border-radius: 50%;
+      color: #cdb894;
+      background: rgba(0,0,0,.52);
+      font-size: 17px;
+      line-height: 1;
+      cursor: pointer;
+      transition: color .18s ease, border-color .18s ease, background .18s ease, transform .18s ease;
+    }
+
+    .sticky-player-button--toggle {
+      width: 42px;
+      height: 42px;
+      border-color: rgba(216,75,55,.7);
+      color: #f1ddba;
+      background: rgba(93,20,12,.48);
+      font-size: 16px;
+    }
+
+    .sticky-player.is-playing .sticky-player-button--toggle {
+      border-color: rgba(255,90,66,.92);
+      box-shadow: 0 0 18px rgba(216,75,55,.2);
+    }
+
+    .sticky-player-button:hover:not(:disabled) {
+      color: #fff0cf;
+      border-color: rgba(216,75,55,.85);
+      background: rgba(75,17,10,.62);
+      transform: translateY(-1px);
+    }
+
+    .sticky-player-button:focus-visible,
+    .sticky-player-seek:focus-visible,
+    .sticky-player-car:focus-visible {
+      outline: 2px solid var(--red);
+      outline-offset: 3px;
+    }
+
+    .sticky-player-button:disabled {
+      opacity: .28;
+      cursor: default;
+    }
+
+    .sticky-player-progress {
+      display: grid;
+      grid-template-columns: 36px minmax(100px, 1fr) 36px;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      color: #8f7a5c;
+      font-size: 11px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .sticky-player-time:last-child { text-align: right; }
+
+    .sticky-player-seek {
+      width: 100%;
+      height: 20px;
+      margin: 0;
+      padding: 0;
+      accent-color: var(--red);
+      cursor: pointer;
+    }
+
+    .sticky-player-seek:disabled { cursor: default; opacity: .34; }
+
+    .sticky-player-car {
+      color: #bba27b;
+      font-size: clamp(11px, .78vw, 13px);
+      letter-spacing: .08em;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .sticky-player-car:hover { color: #f0d5ad; }
+
     .grain {
       position: fixed;
       z-index: 50;
@@ -809,6 +989,10 @@
     }
 
     @media (max-width: 780px) {
+      .site-shell {
+        padding-bottom: calc(112px + env(safe-area-inset-bottom));
+      }
+
       .hero {
         min-height: 100svh;
         padding: 24px 20px 28px;
@@ -975,7 +1159,8 @@
       }
 
       .song-player {
-        height: 32px;
+        min-height: 34px;
+        padding: 5px 9px;
       }
 
       .song-open {
@@ -997,6 +1182,44 @@
         flex-direction: column;
         padding: 16px 14px 22px;
       }
+
+      .sticky-player {
+        grid-template-columns: minmax(0, 1fr) auto auto;
+        gap: 7px 10px;
+        min-height: 100px;
+        padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+      }
+
+      .sticky-player-track {
+        grid-row: 1;
+        grid-column: 1;
+      }
+
+      .sticky-player-controls {
+        grid-row: 1;
+        grid-column: 2;
+      }
+
+      .sticky-player-car {
+        grid-row: 1;
+        grid-column: 3;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 0 4px;
+        font-size: 10px;
+      }
+
+      .sticky-player-progress {
+        grid-row: 2;
+        grid-column: 1 / -1;
+        grid-template-columns: 34px minmax(80px, 1fr) 34px;
+      }
+
+      .sticky-player-title { font-size: 20px; }
+      .sticky-player-button { width: 44px; height: 44px; }
+      .sticky-player-button--toggle { width: 48px; height: 48px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1124,7 +1347,12 @@
               <sc-if value="{{ c.tieneAudio }}" hint-placeholder-val="{{ false }}">
                 <div class="song-audio">
                   <span class="song-audio-caption">escuchar la cinta</span>
-                  <audio class="song-player" controls="{{ true }}" preload="none" src="{{ c.audio }}" aria-label="{{ c.audioLabel }}"></audio>
+                  <button class="song-player" type="button" data-song-play data-track-index="{{ c.indice }}" aria-label="{{ c.audioLabel }}" aria-pressed="false">
+                    <span class="song-player-icon" data-song-icon aria-hidden="true">▶</span>
+                    <span class="song-player-action" data-song-action>reproducir</span>
+                    <span class="song-player-rail" aria-hidden="true"><span class="song-player-fill" data-song-progress></span></span>
+                    <span class="song-player-duration">{{ c.dur }}</span>
+                  </button>
                 </div>
               </sc-if>
               <sc-if value="{{ c.sinAudio }}" hint-placeholder-val="{{ false }}">
@@ -1171,7 +1399,12 @@
               <sc-if value="{{ c.tieneAudio }}" hint-placeholder-val="{{ false }}">
                 <div class="song-audio">
                   <span class="song-audio-caption">escuchar la cinta</span>
-                  <audio class="song-player" controls="{{ true }}" preload="none" src="{{ c.audio }}" aria-label="{{ c.audioLabel }}"></audio>
+                  <button class="song-player" type="button" data-song-play data-track-index="{{ c.indice }}" aria-label="{{ c.audioLabel }}" aria-pressed="false">
+                    <span class="song-player-icon" data-song-icon aria-hidden="true">▶</span>
+                    <span class="song-player-action" data-song-action>reproducir</span>
+                    <span class="song-player-rail" aria-hidden="true"><span class="song-player-fill" data-song-progress></span></span>
+                    <span class="song-player-duration">{{ c.dur }}</span>
+                  </button>
                 </div>
               </sc-if>
               <sc-if value="{{ c.sinAudio }}" hint-placeholder-val="{{ false }}">
@@ -1210,7 +1443,12 @@
               <sc-if value="{{ c.tieneAudio }}" hint-placeholder-val="{{ false }}">
                 <div class="song-audio">
                   <span class="song-audio-caption">escuchar la cinta</span>
-                  <audio class="song-player" controls="{{ true }}" preload="none" src="{{ c.audio }}" aria-label="{{ c.audioLabel }}"></audio>
+                  <button class="song-player" type="button" data-song-play data-track-index="{{ c.indice }}" aria-label="{{ c.audioLabel }}" aria-pressed="false">
+                    <span class="song-player-icon" data-song-icon aria-hidden="true">▶</span>
+                    <span class="song-player-action" data-song-action>reproducir</span>
+                    <span class="song-player-rail" aria-hidden="true"><span class="song-player-fill" data-song-progress></span></span>
+                    <span class="song-player-duration">{{ c.dur }}</span>
+                  </button>
                 </div>
               </sc-if>
               <sc-if value="{{ c.sinAudio }}" hint-placeholder-val="{{ false }}">
@@ -1257,7 +1495,12 @@
               <sc-if value="{{ c.tieneAudio }}" hint-placeholder-val="{{ false }}">
                 <div class="song-audio">
                   <span class="song-audio-caption">escuchar la cinta</span>
-                  <audio class="song-player" controls="{{ true }}" preload="none" src="{{ c.audio }}" aria-label="{{ c.audioLabel }}"></audio>
+                  <button class="song-player" type="button" data-song-play data-track-index="{{ c.indice }}" aria-label="{{ c.audioLabel }}" aria-pressed="false">
+                    <span class="song-player-icon" data-song-icon aria-hidden="true">▶</span>
+                    <span class="song-player-action" data-song-action>reproducir</span>
+                    <span class="song-player-rail" aria-hidden="true"><span class="song-player-fill" data-song-progress></span></span>
+                    <span class="song-player-duration">{{ c.dur }}</span>
+                  </button>
                 </div>
               </sc-if>
               <sc-if value="{{ c.sinAudio }}" hint-placeholder-val="{{ false }}">
@@ -1299,6 +1542,27 @@
     <span>madrid, 1999–2000</span>
   </footer>
 
+  <aside class="sticky-player" data-sticky-player data-active="false" aria-label="Reproductor fijo">
+    <div class="sticky-player-track" aria-live="polite">
+      <span class="sticky-player-meta" data-player-meta>archivo completo · 13 canciones</span>
+      <strong class="sticky-player-title" data-player-title>elige una canción</strong>
+    </div>
+
+    <div class="sticky-player-controls" role="group" aria-label="Controles de reproducción">
+      <button class="sticky-player-button" type="button" data-player-action="previous" aria-label="Canción anterior">‹</button>
+      <button class="sticky-player-button sticky-player-button--toggle" type="button" data-player-action="toggle" aria-label="Escuchar las trece canciones">▶</button>
+      <button class="sticky-player-button" type="button" data-player-action="next" aria-label="Canción siguiente">›</button>
+    </div>
+
+    <div class="sticky-player-progress">
+      <span class="sticky-player-time" data-player-current>0:00</span>
+      <input class="sticky-player-seek" data-player-seek type="range" min="0" max="1000" value="0" step="1" aria-label="Posición de la canción">
+      <span class="sticky-player-time" data-player-duration>0:00</span>
+    </div>
+
+    <a class="sticky-player-car" href="./coche/" aria-label="Abrir el modo coche">modo coche ↗</a>
+  </aside>
+
   <sc-if value="{{ granulado }}" hint-placeholder-val="{{ true }}">
     <div class="grain"></div>
   </sc-if>
@@ -1338,6 +1602,7 @@ class Component extends DCLogic {
         : [];
 
       return {
+        indice: i,
         n: s.n,
         t: s.t,
         vozTag: s.voz ? ' · voz: ' + s.voz : '',
@@ -1369,93 +1634,7 @@ class Component extends DCLogic {
   }
 }
 </script>
-<script type="module">
-  import { CANCIONES } from './canciones.js';
-
-  const playlist = CANCIONES.filter((song) => song.audio);
-  const playlistPlayer = new Audio();
-  playlistPlayer.preload = 'none';
-
-  let playlistActive = false;
-  let playlistIndex = -1;
-
-  const updatePlaylistButton = () => {
-    document.documentElement.classList.toggle('playlist-active', playlistActive);
-
-    const button = document.querySelector('.listen-all');
-    if (!button) return;
-
-    button.setAttribute('aria-pressed', playlistActive ? 'true' : 'false');
-
-    if (!playlistActive || !playlist[playlistIndex]) {
-      button.setAttribute('aria-label', 'Escuchar las trece canciones seguidas');
-      return;
-    }
-
-    const song = playlist[playlistIndex];
-    const count = button.querySelector('[data-playlist-count]');
-    if (count) count.textContent = `${String(playlistIndex + 1).padStart(2, '0')}/${playlist.length}`;
-    button.setAttribute('aria-label', `Detener escucha completa. Sonando ${song.t}`);
-  };
-
-  const pauseSongPlayers = () => {
-    document.querySelectorAll('.song-player').forEach((player) => player.pause());
-  };
-
-  const stopPlaylist = () => {
-    playlistActive = false;
-    playlistIndex = -1;
-    playlistPlayer.pause();
-    playlistPlayer.removeAttribute('src');
-    playlistPlayer.load();
-    updatePlaylistButton();
-  };
-
-  const playPlaylistAt = (index) => {
-    if (!playlistActive) return;
-
-    if (index >= playlist.length) {
-      stopPlaylist();
-      return;
-    }
-
-    playlistIndex = index;
-    playlistPlayer.src = new URL(playlist[index].audio, document.baseURI).href;
-    updatePlaylistButton();
-
-    playlistPlayer.play().catch(() => {
-      if (playlistActive && playlistIndex === index) stopPlaylist();
-    });
-  };
-
-  document.addEventListener('click', (event) => {
-    if (!(event.target instanceof Element)) return;
-    const button = event.target.closest('.listen-all');
-    if (!button) return;
-
-    if (playlistActive) {
-      stopPlaylist();
-      return;
-    }
-
-    pauseSongPlayers();
-    playlistActive = true;
-    playPlaylistAt(0);
-  });
-
-  playlistPlayer.addEventListener('ended', () => {
-    if (playlistActive) playPlaylistAt(playlistIndex + 1);
-  });
-
-  document.addEventListener('play', (event) => {
-    const current = event.target;
-    if (!(current instanceof HTMLMediaElement) || !current.matches('.song-player')) return;
-
-    if (playlistActive) stopPlaylist();
-    document.querySelectorAll('.song-player').forEach((player) => {
-      if (player !== current) player.pause();
-    });
-  }, true);
-</script>
+<audio data-global-player preload="metadata" playsinline hidden></audio>
+<script type="module" src="./player.js"></script>
 </body>
 </html>
