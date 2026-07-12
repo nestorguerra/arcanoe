@@ -158,10 +158,8 @@
     }
 
     .listen-all {
-      position: absolute;
-      z-index: 4;
-      top: clamp(22px, 4vh, 46px);
-      left: clamp(18px, 5vw, 76px);
+      position: relative;
+      z-index: 3;
       display: inline-flex;
       align-items: center;
       min-height: 44px;
@@ -589,6 +587,14 @@
 
     .archive-intro .wall-prose {
       max-width: 42ch;
+      margin: 0;
+    }
+
+    .archive-actions {
+      display: grid;
+      justify-items: start;
+      gap: 14px;
+      max-width: 42ch;
       margin-bottom: 1.2vw;
     }
 
@@ -1012,8 +1018,6 @@
       }
 
       .listen-all {
-        top: 18px;
-        left: 16px;
         padding: 10px 12px 9px;
         font-size: 12px;
         letter-spacing: .08em;
@@ -1118,8 +1122,9 @@
         display: block;
       }
 
-      .archive-intro .wall-prose {
-        margin-top: 12px;
+      .archive-actions {
+        margin-top: 14px;
+        margin-bottom: 0;
       }
 
       .song-card:nth-child(n) {
@@ -1237,17 +1242,6 @@
     <div class="hero-red-glow"></div>
     <div class="hero-red-bulb"></div>
     <div class="hero-date">madrid · 1999–2000</div>
-    <button class="listen-all" type="button" aria-pressed="false" aria-label="Escuchar las trece canciones seguidas">
-      <span class="listen-all-state listen-all-state--idle">
-        <span class="listen-all-mark" aria-hidden="true">▶</span>
-        <span>escucha todo</span>
-      </span>
-      <span class="listen-all-state listen-all-state--playing">
-        <span class="listen-all-mark" aria-hidden="true">■</span>
-        <span>parar</span>
-        <span class="listen-all-count" data-playlist-count>01/13</span>
-      </span>
-    </button>
 
     <div class="hero-inner">
       <h1 class="hero-title">el arca <span class="hero-title-outline">de noé</span></h1>
@@ -1331,7 +1325,20 @@
           <p class="wall-kicker">archivo · transcripción con lo que se oye</p>
           <h2 class="wall-display"><span class="outline">13</span> canciones</h2>
         </div>
-        <p class="wall-prose">lo que va entre corchetes no se entiende. el olvido también forma parte de la grabación. toca una canción para abrirla.</p>
+        <div class="archive-actions">
+          <button class="listen-all" type="button" aria-pressed="false" aria-label="Escuchar las trece canciones seguidas">
+            <span class="listen-all-state listen-all-state--idle">
+              <span class="listen-all-mark" aria-hidden="true">▶</span>
+              <span>escucha todo</span>
+            </span>
+            <span class="listen-all-state listen-all-state--playing">
+              <span class="listen-all-mark" aria-hidden="true">■</span>
+              <span>parar</span>
+              <span class="listen-all-count" data-playlist-count>01/13</span>
+            </span>
+          </button>
+          <p class="wall-prose">lo que va entre corchetes no se entiende. el olvido también forma parte de la grabación. toca una canción para abrirla.</p>
+        </div>
       </div>
 
       <div class="wall-row archive-a">
