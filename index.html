@@ -222,6 +222,22 @@
       background: var(--black);
     }
 
+    .black-wall::before {
+      position: absolute;
+      z-index: 0;
+      inset: 0;
+      content: '';
+      background-image: url('fotos/f12.png');
+      background-position: left top;
+      background-size: max(220vw, 180vh) auto;
+      background-repeat: repeat-y;
+      background-attachment: fixed;
+      opacity: .12;
+      filter: grayscale(1) contrast(1.1) brightness(1.05);
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
     .wall-ambient {
       position: absolute;
       z-index: 0;
