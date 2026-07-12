@@ -291,7 +291,7 @@
     .black-wall::before,
     .site-footer::before {
       position: absolute;
-      z-index: 0;
+      z-index: 1;
       inset: 0;
       content: '';
       background-image: url('fotos/textura-cajas.png');
@@ -306,7 +306,7 @@
 
     .wall-ambient {
       position: absolute;
-      z-index: 0;
+      z-index: 1;
       left: -8%;
       width: 116%;
       object-fit: cover;
@@ -332,7 +332,7 @@
 
     .wall-section {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       padding: clamp(28px, 3.5vw, 58px) clamp(16px, 4vw, 70px);
     }
 
@@ -795,7 +795,7 @@
 
     .site-footer > span {
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
     .grain {
