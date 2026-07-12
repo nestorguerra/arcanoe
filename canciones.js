@@ -1,4 +1,4 @@
-// El Arca de Noé — archivo de letras · trece canciones · febrero–octubre de 2002
+// El Arca de Noé — archivo de letras · trece canciones · enero–octubre de 2002
 export const CANCIONES = [
   {
     n: '01', t: 'Bolboretas', idioma: 'gallego', dur: '3:06',

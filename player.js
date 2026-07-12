@@ -27,7 +27,7 @@ const updateMediaSession = () => {
   navigator.mediaSession.metadata = new MediaMetadata({
     title: track.t,
     artist: 'el arca de noé',
-    album: 'madrid · febrero–octubre de 2002',
+    album: 'madrid · enero–octubre de 2002',
   });
   mediaMetadataIndex = currentIndex;
 };
