@@ -104,7 +104,7 @@ export const CANCIONES = [
     ],
   },
   {
-    n: '04', t: 'Irmán de Breogán', idioma: 'gallego, con alguna palabra castellana', dur: '9:59',
+    n: '04', t: 'Irmán de Breogán', idioma: 'gallego', dur: '9:59',
     frase: 'a infancia chama de lonxe',
     nota: 'la parte cantada más inteligible ocupa aproximadamente del minuto 1 al 6; después hay repeticiones, vocalizaciones y voces de ensayo.',
     letra: [
