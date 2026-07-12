@@ -1,7 +1,8 @@
 // El Arca de Noé — archivo de letras · trece canciones · 1999–2000
 export const CANCIONES = [
   {
-    n: '01', t: 'Bolboretas', idioma: 'gallego', dur: '3:42',
+    n: '01', t: 'Bolboretas', idioma: 'gallego', dur: '3:06',
+    audio: 'audio/01-bolboretas.mp3',
     frase: 'berros contra a fiestra',
     nota: 'varias palabras quedan enmascaradas por la música y la dicción cantada.',
     letra: [
@@ -32,7 +33,8 @@ export const CANCIONES = [
     ],
   },
   {
-    n: '02', t: 'De ti y de mí', idioma: 'castellano', dur: '4:32',
+    n: '02', t: 'De ti y de mí', idioma: 'castellano', dur: '4:06',
+    audio: 'audio/02-de-ti-y-de-mi.mp3',
     frase: 'arena donde hubo mar',
     nota: 'salvo una palabra indicada.',
     letra: [
@@ -77,7 +79,8 @@ export const CANCIONES = [
     ],
   },
   {
-    n: '03', t: 'Ioeo', idioma: 'latín', dur: '3:08',
+    n: '03', t: 'Ioeo', idioma: 'latín', dur: '2:19',
+    audio: 'audio/03-ioeo.mp3',
     frase: 'la vida canta tu nombre',
     nota: '',
     letra: [
@@ -104,7 +107,8 @@ export const CANCIONES = [
     ],
   },
   {
-    n: '04', t: 'Irmán de Breogán', idioma: 'gallego', dur: '9:59',
+    n: '04', t: 'Irmán de Breogán', idioma: 'gallego', dur: '4:02',
+    audio: 'audio/04-irman-de-breogan.mp3',
     frase: 'a infancia chama de lonxe',
     nota: 'la parte cantada más inteligible ocupa aproximadamente del minuto 1 al 6; después hay repeticiones, vocalizaciones y voces de ensayo.',
     letra: [
@@ -150,7 +154,8 @@ export const CANCIONES = [
     ],
   },
   {
-    n: '05', t: 'Mía', idioma: 'castellano', dur: '3:05',
+    n: '05', t: 'Mía', idioma: 'castellano', dur: '3:17',
+    audio: 'audio/05-mia.mp3',
     frase: 'volver con las manos llenas',
     nota: 'salvo una frase indicada.',
     letra: [
@@ -228,7 +233,8 @@ export const CANCIONES = [
     ],
   },
   {
-    n: '07', t: 'Por haberte perdido', idioma: 'castellano', dur: '2:50',
+    n: '07', t: 'Por haberte perdido', idioma: 'castellano', dur: '2:49',
+    audio: 'audio/07-por-haberte-perdido.mp3',
     frase: 'un amanecer sin tu piel',
     nota: '',
     letra: [
@@ -268,7 +274,8 @@ export const CANCIONES = [
     ],
   },
   {
-    n: '08', t: 'Rompiendo los cristales', idioma: 'castellano', dur: '5:02',
+    n: '08', t: 'Rompiendo los cristales', idioma: 'castellano', dur: '3:42',
+    audio: 'audio/08-rompiendo-los-cristales.mp3',
     frase: 'renacer al otro lado',
     nota: 'se señalan dos versos poco nítidos.',
     letra: [
@@ -328,7 +335,8 @@ export const CANCIONES = [
     ],
   },
   {
-    n: '09', t: 'Sin ti me muero', idioma: 'castellano', dur: '4:23',
+    n: '09', t: 'Sin ti me muero', idioma: 'castellano', dur: '3:17',
+    audio: 'audio/09-sin-ti-me-muero.mp3',
     frase: 'gritos desde el destierro',
     nota: 'a partir de aproximadamente 02:21 predomina el desarrollo instrumental.',
     letra: [
@@ -359,7 +367,8 @@ export const CANCIONES = [
     ],
   },
   {
-    n: '10', t: 'Sola', idioma: 'castellano', dur: '4:31',
+    n: '10', t: 'Sola', idioma: 'castellano', dur: '4:19',
+    audio: 'audio/10-sola.mp3',
     frase: 'jazmines después del llanto',
     nota: 'excepto una estrofa parcialmente cubierta por la música.',
     letra: [
@@ -408,7 +417,8 @@ export const CANCIONES = [
     ],
   },
   {
-    n: '11', t: 'Soños', idioma: 'gallego', dur: '2:14',
+    n: '11', t: 'Soños', idioma: 'gallego', dur: '2:23',
+    audio: 'audio/11-sonos.mp3',
     frase: 'soños vellos ao solpor',
     nota: 'la primera estrofa y parte de la segunda quedan poco definidas en la mezcla.',
     letra: [
@@ -442,7 +452,8 @@ export const CANCIONES = [
     ],
   },
   {
-    n: '12', t: 'Tequila y Ron', idioma: 'gallego', dur: '0:22',
+    n: '12', t: 'Tequila y Ron', idioma: 'gallego', dur: '1:34',
+    audio: 'audio/12-tequila-y-ron.mp3',
     frase: 'raparigas e vellos bailando',
     nota: 'fragmento. la grabación contiene solo una frase breve.',
     letra: [
@@ -454,7 +465,8 @@ export const CANCIONES = [
     ],
   },
   {
-    n: '13', t: 'Un día', idioma: 'castellano', dur: '3:43',
+    n: '13', t: 'Un día', idioma: 'castellano', dur: '3:33',
+    audio: 'audio/13-un-dia.mp3',
     frase: 'querer sin pertenecer',
     nota: '',
     letra: [

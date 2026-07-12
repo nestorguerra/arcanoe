@@ -605,6 +605,55 @@
       letter-spacing: .04em;
     }
 
+    .song-audio {
+      --audio-indent: clamp(52px, 6vw, 92px);
+      display: grid;
+      gap: 5px;
+      width: min(480px, calc(100% - var(--audio-indent)));
+      margin: -4px 0 clamp(12px, 1.5vw, 20px) var(--audio-indent);
+    }
+
+    .song-audio-caption,
+    .song-audio-missing {
+      color: #9e8a69;
+      font-size: clamp(11px, .85vw, 13px);
+      line-height: 1;
+      letter-spacing: .09em;
+    }
+
+    .song-audio-missing {
+      margin: -3px 0 14px clamp(52px, 6vw, 92px);
+      font-style: italic;
+    }
+
+    .song-player {
+      display: block;
+      width: 100%;
+      height: 34px;
+      color-scheme: dark;
+      accent-color: var(--red);
+      opacity: .84;
+      filter: sepia(.32) saturate(.82) contrast(.96);
+      transition: opacity .2s ease, filter .2s ease;
+    }
+
+    .song-player:hover,
+    .song-player:focus-visible {
+      opacity: 1;
+      filter: sepia(.2) saturate(.95) contrast(1);
+    }
+
+    .song-player:focus-visible {
+      outline: 2px solid rgba(216,75,55,.75);
+      outline-offset: 3px;
+    }
+
+    .song-player::-webkit-media-controls-enclosure {
+      border: 1px solid rgba(151,111,76,.42);
+      border-radius: 999px;
+      background: rgba(28,21,16,.9);
+    }
+
     .song-open {
       padding: 8px 0 clamp(18px, 2vw, 30px) clamp(52px, 6vw, 92px);
     }
@@ -833,6 +882,22 @@
         font-size: 12px;
       }
 
+      .song-audio {
+        --audio-indent: 44px;
+        width: calc(100% - var(--audio-indent));
+        margin-top: -3px;
+        margin-bottom: 12px;
+      }
+
+      .song-audio-missing {
+        margin-left: 44px;
+        font-size: 11px;
+      }
+
+      .song-player {
+        height: 32px;
+      }
+
       .song-open {
         padding: 7px 0 20px 44px;
       }
@@ -965,12 +1030,21 @@
                 <span class="song-duration">{{ c.dur }}</span>
                 <span class="song-meta">{{ c.idioma }} · {{ c.frase }}</span>
               </button>
+              <sc-if value="{{ c.tieneAudio }}" hint-placeholder-val="{{ false }}">
+                <div class="song-audio">
+                  <span class="song-audio-caption">escuchar la cinta</span>
+                  <audio class="song-player" controls="{{ true }}" preload="none" src="{{ c.audio }}" aria-label="{{ c.audioLabel }}"></audio>
+                </div>
+              </sc-if>
+              <sc-if value="{{ c.sinAudio }}" hint-placeholder-val="{{ false }}">
+                <div class="song-audio-missing">[ audio pendiente ]</div>
+              </sc-if>
               <sc-if value="{{ c.activa }}" hint-placeholder-val="{{ false }}">
                 <div class="song-open">
                   <sc-if value="{{ c.tieneNota }}" hint-placeholder-val="{{ false }}">
                     <p class="song-note">nota del archivo — {{ c.nota }}</p>
                   </sc-if>
-                  <div class="tape-status">[ cinta pendiente de digitalizar ]</div>
+                  <div class="tape-status">{{ c.estadoCinta }}</div>
                   <div class="song-lyrics">
                     <sc-for list="{{ c.lineas }}" as="v" hint-placeholder-count="4">
                       <div style="{{ v.st }}">{{ v.t }}</div>
@@ -1003,12 +1077,21 @@
                 <span class="song-duration">{{ c.dur }}</span>
                 <span class="song-meta">{{ c.idioma }} · {{ c.frase }}</span>
               </button>
+              <sc-if value="{{ c.tieneAudio }}" hint-placeholder-val="{{ false }}">
+                <div class="song-audio">
+                  <span class="song-audio-caption">escuchar la cinta</span>
+                  <audio class="song-player" controls="{{ true }}" preload="none" src="{{ c.audio }}" aria-label="{{ c.audioLabel }}"></audio>
+                </div>
+              </sc-if>
+              <sc-if value="{{ c.sinAudio }}" hint-placeholder-val="{{ false }}">
+                <div class="song-audio-missing">[ audio pendiente ]</div>
+              </sc-if>
               <sc-if value="{{ c.activa }}" hint-placeholder-val="{{ false }}">
                 <div class="song-open">
                   <sc-if value="{{ c.tieneNota }}" hint-placeholder-val="{{ false }}">
                     <p class="song-note">nota del archivo — {{ c.nota }}</p>
                   </sc-if>
-                  <div class="tape-status">[ cinta pendiente de digitalizar ]</div>
+                  <div class="tape-status">{{ c.estadoCinta }}</div>
                   <div class="song-lyrics">
                     <sc-for list="{{ c.lineas }}" as="v" hint-placeholder-count="4">
                       <div style="{{ v.st }}">{{ v.t }}</div>
@@ -1033,12 +1116,21 @@
                 <span class="song-duration">{{ c.dur }}</span>
                 <span class="song-meta">{{ c.idioma }} · {{ c.frase }}</span>
               </button>
+              <sc-if value="{{ c.tieneAudio }}" hint-placeholder-val="{{ false }}">
+                <div class="song-audio">
+                  <span class="song-audio-caption">escuchar la cinta</span>
+                  <audio class="song-player" controls="{{ true }}" preload="none" src="{{ c.audio }}" aria-label="{{ c.audioLabel }}"></audio>
+                </div>
+              </sc-if>
+              <sc-if value="{{ c.sinAudio }}" hint-placeholder-val="{{ false }}">
+                <div class="song-audio-missing">[ audio pendiente ]</div>
+              </sc-if>
               <sc-if value="{{ c.activa }}" hint-placeholder-val="{{ false }}">
                 <div class="song-open">
                   <sc-if value="{{ c.tieneNota }}" hint-placeholder-val="{{ false }}">
                     <p class="song-note">nota del archivo — {{ c.nota }}</p>
                   </sc-if>
-                  <div class="tape-status">[ cinta pendiente de digitalizar ]</div>
+                  <div class="tape-status">{{ c.estadoCinta }}</div>
                   <div class="song-lyrics">
                     <sc-for list="{{ c.lineas }}" as="v" hint-placeholder-count="4">
                       <div style="{{ v.st }}">{{ v.t }}</div>
@@ -1071,12 +1163,21 @@
                 <span class="song-duration">{{ c.dur }}</span>
                 <span class="song-meta">{{ c.idioma }} · {{ c.frase }}</span>
               </button>
+              <sc-if value="{{ c.tieneAudio }}" hint-placeholder-val="{{ false }}">
+                <div class="song-audio">
+                  <span class="song-audio-caption">escuchar la cinta</span>
+                  <audio class="song-player" controls="{{ true }}" preload="none" src="{{ c.audio }}" aria-label="{{ c.audioLabel }}"></audio>
+                </div>
+              </sc-if>
+              <sc-if value="{{ c.sinAudio }}" hint-placeholder-val="{{ false }}">
+                <div class="song-audio-missing">[ audio pendiente ]</div>
+              </sc-if>
               <sc-if value="{{ c.activa }}" hint-placeholder-val="{{ false }}">
                 <div class="song-open">
                   <sc-if value="{{ c.tieneNota }}" hint-placeholder-val="{{ false }}">
                     <p class="song-note">nota del archivo — {{ c.nota }}</p>
                   </sc-if>
-                  <div class="tape-status">[ cinta pendiente de digitalizar ]</div>
+                  <div class="tape-status">{{ c.estadoCinta }}</div>
                   <div class="song-lyrics">
                     <sc-for list="{{ c.lineas }}" as="v" hint-placeholder-count="4">
                       <div style="{{ v.st }}">{{ v.t }}</div>
@@ -1154,6 +1255,13 @@ class Component extends DCLogic {
         frase: s.frase,
         nota: s.nota,
         tieneNota: !!s.nota,
+        audio: s.audio || '',
+        audioLabel: 'Reproducir ' + s.t,
+        tieneAudio: !!s.audio,
+        sinAudio: !s.audio,
+        estadoCinta: s.audio
+          ? '[ grabación recuperada ]'
+          : '[ cinta pendiente de digitalizar ]',
         activa,
         lineas,
         abrir: () => this.setState({ open: this.state.open === i ? null : i }),
@@ -1169,6 +1277,15 @@ class Component extends DCLogic {
     };
   }
 }
+</script>
+<script>
+  document.addEventListener('play', (event) => {
+    const current = event.target;
+    if (!(current instanceof HTMLMediaElement) || !current.matches('.song-player')) return;
+    document.querySelectorAll('.song-player').forEach((player) => {
+      if (player !== current) player.pause();
+    });
+  }, true);
 </script>
 </body>
 </html>
