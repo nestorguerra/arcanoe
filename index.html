@@ -68,8 +68,6 @@
     }
 
     .site-shell {
-      position: relative;
-      isolation: isolate;
       min-height: 100vh;
       overflow: hidden;
       color: var(--ink);
@@ -77,26 +75,9 @@
       text-transform: lowercase;
     }
 
-    .site-shell::before {
-      position: absolute;
-      z-index: 0;
-      inset: 0;
-      content: '';
-      background-image: url('fotos/f12.png');
-      background-position: left 100vh;
-      background-position: left 100svh;
-      background-size: max(220vw, 180vh) auto;
-      background-repeat: repeat-y;
-      opacity: .45;
-      filter: grayscale(1) contrast(1.1) brightness(1.05);
-      mix-blend-mode: screen;
-      pointer-events: none;
-    }
-
     /* PORTADA */
     .hero {
       position: relative;
-      z-index: 1;
       isolation: isolate;
       display: flex;
       min-height: 100svh;
@@ -301,11 +282,26 @@
     /* MURO NEGRO */
     .black-wall {
       position: relative;
-      z-index: 1;
       isolation: isolate;
       overflow: hidden;
       color: var(--ink);
-      background: transparent;
+      background: var(--black);
+    }
+
+    .black-wall::before,
+    .site-footer::before {
+      position: absolute;
+      z-index: 0;
+      inset: 0;
+      content: '';
+      background-image: url('fotos/textura-cajas.png');
+      background-position: center top;
+      background-size: max(115vw, 920px) auto;
+      background-repeat: repeat-y;
+      opacity: .58;
+      filter: grayscale(1) contrast(1.1) brightness(2.4);
+      mix-blend-mode: screen;
+      pointer-events: none;
     }
 
     .wall-ambient {
@@ -784,6 +780,7 @@
     .site-footer {
       position: relative;
       z-index: 1;
+      isolation: isolate;
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
@@ -791,9 +788,14 @@
       padding: 18px 4vw 24px;
       border-top: 1px solid var(--line);
       color: #8f7a5c;
-      background: transparent;
+      background: var(--black);
       font-size: clamp(12px, .9vw, 15px);
       letter-spacing: .08em;
+    }
+
+    .site-footer > span {
+      position: relative;
+      z-index: 1;
     }
 
     .grain {
