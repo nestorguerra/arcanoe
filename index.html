@@ -175,6 +175,72 @@
       writing-mode: vertical-rl;
     }
 
+    .listen-all {
+      position: absolute;
+      z-index: 4;
+      top: clamp(22px, 4vh, 46px);
+      left: clamp(18px, 5vw, 76px);
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 10px 14px 9px;
+      border: 1px solid rgba(208,187,147,.52);
+      border-radius: 2px;
+      color: #d0bb93;
+      background: rgba(0,0,0,.66);
+      box-shadow: 0 5px 24px rgba(0,0,0,.48);
+      font: 700 clamp(12px, .9vw, 15px)/1 'Courier Prime', monospace;
+      letter-spacing: .1em;
+      text-transform: lowercase;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+      transition: color .2s ease, border-color .2s ease, background .2s ease, transform .2s ease;
+    }
+
+    .listen-all:hover {
+      color: #f0dfbd;
+      border-color: rgba(216,75,55,.78);
+      background: rgba(18,5,3,.78);
+      transform: translateY(-1px);
+    }
+
+    .listen-all:active { transform: translateY(0); }
+
+    .listen-all:focus-visible {
+      outline: 2px solid var(--red);
+      outline-offset: 4px;
+    }
+
+    .listen-all-state {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      white-space: nowrap;
+    }
+
+    .listen-all-state--playing { display: none; }
+
+    .listen-all-mark {
+      color: var(--red);
+      font-size: .82em;
+      text-shadow: 0 0 12px rgba(216,75,55,.8);
+    }
+
+    .listen-all-count {
+      color: #a78e6c;
+      font-weight: 400;
+      letter-spacing: .04em;
+    }
+
+    .playlist-active .listen-all {
+      color: #f0dfbd;
+      border-color: rgba(216,75,55,.82);
+      background: rgba(32,7,4,.82);
+    }
+
+    .playlist-active .listen-all-state--idle { display: none; }
+    .playlist-active .listen-all-state--playing { display: inline-flex; }
+
     .hero-inner {
       position: relative;
       z-index: 3;
@@ -759,6 +825,14 @@
         font-size: 13px;
       }
 
+      .listen-all {
+        top: 18px;
+        left: 16px;
+        padding: 10px 12px 9px;
+        font-size: 12px;
+        letter-spacing: .08em;
+      }
+
       .hero-title {
         max-width: 7ch;
         font-size: clamp(76px, 23vw, 112px);
@@ -938,6 +1012,17 @@
     <div class="hero-red-glow"></div>
     <div class="hero-red-bulb"></div>
     <div class="hero-date">madrid · 1999–2000</div>
+    <button class="listen-all" type="button" aria-pressed="false" aria-label="Escuchar las trece canciones seguidas">
+      <span class="listen-all-state listen-all-state--idle">
+        <span class="listen-all-mark" aria-hidden="true">▶</span>
+        <span>escucha todo</span>
+      </span>
+      <span class="listen-all-state listen-all-state--playing">
+        <span class="listen-all-mark" aria-hidden="true">■</span>
+        <span>parar</span>
+        <span class="listen-all-count" data-playlist-count>01/13</span>
+      </span>
+    </button>
 
     <div class="hero-inner">
       <h1 class="hero-title">el arca <span class="hero-title-outline">de noé</span></h1>
@@ -1282,10 +1367,89 @@ class Component extends DCLogic {
   }
 }
 </script>
-<script>
+<script type="module">
+  import { CANCIONES } from './canciones.js';
+
+  const playlist = CANCIONES.filter((song) => song.audio);
+  const playlistPlayer = new Audio();
+  playlistPlayer.preload = 'none';
+
+  let playlistActive = false;
+  let playlistIndex = -1;
+
+  const updatePlaylistButton = () => {
+    document.documentElement.classList.toggle('playlist-active', playlistActive);
+
+    const button = document.querySelector('.listen-all');
+    if (!button) return;
+
+    button.setAttribute('aria-pressed', playlistActive ? 'true' : 'false');
+
+    if (!playlistActive || !playlist[playlistIndex]) {
+      button.setAttribute('aria-label', 'Escuchar las trece canciones seguidas');
+      return;
+    }
+
+    const song = playlist[playlistIndex];
+    const count = button.querySelector('[data-playlist-count]');
+    if (count) count.textContent = `${String(playlistIndex + 1).padStart(2, '0')}/${playlist.length}`;
+    button.setAttribute('aria-label', `Detener escucha completa. Sonando ${song.t}`);
+  };
+
+  const pauseSongPlayers = () => {
+    document.querySelectorAll('.song-player').forEach((player) => player.pause());
+  };
+
+  const stopPlaylist = () => {
+    playlistActive = false;
+    playlistIndex = -1;
+    playlistPlayer.pause();
+    playlistPlayer.removeAttribute('src');
+    playlistPlayer.load();
+    updatePlaylistButton();
+  };
+
+  const playPlaylistAt = (index) => {
+    if (!playlistActive) return;
+
+    if (index >= playlist.length) {
+      stopPlaylist();
+      return;
+    }
+
+    playlistIndex = index;
+    playlistPlayer.src = new URL(playlist[index].audio, document.baseURI).href;
+    updatePlaylistButton();
+
+    playlistPlayer.play().catch(() => {
+      if (playlistActive && playlistIndex === index) stopPlaylist();
+    });
+  };
+
+  document.addEventListener('click', (event) => {
+    if (!(event.target instanceof Element)) return;
+    const button = event.target.closest('.listen-all');
+    if (!button) return;
+
+    if (playlistActive) {
+      stopPlaylist();
+      return;
+    }
+
+    pauseSongPlayers();
+    playlistActive = true;
+    playPlaylistAt(0);
+  });
+
+  playlistPlayer.addEventListener('ended', () => {
+    if (playlistActive) playPlaylistAt(playlistIndex + 1);
+  });
+
   document.addEventListener('play', (event) => {
     const current = event.target;
     if (!(current instanceof HTMLMediaElement) || !current.matches('.song-player')) return;
+
+    if (playlistActive) stopPlaylist();
     document.querySelectorAll('.song-player').forEach((player) => {
       if (player !== current) player.pause();
     });
