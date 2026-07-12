@@ -341,6 +341,11 @@
       --rm: 0deg;
       --tape-r: -3deg;
       --tape-x: 50%;
+      --tape-y: -14px;
+      --tape-w: clamp(100px, 10vw, 150px);
+      --tape-h: clamp(22px, 2.25vw, 32px);
+      --tape-color: rgba(195,173,119,.68);
+      --tape-shape: polygon(3% 8%, 97% 0, 100% 88%, 4% 100%, 0 18%);
       position: relative;
       z-index: 2;
       box-sizing: border-box;
@@ -359,14 +364,21 @@
 
     .instant::after {
       position: absolute;
-      top: -9px;
+      z-index: 3;
+      top: var(--tape-y);
       left: var(--tape-x);
-      width: clamp(72px, 8vw, 112px);
-      height: clamp(15px, 1.7vw, 23px);
+      width: var(--tape-w);
+      height: var(--tape-h);
       content: '';
-      background: rgba(190,169,116,.62);
-      box-shadow: 0 3px 7px rgba(0,0,0,.22);
+      background:
+        linear-gradient(100deg, rgba(255,255,255,.14), transparent 38%, rgba(78,53,18,.09)),
+        repeating-linear-gradient(96deg, rgba(255,255,255,.06) 0 2px, transparent 2px 7px),
+        var(--tape-color);
+      box-shadow: 0 4px 9px rgba(0,0,0,.25);
+      -webkit-clip-path: var(--tape-shape);
+      clip-path: var(--tape-shape);
       transform: translateX(-50%) rotate(var(--tape-r));
+      transform-origin: center;
       pointer-events: none;
     }
 
@@ -379,14 +391,93 @@
       box-shadow: 0 0 0 1px rgba(45,31,18,.28);
     }
 
-    .p-f02 { --r: -2.4deg; --rm: -1deg; --tape-r: -5deg; }
-    .p-f01 { --r: 1.1deg; --rm: .6deg; --tape-r: 2deg; }
-    .p-f08 { --r: -3.2deg; --rm: -1.2deg; --tape-r: -1deg; }
-    .p-f10 { --r: 2.1deg; --rm: .9deg; --tape-r: 4deg; }
-    .p-f04 { --r: -4.1deg; --rm: -1.3deg; --tape-r: -6deg; }
-    .p-f05 { --r: 2.8deg; --rm: 1.1deg; --tape-r: 3deg; }
-    .p-f06 { --r: -2.1deg; --rm: -.8deg; --tape-r: -3deg; }
-    .p-f09 { --r: 1.4deg; --rm: .6deg; --tape-r: 5deg; }
+    .p-f02 {
+      --r: -2.4deg;
+      --rm: -1deg;
+      --tape-x: 50%;
+      --tape-y: -16px;
+      --tape-w: clamp(124px, 12vw, 168px);
+      --tape-h: clamp(25px, 2.5vw, 35px);
+      --tape-r: -4deg;
+    }
+
+    .p-f01 {
+      --r: 1.1deg;
+      --rm: .6deg;
+      --tape-x: 18%;
+      --tape-y: -8px;
+      --tape-w: clamp(108px, 9vw, 142px);
+      --tape-r: 17deg;
+      --tape-color: rgba(187,179,151,.72);
+      --tape-shape: polygon(0 12%, 94% 0, 100% 82%, 7% 100%);
+    }
+
+    .p-f08 {
+      --r: -3.2deg;
+      --rm: -1.2deg;
+      --tape-x: 82%;
+      --tape-y: -9px;
+      --tape-w: clamp(110px, 9.5vw, 146px);
+      --tape-r: -16deg;
+      --tape-color: rgba(213,190,133,.68);
+      --tape-shape: polygon(5% 0, 100% 14%, 95% 100%, 0 86%);
+    }
+
+    .p-f10 {
+      --r: 2.1deg;
+      --rm: .9deg;
+      --tape-x: 61%;
+      --tape-y: -17px;
+      --tape-w: clamp(132px, 12vw, 174px);
+      --tape-h: clamp(23px, 2.1vw, 30px);
+      --tape-r: 6deg;
+      --tape-color: rgba(174,157,115,.72);
+    }
+
+    .p-f04 {
+      --r: -4.1deg;
+      --rm: -1.3deg;
+      --tape-x: 2%;
+      --tape-y: 21%;
+      --tape-w: clamp(108px, 8.5vw, 132px);
+      --tape-h: clamp(24px, 2.2vw, 31px);
+      --tape-r: 82deg;
+      --tape-color: rgba(184,158,103,.74);
+    }
+
+    .p-f05 {
+      --r: 2.8deg;
+      --rm: 1.1deg;
+      --tape-x: 96%;
+      --tape-y: 29%;
+      --tape-w: clamp(112px, 9vw, 138px);
+      --tape-r: -84deg;
+      --tape-color: rgba(180,165,130,.74);
+      --tape-shape: polygon(0 4%, 96% 0, 100% 94%, 6% 100%);
+    }
+
+    .p-f06 {
+      --r: -2.1deg;
+      --rm: -.8deg;
+      --tape-x: 30%;
+      --tape-y: -11px;
+      --tape-w: clamp(104px, 8vw, 128px);
+      --tape-h: clamp(28px, 2.8vw, 38px);
+      --tape-r: -9deg;
+      --tape-color: rgba(205,184,132,.67);
+    }
+
+    .p-f09 {
+      --r: 1.4deg;
+      --rm: .6deg;
+      --tape-x: 70%;
+      --tape-y: -7px;
+      --tape-w: clamp(126px, 11vw, 164px);
+      --tape-h: clamp(22px, 2vw, 28px);
+      --tape-r: 12deg;
+      --tape-color: rgba(190,160,112,.72);
+      --tape-shape: polygon(3% 10%, 100% 0, 96% 91%, 0 100%);
+    }
 
     .intro-composition .p-f02 { grid-column: 1 / 6; justify-self: center; }
     .story-a .wall-prose { grid-column: 1 / 6; align-self: center; }
