@@ -190,7 +190,8 @@ export const CANCIONES = [
     ],
   },
   {
-    n: '06', t: 'No quiero vivir', idioma: 'castellano', dur: '5:18',
+    n: '06', t: 'No quiero vivir', idioma: 'castellano', dur: '4:26',
+    audio: 'audio/06-no-quiero-vivir.mp3',
     frase: 'amarte es sangrar despacio',
     nota: 'con dos versos de lectura probable.',
     letra: [
