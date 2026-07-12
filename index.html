@@ -1,25 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="data:,">
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
   <title>el arca de noé — archivo 1999–2001</title>
+  <meta name="description" content="Trece canciones, diez fotografías y la memoria de un búnker de ensayo en Madrid, 1999–2001.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=La+Belle+Aurore&display=swap" rel="stylesheet">
   <style>
-    html, body { margin: 0; padding: 0; background: #100b08; }
-    body { overflow-x: hidden; }
-    ::selection { background: #6b1a12; color: #e8dcc0; }
-    a { color: #c98a3a; text-decoration: none; }
-    a:hover { color: #d1301d; }
-    @keyframes cinta { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    @keyframes parpadeo { 0%, 100% { opacity: .9; } 7% { opacity: .55; } 11% { opacity: .95; } 38% { opacity: .7; } 41% { opacity: .92; } 74% { opacity: .6; } 78% { opacity: .88; } }
+    :root {
+      color-scheme: dark;
+      --black: #000;
+      --ink: #eee2ca;
+      --ink-soft: #cbb99a;
+      --muted: #aa9472;
+      --line: rgba(151, 111, 76, .48);
+      --red: #d84b37;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      margin: 0;
+      padding: 0;
+      background: var(--black);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      color: var(--ink);
+      background: var(--black);
+      font-family: 'Courier Prime', monospace;
+    }
+
+    button { font: inherit; }
+    ::selection { color: #fff5dd; background: #6b1a12; }
+
+    @keyframes parpadeo {
+      0%, 100% { opacity: .9; }
+      7% { opacity: .55; }
+      11% { opacity: .95; }
+      38% { opacity: .7; }
+      41% { opacity: .92; }
+      74% { opacity: .6; }
+      78% { opacity: .88; }
+    }
+
     @keyframes pulso-luz-roja {
       0%, 100% { opacity: 1; transform: scale(1); }
       8% { opacity: .82; transform: scale(.985); }
@@ -30,8 +67,45 @@
       80% { opacity: .98; transform: scale(1.005); }
     }
 
+    .site-shell {
+      min-height: 100vh;
+      overflow: hidden;
+      color: var(--ink);
+      background: var(--black);
+      text-transform: lowercase;
+    }
+
+    /* PORTADA */
+    .hero {
+      position: relative;
+      isolation: isolate;
+      display: flex;
+      min-height: 100svh;
+      padding: clamp(24px, 4vh, 48px) clamp(18px, 5vw, 76px);
+      overflow: hidden;
+      background: var(--black);
+    }
+
+    .hero-photo {
+      position: absolute;
+      z-index: 0;
+      top: 0;
+      right: -3%;
+      width: min(82%, 1200px);
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 1;
+      filter: brightness(1.34) contrast(1) saturate(1.03);
+      mix-blend-mode: screen;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 13%, #000 35%, #000 100%);
+      mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 13%, #000 35%, #000 100%);
+      pointer-events: none;
+    }
+
     .hero-red-glow {
       position: absolute;
+      z-index: 1;
       top: -27%;
       left: -18%;
       width: 92vmin;
@@ -46,6 +120,7 @@
 
     .hero-red-bulb {
       position: absolute;
+      z-index: 2;
       top: 10.7%;
       left: 8.8%;
       width: 10px;
@@ -69,598 +144,864 @@
       background: radial-gradient(circle, rgba(255,96,68,.32) 0%, rgba(255,42,23,.16) 30%, transparent 72%);
       filter: blur(4px);
     }
-    .hero-photo {
+
+    .hero-date {
       position: absolute;
-      top: 0;
-      right: -3%;
-      width: min(82%, 1200px);
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      opacity: 1;
-      filter: brightness(1.34) contrast(1) saturate(1.03);
-      -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 13%, #000 35%, #000 100%);
-      mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 13%, #000 35%, #000 100%);
-      pointer-events: none;
+      z-index: 3;
+      top: 5vh;
+      right: 4.5vw;
+      color: #b49d79;
+      font-size: clamp(14px, 1vw, 17px);
+      letter-spacing: .16em;
+      writing-mode: vertical-rl;
     }
 
-    .cover-triptych-photo {
-      filter: brightness(1.3) contrast(1) saturate(1.03);
-      -webkit-mask-image: radial-gradient(ellipse 88% 88% at 50% 50%, #000 52%, rgba(0,0,0,.82) 76%, transparent 96%);
-      mask-image: radial-gradient(ellipse 88% 88% at 50% 50%, #000 52%, rgba(0,0,0,.82) 76%, transparent 96%);
-    }
-
-    .blended-photo {
-      mix-blend-mode: screen;
-    }
-
-    .photo-stage {
-      isolation: isolate;
-      background: radial-gradient(circle at 72% 38%, rgba(111,58,30,.13), transparent 58%), #100b08;
-    }
-
-    .site-shell {
-      background: #100b08 !important;
-      color: #eadfc8 !important;
-      font-size: clamp(17px, 1.25vw, 20px);
-      line-height: 1.45;
-    }
-
-    .site-shell [style*="color: rgb(155, 138, 111)"] {
-      color: #c8b58f !important;
-      text-shadow: 0 1px 2px rgba(0,0,0,.95), 0 0 14px rgba(0,0,0,.72);
-    }
-
-    .site-shell [style*="color: rgb(122, 106, 82)"] {
-      color: #ad9876 !important;
-      text-shadow: 0 1px 2px rgba(0,0,0,.95), 0 0 14px rgba(0,0,0,.72);
-    }
-
-    .site-shell [style*="color: rgb(179, 161, 132)"],
-    .site-shell [style*="color: rgb(183, 166, 132)"],
-    .site-shell [style*="color: rgb(165, 142, 102)"] {
-      text-shadow: 0 1px 2px rgba(0,0,0,.95), 0 0 16px rgba(0,0,0,.68);
-    }
-
-    .site-shell [style*="color: rgb(179, 161, 132)"] { color: #d3c09e !important; }
-    .site-shell [style*="color: rgb(183, 166, 132)"] { color: #dac8a6 !important; }
-    .site-shell [style*="color: rgb(165, 142, 102)"] { color: #cbb181 !important; }
-    .site-shell [style*="color: rgb(90, 69, 48)"] { color: #967554 !important; }
-    .site-shell [style*="color: rgb(163, 80, 46)"] { color: #c66f49 !important; }
-
-    .site-shell [style*="border-top: 1px solid rgb(58, 43, 31)"],
-    .site-shell [style*="border-bottom: 1px solid rgb(58, 43, 31)"] {
-      border-color: #5d4531 !important;
-    }
-
-    .site-shell [style*="font-size: 11px"] { font-size: clamp(14px, 1vw, 16px) !important; }
-    .site-shell [style*="font-size: 12px"] { font-size: clamp(15px, 1.05vw, 17px) !important; }
-    .site-shell [style*="font-size: 13px"] { font-size: clamp(17px, 1.15vw, 19px) !important; }
-    .site-shell [style*="font-size: 14px"] { font-size: clamp(18px, 1.25vw, 20px) !important; }
-    .site-shell [style*="font-size: 16px"] { font-size: clamp(18px, 1.3vw, 20px) !important; }
-    .site-shell [style*="font-size: 17px"] { font-size: clamp(19px, 1.35vw, 21px) !important; }
-    .site-shell [style*="font-size: clamp(19px"] { font-size: clamp(24px, 2.2vw, 30px) !important; }
-    .site-shell [style*="font-size: clamp(20px"] { font-size: clamp(26px, 2.5vw, 34px) !important; }
-    .site-shell [style*="font-size: clamp(22px"] { font-size: clamp(28px, 3vw, 40px) !important; }
-    .site-shell [style*="font-size: clamp(24px"] { font-size: clamp(32px, 3.3vw, 48px) !important; }
-    .site-shell [style*="font-size: clamp(28px"] { font-size: clamp(34px, 3.8vw, 58px) !important; }
-
-    .site-shell .hero-note-torn { font-size: 17px !important; }
-    .site-shell .hero-note-postit { font-size: 16px !important; }
-
-    .site-shell [style*="letter-spacing: 0.3em"] { letter-spacing: .13em !important; }
-    .site-shell [style*="letter-spacing: 0.28em"] { letter-spacing: .13em !important; }
-    .site-shell [style*="letter-spacing: 0.24em"] { letter-spacing: .11em !important; }
-    .site-shell [style*="letter-spacing: 0.22em"] { letter-spacing: .09em !important; }
-    .site-shell [style*="letter-spacing: 0.2em"] { letter-spacing: .08em !important; }
-    .site-shell [style*="letter-spacing: 0.18em"] { letter-spacing: .08em !important; }
-    .site-shell [style*="letter-spacing: 0.16em"] { letter-spacing: .07em !important; }
-    .site-shell [style*="letter-spacing: 0.14em"] { letter-spacing: .06em !important; }
-
-    .site-shell [style*="line-height: 2.2"] { line-height: 1.55 !important; }
-    .site-shell [style*="line-height: 1.9"] { line-height: 1.5 !important; }
-    .site-shell [style*="line-height: 1.8"] { line-height: 1.5 !important; }
-    .site-shell [style*="line-height: 1.55"] { line-height: 1.4 !important; }
-    .site-shell [style*="line-height: 1.4"] { line-height: 1.22 !important; }
-
-    .photo-stage:not([data-screen-label="Portada — la luz roja"]) {
-      padding-top: clamp(1.5rem, 3.5vh, 3rem) !important;
-      padding-bottom: clamp(1.5rem, 3.5vh, 3rem) !important;
-    }
-
-    [data-screen-label="Portada — la luz roja"] { box-sizing: border-box; }
-
-    [data-screen-label="Los tres"] > div {
-      margin-top: clamp(.9rem, 1.8vh, 1.35rem) !important;
-    }
-
-    [data-screen-label="Los tres"] > div:first-of-type { margin-top: 0 !important; }
-
-    [data-screen-label="La historia"] > div {
-      margin-top: clamp(1rem, 2vh, 1.5rem) !important;
-    }
-
-    [data-screen-label="La historia"] > div:first-of-type {
-      margin-top: 0 !important;
-      margin-bottom: .75rem !important;
-    }
-
-    [data-screen-label="El archivo — trece canciones"] > div:nth-of-type(1),
-    [data-screen-label="El archivo — trece canciones"] > div:nth-of-type(2) {
-      margin-bottom: 1rem !important;
-    }
-
-    .site-shell [style*="margin: 6vh"],
-    .site-shell [style*="margin: 5vh"],
-    .site-shell [style*="margin: 4vh"] {
-      margin-top: clamp(1rem, 2vh, 1.5rem) !important;
-    }
-
-    .site-shell [style*="margin: 30px"],
-    .site-shell [style*="margin: 28px"],
-    .site-shell [style*="margin: 26px"],
-    .site-shell [style*="margin: 24px"],
-    .site-shell [style*="margin: 22px"] {
-      margin-top: .8rem !important;
-    }
-
-    .site-shell [style*="margin-top: 36px"] { margin-top: 1rem !important; }
-    .site-shell [style*="margin-bottom: 34px"],
-    .site-shell [style*="margin-bottom: 26px"] { margin-bottom: 1rem !important; }
-    .site-shell [style*="padding: 15px 0px 13px"] { padding: 10px 0 !important; }
-    .site-shell [style*="padding: 0px 0px 4vh"] { padding-bottom: 1.5rem !important; }
-
-    [data-screen-label="Pie"] { padding: 18px 5vw !important; }
-
-    @media (min-width: 641px) {
-      .history-basement-block { padding-bottom: 6rem !important; }
-      .history-awake-block { padding-bottom: 8rem !important; }
-      .history-basement-note,
-      .history-awake-note { bottom: .75rem !important; }
-    }
-
-    .members-photo,
-    .history-photo,
-    .archive-photo,
-    .coda-photo {
-      position: absolute;
-      object-fit: cover;
-      pointer-events: none;
-    }
-
-    .members-photo {
-      top: 0;
-      left: 50%;
-      width: min(1280px, 104%);
-      height: 100%;
-      transform: translateX(-50%);
-      opacity: .8;
-      filter: brightness(1.32) contrast(1) saturate(1.02);
-      -webkit-mask-image: radial-gradient(ellipse 86% 86% at 50% 48%, #000 48%, rgba(0,0,0,.88) 76%, transparent 100%);
-      mask-image: radial-gradient(ellipse 86% 86% at 50% 48%, #000 48%, rgba(0,0,0,.88) 76%, transparent 100%);
-    }
-
-    .history-photo {
-      inset: 0;
+    .hero-inner {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      justify-content: center;
       width: 100%;
-      height: 100%;
-      opacity: .7;
-      filter: brightness(1.34) contrast(.98) saturate(1.02);
-      -webkit-mask-image: radial-gradient(ellipse 90% 90% at 50% 44%, #000 48%, rgba(0,0,0,.86) 78%, transparent 100%);
-      mask-image: radial-gradient(ellipse 90% 90% at 50% 44%, #000 48%, rgba(0,0,0,.86) 78%, transparent 100%);
     }
 
-    .polaroid {
-      --tape-tilt: -2deg;
+    .hero-title {
+      margin: 0;
+      max-width: 8ch;
+      font: italic 500 clamp(92px, 16vw, 280px)/.72 'Cormorant Garamond', serif;
+      letter-spacing: -.055em;
+      text-shadow: 0 8px 36px rgba(0,0,0,.88);
+    }
+
+    .hero-title-outline {
+      display: block;
+      margin: -.08em 0 0 1.05em;
+      color: transparent;
+      -webkit-text-stroke: 1.5px #a8895c;
+    }
+
+    .hero-meta {
+      margin: clamp(18px, 2.5vh, 30px) 0 0 1vw;
+      color: #d0bb93;
+      font-size: clamp(16px, 1.25vw, 21px);
+      letter-spacing: .08em;
+      text-shadow: 0 2px 12px #000;
+    }
+
+    .hero-lyric {
+      position: absolute;
+      z-index: 3;
+      right: 5vw;
+      bottom: 8vh;
+      max-width: 12ch;
+      margin: 0;
+      color: #e1c39d;
+      font: italic 500 clamp(32px, 4vw, 66px)/.96 'Cormorant Garamond', serif;
+      text-align: right;
+      text-shadow: 0 3px 20px #000;
+      transform: rotate(-1deg);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      z-index: 3;
+      bottom: 4vh;
+      left: 6vw;
+      color: #a78e6c;
+      font-size: clamp(13px, 1vw, 16px);
+      letter-spacing: .14em;
+    }
+
+    /* MURO NEGRO */
+    .black-wall {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      color: var(--ink);
+      background: var(--black);
+    }
+
+    .wall-ambient {
+      position: absolute;
+      z-index: 0;
+      left: -8%;
+      width: 116%;
+      object-fit: cover;
+      opacity: .2;
+      filter: brightness(.86) contrast(1.08) saturate(.72);
+      mix-blend-mode: screen;
+      -webkit-mask-image: radial-gradient(ellipse 72% 58% at 50% 44%, #000 22%, rgba(0,0,0,.7) 54%, transparent 84%);
+      mask-image: radial-gradient(ellipse 72% 58% at 50% 44%, #000 22%, rgba(0,0,0,.7) 54%, transparent 84%);
+      pointer-events: none;
+    }
+
+    .wall-ambient--top {
+      top: 0;
+      height: 44%;
+    }
+
+    .wall-ambient--bottom {
+      top: 51%;
+      height: 43%;
+      opacity: .12;
+      transform: scaleX(-1);
+    }
+
+    .wall-section {
+      position: relative;
+      z-index: 1;
+      padding: clamp(28px, 3.5vw, 58px) clamp(16px, 4vw, 70px);
+    }
+
+    .wall-section + .wall-section {
+      margin-top: clamp(-42px, -2.5vw, -18px);
+    }
+
+    .wall-kicker {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: clamp(15px, 1.15vw, 19px);
+      letter-spacing: .11em;
+      text-shadow: 0 2px 14px #000;
+    }
+
+    .wall-display {
+      margin: 0;
+      max-width: 11ch;
+      color: var(--ink);
+      font: italic 500 clamp(74px, 11vw, 178px)/.76 'Cormorant Garamond', serif;
+      letter-spacing: -.055em;
+      text-shadow: 0 6px 28px rgba(0,0,0,.88);
+    }
+
+    .wall-display .outline {
+      color: transparent;
+      -webkit-text-stroke: 1.5px #8e6747;
+    }
+
+    .wall-row {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      align-items: start;
+      gap: clamp(10px, 1.45vw, 24px);
+      margin-top: clamp(12px, 1.8vw, 28px);
+    }
+
+    .wall-prose {
+      max-width: 34ch;
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: clamp(19px, 1.65vw, 27px);
+      line-height: 1.28;
+      text-shadow: 0 2px 13px #000;
+    }
+
+    .wall-prose p {
+      margin: 0 0 .72em;
+    }
+
+    .wall-prose strong {
+      color: #f1dfbf;
+      font: italic 500 1.35em/1 'Cormorant Garamond', serif;
+    }
+
+    .members-block {
+      grid-column: 6 / 13;
+      align-self: center;
+      display: grid;
+      gap: clamp(10px, 1.2vw, 18px);
+    }
+
+    .members-block .wall-prose:nth-child(2) { margin-left: 10%; }
+    .members-block .wall-prose:nth-child(3) { margin-left: 20%; }
+
+    .wall-lyric {
+      max-width: 13ch;
+      margin: clamp(10px, 1.5vw, 24px) 0;
+      color: #d9c39a;
+      font: italic 500 clamp(36px, 5vw, 78px)/.94 'Cormorant Garamond', serif;
+      letter-spacing: -.028em;
+      text-shadow: 0 3px 22px #000;
+      transform: rotate(-1deg);
+    }
+
+    .wall-lyric--right {
+      margin-left: auto;
+      text-align: right;
+      transform: rotate(.8deg);
+    }
+
+    .wall-lyric--red { color: var(--red); }
+    .wall-lyric--wide { max-width: 18ch; }
+
+    /* POLAROIDS */
+    .instant {
+      --r: 0deg;
+      --rm: 0deg;
+      --tape-r: -3deg;
+      --tape-x: 50%;
       position: relative;
       z-index: 2;
       box-sizing: border-box;
-      width: min(1000px, 90%);
-      margin-top: clamp(1.75rem, 3.5vh, 2.75rem);
-      padding: clamp(.55rem, 1vw, .9rem) clamp(.55rem, 1vw, .9rem) clamp(1.25rem, 2.5vw, 2.4rem);
-      color: #3c3020;
+      width: 100%;
+      max-width: 480px;
+      margin: 0;
+      padding: clamp(7px, .8vw, 13px) clamp(7px, .8vw, 13px) clamp(34px, 4vw, 62px);
+      color: #443624;
       background:
-        radial-gradient(circle at 20% 30%, rgba(92,69,39,.1) 0 .5px, transparent .8px) 0 0 / 8px 10px,
-        linear-gradient(145deg, #eee7d7 0%, #d8cfba 100%);
-      box-shadow: 0 1.8rem 4.5rem rgba(0,0,0,.44), 0 0 0 1px rgba(232,219,188,.18), inset 0 0 2rem rgba(255,255,255,.13);
-      transform-origin: 50% 50%;
-      isolation: isolate;
+        radial-gradient(circle at 20% 30%, rgba(83,61,32,.09) 0 .5px, transparent .8px) 0 0 / 8px 10px,
+        linear-gradient(145deg, #f0e9da, #d6cdb9);
+      box-shadow: 0 25px 52px rgba(0,0,0,.58), 0 5px 12px rgba(0,0,0,.42);
+      transform: rotate(var(--r));
+      transform-origin: center;
     }
 
-    .polaroid::before {
+    .instant::after {
       position: absolute;
-      z-index: 1;
-      inset: 0;
+      top: -9px;
+      left: var(--tape-x);
+      width: clamp(72px, 8vw, 112px);
+      height: clamp(15px, 1.7vw, 23px);
       content: '';
+      background: rgba(190,169,116,.62);
+      box-shadow: 0 3px 7px rgba(0,0,0,.22);
+      transform: translateX(-50%) rotate(var(--tape-r));
       pointer-events: none;
-      opacity: .09;
-      background: repeating-linear-gradient(102deg, rgba(83,61,32,.2) 0, rgba(83,61,32,.2) 1px, transparent 1px, transparent 5px);
-      mix-blend-mode: multiply;
     }
 
-    .polaroid::after {
-      position: absolute;
-      z-index: 3;
-      top: clamp(-.7rem, -1vw, -.4rem);
-      left: 50%;
-      width: clamp(4.8rem, 10vw, 7.5rem);
-      height: clamp(1rem, 1.8vw, 1.5rem);
-      content: '';
-      pointer-events: none;
-      background: rgba(199,178,120,.7);
-      box-shadow: 0 .2rem .55rem rgba(0,0,0,.22);
-      transform: translateX(-50%) rotate(var(--tape-tilt));
-    }
-
-    .polaroid--left {
-      --tape-tilt: -2deg;
-      margin-right: auto;
-      margin-left: 1vw;
-      transform: rotate(-1.65deg);
-    }
-
-    .polaroid--right {
-      --tape-tilt: 1.5deg;
-      margin-right: 1vw;
-      margin-left: auto;
-      transform: rotate(1.35deg);
-    }
-
-    .polaroid--center {
-      --tape-tilt: -.8deg;
-      margin-right: auto;
-      margin-left: auto;
-      transform: rotate(-.55deg);
-    }
-
-    .polaroid__image {
-      position: relative;
-      z-index: 2;
+    .instant img {
       display: block;
       width: 100%;
-      height: auto;
-      filter: brightness(1.28) contrast(1) saturate(1.03);
-      box-shadow: 0 0 0 1px rgba(55,39,22,.28);
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      filter: brightness(1.17) contrast(1.02) saturate(.96);
+      box-shadow: 0 0 0 1px rgba(45,31,18,.28);
     }
 
-    .polaroid figcaption {
-      position: relative;
-      z-index: 2;
-      margin-top: clamp(.65rem, 1.4vw, 1.15rem);
-      color: #443624;
-      font-family: 'La Belle Aurore', cursive;
-      font-size: clamp(1rem, 1.4vw, 1.3rem);
-      line-height: 1.15;
+    .p-f02 { --r: -2.4deg; --rm: -1deg; --tape-r: -5deg; }
+    .p-f01 { --r: 1.1deg; --rm: .6deg; --tape-r: 2deg; }
+    .p-f08 { --r: -3.2deg; --rm: -1.2deg; --tape-r: -1deg; }
+    .p-f10 { --r: 2.1deg; --rm: .9deg; --tape-r: 4deg; }
+    .p-f04 { --r: -4.1deg; --rm: -1.3deg; --tape-r: -6deg; }
+    .p-f05 { --r: 2.8deg; --rm: 1.1deg; --tape-r: 3deg; }
+    .p-f06 { --r: -2.1deg; --rm: -.8deg; --tape-r: -3deg; }
+    .p-f09 { --r: 1.4deg; --rm: .6deg; --tape-r: 5deg; }
+
+    .intro-composition .p-f02 { grid-column: 1 / 6; justify-self: center; }
+    .story-a .wall-prose { grid-column: 1 / 6; align-self: center; }
+    .story-a .p-f01 { grid-column: 7 / 12; justify-self: end; }
+    .story-b .p-f08 { grid-column: 1 / 6; justify-self: center; }
+    .story-b .wall-prose { grid-column: 6 / 12; align-self: center; }
+    .story-c .wall-prose { grid-column: 1 / 4; align-self: center; }
+    .story-c .p-f10 { grid-column: 4 / 9; justify-self: center; }
+    .story-c .wall-lyric { grid-column: 9 / 13; align-self: end; }
+
+    /* CANCIONES ENTRE EL MURO */
+    .archive-intro {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .archive-intro .wall-prose {
+      max-width: 42ch;
+      margin-bottom: 1.2vw;
+    }
+
+    .song-pack { min-width: 0; }
+    .archive-a .song-pack { grid-column: 1 / 8; }
+    .archive-a .p-f04 { grid-column: 8 / 13; align-self: end; justify-self: end; }
+    .archive-b .p-f05 { grid-column: 1 / 6; align-self: center; justify-self: center; }
+    .archive-b .song-pack { grid-column: 6 / 13; }
+    .archive-c .song-pack { grid-column: 1 / 7; }
+    .archive-c .p-f06 { grid-column: 8 / 13; align-self: center; justify-self: end; }
+    .archive-d .p-f09 { grid-column: 1 / 6; align-self: center; justify-self: center; }
+    .archive-d .song-pack { grid-column: 6 / 13; }
+
+    .song-card {
+      border-top: 1px solid var(--line);
+    }
+
+    .song-card:last-child { border-bottom: 1px solid var(--line); }
+    .song-card:nth-child(3n + 2) { margin-left: clamp(8px, 2vw, 30px); }
+
+    .song-trigger {
+      appearance: none;
+      display: grid;
+      grid-template-columns: clamp(52px, 6vw, 92px) minmax(0, 1fr) auto;
+      gap: clamp(8px, 1.3vw, 20px);
+      align-items: baseline;
+      width: 100%;
+      min-width: 0;
+      min-height: 56px;
+      padding: clamp(9px, 1.1vw, 16px) 0;
+      border: 0;
+      color: inherit;
+      background: transparent;
+      text-align: left;
+      cursor: pointer;
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .song-trigger:hover {
+      background: linear-gradient(90deg, rgba(216,75,55,.08), transparent 70%);
+      transform: translateX(5px);
+    }
+
+    .song-trigger:focus-visible {
+      outline: 2px solid rgba(216,75,55,.75);
+      outline-offset: 4px;
+    }
+
+    .song-number {
+      color: transparent;
+      font: 500 clamp(42px, 5vw, 78px)/.8 'Cormorant Garamond', serif;
+      -webkit-text-stroke: 1px #805d40;
+    }
+
+    .song-title {
+      min-width: 0;
+      overflow-wrap: anywhere;
+      color: var(--ink);
+      font: 500 clamp(38px, 4.6vw, 72px)/.86 'Cormorant Garamond', serif;
+      letter-spacing: -.035em;
+    }
+
+    .song-voice {
+      color: #c66d52;
+      font-size: .45em;
+      font-style: italic;
+      letter-spacing: 0;
+    }
+
+    .song-duration {
+      color: var(--muted);
+      font-size: clamp(13px, 1vw, 16px);
+    }
+
+    .song-meta {
+      grid-column: 2 / -1;
+      margin-top: -5px;
+      color: var(--muted);
+      font-size: clamp(13px, 1vw, 16px);
+      line-height: 1.25;
+      letter-spacing: .04em;
+    }
+
+    .song-open {
+      padding: 8px 0 clamp(18px, 2vw, 30px) clamp(52px, 6vw, 92px);
+    }
+
+    .song-note,
+    .tape-status {
+      max-width: 58ch;
+      margin: 0 0 14px;
+      color: #9e8a69;
+      font-size: clamp(13px, 1vw, 16px);
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    .tape-status {
+      display: inline-block;
+      padding: 7px 0;
+      border-top: 1px dashed #71553b;
+      border-bottom: 1px dashed #71553b;
+      font-style: normal;
+      letter-spacing: .06em;
+    }
+
+    .song-lyrics {
+      columns: 2 28ch;
+      column-gap: clamp(30px, 5vw, 74px);
+      padding-top: 8px;
+      color: #e4d8c0;
+      font: 500 clamp(20px, 1.55vw, 26px)/1.28 'Cormorant Garamond', serif;
+    }
+
+    .song-lyrics > div {
+      break-inside: avoid;
+      min-height: .2em;
+    }
+
+    /* CODA */
+    .wall-coda {
+      padding-top: clamp(20px, 2vw, 38px);
+      padding-bottom: clamp(48px, 6vw, 90px);
+    }
+
+    .wall-coda .wall-display { max-width: 9ch; }
+
+    .coda-lines {
+      display: grid;
+      max-width: 32ch;
+      margin: clamp(18px, 2.5vw, 38px) 0 0 auto;
+      gap: .35em;
+      color: var(--ink-soft);
+      font: italic 500 clamp(30px, 4.1vw, 64px)/.98 'Cormorant Garamond', serif;
       text-align: right;
     }
 
-    .archive-photo {
-      width: 48%;
-      opacity: .74;
-      filter: brightness(1.34) contrast(.98) saturate(1.02);
-      -webkit-mask-image: radial-gradient(ellipse 92% 92% at 50% 50%, #000 52%, rgba(0,0,0,.88) 80%, transparent 100%);
-      mask-image: radial-gradient(ellipse 92% 92% at 50% 50%, #000 52%, rgba(0,0,0,.88) 80%, transparent 100%);
+    .coda-lines span:nth-child(2) { margin-right: 8%; }
+    .coda-lines span:nth-child(3) { margin-right: 17%; }
+
+    .site-footer {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 18px 4vw 24px;
+      border-top: 1px solid var(--line);
+      color: #8f7a5c;
+      background: #000;
+      font-size: clamp(12px, .9vw, 15px);
+      letter-spacing: .08em;
     }
 
-    .archive-photo--right { top: 2vh; right: -2%; }
-    .archive-photo--left { bottom: 0; left: -2%; }
-
-    .coda-photo {
-      opacity: .74;
-      filter: brightness(1.34) contrast(.98) saturate(1.02);
-      -webkit-mask-image: radial-gradient(ellipse 94% 94% at 50% 50%, #000 52%, rgba(0,0,0,.88) 80%, transparent 100%);
-      mask-image: radial-gradient(ellipse 94% 94% at 50% 50%, #000 52%, rgba(0,0,0,.88) 80%, transparent 100%);
+    .grain {
+      position: fixed;
+      z-index: 50;
+      inset: 0;
+      opacity: .022;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+      background-image: url('data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%27300%27%20height=%27300%27%3E%3Cfilter%20id=%27n%27%3E%3CfeTurbulence%20type=%27fractalNoise%27%20baseFrequency=%270.85%27%20numOctaves=%272%27%20stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect%20width=%27300%27%20height=%27300%27%20filter=%27url(%23n)%27/%3E%3C/svg%3E');
     }
 
-    .coda-photo--left { bottom: -5%; left: -2%; width: 70%; }
-    .coda-photo--right { top: -1%; right: -2%; width: 54%; }
+    @media (max-width: 780px) {
+      .hero {
+        min-height: 100svh;
+        padding: 24px 20px 28px;
+      }
 
-    .members-photo.blended-photo { opacity: .86; }
-    .history-photo.blended-photo { opacity: .72; }
-    .archive-photo.blended-photo { opacity: .8; }
-    .coda-photo.blended-photo { opacity: .78; }
-
-    @media (max-width: 640px) {
       .hero-photo {
-        right: -32%;
-        width: 132%;
-        opacity: .97;
+        right: -34%;
+        width: 138%;
+        opacity: .95;
         object-position: 54% 50%;
         -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.48) 10%, #000 31%, #000 100%);
         mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.48) 10%, #000 31%, #000 100%);
       }
 
-      .members-photo { width: 126%; opacity: .76; }
-      .history-photo { opacity: .64; }
-      .polaroid {
-        width: calc(100% - 1.25rem);
-        margin-top: 1.5rem;
-        padding: .5rem .5rem 1.25rem;
+      .hero-date {
+        top: 4vh;
+        right: 16px;
+        font-size: 13px;
       }
 
-      .polaroid--left,
-      .polaroid--right,
-      .polaroid--center {
-        margin-right: auto;
-        margin-left: auto;
+      .hero-title {
+        max-width: 7ch;
+        font-size: clamp(76px, 23vw, 112px);
+        line-height: .74;
       }
 
-      .polaroid--left { transform: rotate(-.7deg); }
-      .polaroid--right { transform: rotate(.65deg); }
-      .polaroid--center { transform: rotate(-.35deg); }
-      .polaroid figcaption { margin-top: .65rem; font-size: 1rem; }
-      .site-shell [style*="font-size: clamp(28px"] { font-size: clamp(30px, 8.5vw, 38px) !important; }
-      .site-shell [style*="grid-template-columns: clamp(70px"] {
-        grid-template-columns: 54px minmax(0, 1fr) auto !important;
-        gap: 12px !important;
+      .hero-title-outline { margin-left: .64em; }
+      .hero-meta {
+        max-width: 18ch;
+        margin-top: 18px;
+        font-size: 16px;
+        line-height: 1.35;
       }
 
-      [data-screen-label="La historia"] > div > div:not(.history-date-note):not(.history-basement-note):not(.history-awake-note) {
-        max-width: 100% !important;
-        margin-right: 0 !important;
-        margin-left: 0 !important;
+      .hero-lyric {
+        right: 18px;
+        bottom: 12vh;
+        max-width: 10ch;
+        font-size: clamp(30px, 9vw, 42px);
       }
 
-      [data-screen-label="Coda"] > div > div { margin-left: 0 !important; }
-      .archive-photo { width: 64%; opacity: .7; }
-      .archive-photo--right { right: -1%; }
-      .archive-photo--left { left: -1%; }
-      .coda-photo--left { bottom: -2%; left: -1%; width: 84%; }
-      .coda-photo--right { top: 0; right: -1%; width: 66%; }
-      .members-photo.blended-photo { opacity: .82; }
-      .history-photo.blended-photo { opacity: .68; }
-      .archive-photo.blended-photo { opacity: .76; }
-      .coda-photo.blended-photo { opacity: .74; }
+      .hero-scroll {
+        bottom: 26px;
+        left: 20px;
+        font-size: 13px;
+      }
 
-      .history-date-note,
-      .archive-fragment-note,
-      .history-basement-note,
-      .history-awake-note {
-        position: relative !important;
-        inset: auto !important;
+      .wall-ambient {
+        left: -30%;
+        width: 160%;
+        opacity: .15;
+      }
+
+      .wall-ambient--bottom { opacity: .09; }
+
+      .wall-section {
+        padding: 18px 12px;
+      }
+
+      .wall-section + .wall-section {
+        margin-top: -12px;
+      }
+
+      .wall-display {
+        font-size: clamp(60px, 18vw, 88px);
+      }
+
+      .wall-row {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+        margin-top: 9px;
+      }
+
+      .wall-row > *,
+      .members-block {
+        grid-column: 1 / -1 !important;
+      }
+
+      .wall-prose {
+        max-width: 100%;
+        font-size: clamp(18px, 5vw, 22px);
+      }
+
+      .members-block {
+        gap: 8px;
+      }
+
+      .members-block .wall-prose:nth-child(n) {
+        margin-left: 0;
+      }
+
+      .members-block .wall-prose:nth-child(2) { margin-left: 8%; }
+      .members-block .wall-prose:nth-child(3) { margin-left: 16%; }
+
+      .wall-lyric {
+        max-width: 95%;
+        font-size: clamp(32px, 10.5vw, 52px);
+      }
+
+      .instant {
+        transform: rotate(var(--rm));
+      }
+
+      .instant { width: 78%; }
+
+      .p-f02,
+      .p-f08,
+      .p-f06,
+      .p-f09 { justify-self: start; }
+
+      .p-f01,
+      .p-f10,
+      .p-f04,
+      .p-f05 { justify-self: end; }
+
+      .archive-intro {
         display: block;
-        width: fit-content;
-        margin: 1.5rem 0 0 auto !important;
       }
 
-      .history-basement-note { margin-left: 0 !important; }
-      .archive-fragment-note { margin-bottom: 1.5rem !important; }
+      .archive-intro .wall-prose {
+        margin-top: 12px;
+      }
+
+      .song-card:nth-child(n) {
+        margin-left: 0;
+      }
+
+      .song-trigger {
+        grid-template-columns: 44px minmax(0, 1fr) auto;
+        gap: 8px;
+        min-height: 50px;
+        padding: 9px 0;
+      }
+
+      .song-number {
+        font-size: 42px;
+      }
+
+      .song-title {
+        font-size: clamp(34px, 10vw, 50px);
+      }
+
+      .song-duration,
+      .song-meta {
+        font-size: 12px;
+      }
+
+      .song-open {
+        padding: 7px 0 20px 44px;
+      }
+
+      .song-lyrics {
+        columns: 1;
+        font-size: 20px;
+      }
+
+      .coda-lines {
+        margin-left: 0;
+        font-size: clamp(30px, 9.5vw, 46px);
+      }
+
+      .site-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 16px 14px 22px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero-red-glow,
+      .hero-red-bulb { animation: none; }
+      .song-trigger { transition: none; }
     }
   </style>
 </helmet>
 
-<div class="site-shell" style="background:#070504; color:#ded1b5; font-family:'Courier Prime', monospace; min-height:100vh; position:relative; overflow:hidden; text-transform:lowercase">
+<div class="site-shell">
+  <section class="hero" data-screen-label="Portada — la luz roja">
+    <img class="hero-photo" src="fotos/f03.png" alt="" decoding="async">
+    <div class="hero-red-glow"></div>
+    <div class="hero-red-bulb"></div>
+    <div class="hero-date">madrid · 1999–2001</div>
 
-  <!-- ══════════ PORTADA I · LA LUZ ROJA ══════════ -->
-  <sc-if value="{{ pA }}" hint-placeholder-val="{{ true }}">
-    <section class="photo-stage" data-screen-label="Portada — la luz roja" style="position:relative; min-height:100svh; overflow:hidden; display:flex; flex-direction:column; justify-content:center; padding:4vh 5vw 5vh">
-      <img class="hero-photo blended-photo" src="fotos/f03.png" alt="" decoding="async">
-      <div class="hero-red-glow"></div>
-      <div class="hero-red-bulb"></div>
-
-      <div style="position:absolute; top:6vh; right:4.5vw; font-size:12px; letter-spacing:0.3em; color:#7a6a52; writing-mode:vertical-rl">madrid · 1999 – 2001</div>
-
-      <div style="position:relative; margin-top:2vh">
-        <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:500; font-size:clamp(84px, 16.5vw, 290px); line-height:0.82; color:#e8dbbc; letter-spacing:-0.03em">el arca</div>
-        <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:500; font-size:clamp(84px, 16.5vw, 290px); line-height:0.82; letter-spacing:-0.03em; color:transparent; -webkit-text-stroke:1.5px #a8895c; margin-left:14vw; margin-top:-0.38em; position:relative; z-index:2">de noé</div>
-      </div>
-
-      <div style="position:relative; margin-top:3vh; margin-left:2vw; font-size:13px; letter-spacing:0.14em; color:#b3a184">trece canciones · búnker · nunca</div>
-
-      <div class="hero-note-torn" style="position:absolute; bottom:16%; right:7vw; background:linear-gradient(115deg, rgba(0,0,0,0.16) 0%, transparent 14%), linear-gradient(245deg, rgba(0,0,0,0.12) 0%, transparent 20%), linear-gradient(65deg, rgba(255,255,255,0.14) 0%, transparent 24%), linear-gradient(160deg, #cfc0a0 0%, #b3a37c 55%, #c8b992 100%); clip-path:polygon(2% 6%, 12% 1%, 38% 4%, 62% 0%, 88% 5%, 98% 2%, 100% 30%, 96% 55%, 100% 78%, 94% 98%, 60% 95%, 34% 100%, 10% 96%, 0% 88%, 3% 52%); padding:26px 24px 30px; max-width:20ch; font-family:'La Belle Aurore', cursive; color:#42361f; font-size:17px; line-height:1.5; filter:drop-shadow(0 12px 20px rgba(0,0,0,0.55)); pointer-events:none">e son a última merda no blues.</div>
-
-
-      <div style="position:absolute; bottom:5vh; left:6vw; font-size:12px; letter-spacing:0.2em; color:#7a6a52">↓ baja al búnker</div>
-      <div class="hero-note-postit" style="position:absolute; bottom:7%; right:15vw; background:#d3bd6b; color:#332a18; font-family:'La Belle Aurore', cursive; font-size:16px; line-height:1.3; padding:12px 14px 18px; max-width:15ch; box-shadow:0 8px 20px rgba(0,0,0,0.55)">faltan las cintas por digitalizar</div>
-    </section>
-  </sc-if>
-
-  <!-- ══════════ PORTADA II · EL INVENTARIO ══════════ -->
-  <sc-if value="{{ pB }}" hint-placeholder-val="{{ false }}">
-    <section data-screen-label="Portada — el inventario" style="position:relative; min-height:100svh; overflow:hidden; padding:7vh 7vw">
-      <div style="display:flex; justify-content:space-between; font-size:12px; letter-spacing:0.2em; color:#9b8a6f; border-bottom:1px solid #3a2b1f; padding-bottom:14px">
-        <span>el arca de noé</span>
-        <span>archivo de letras</span>
-        <span>1999 – 2001</span>
-      </div>
-      <div style="margin-top:7vh; font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(52px, 8.5vw, 150px); line-height:0.9; color:#e8dbbc">trece<br>canciones</div>
-      <div style="margin-top:4vh; column-count:2; column-gap:6vw; max-width:900px; font-size:clamp(13px, 1.3vw, 17px); line-height:2.2; color:#b3a184">
-        <div>01 &nbsp;bolboretas</div>
-        <div>02 &nbsp;de ti y de mí</div>
-        <div>03 &nbsp;ioeo</div>
-        <div>04 &nbsp;irmán de breogán</div>
-        <div>05 &nbsp;mía</div>
-        <div>06 &nbsp;no quiero vivir</div>
-        <div>07 &nbsp;por haberte perdido</div>
-        <div>08 &nbsp;rompiendo los cristales</div>
-        <div>09 &nbsp;sin ti me muero</div>
-        <div>10 &nbsp;sola</div>
-        <div>11 &nbsp;soños</div>
-        <div>12 &nbsp;tequila y ron</div>
-        <div>13 &nbsp;un día</div>
-      </div>
-      <div style="position:absolute; top:30%; right:5vw; border:2px solid #d1301d; color:#d1301d; padding:14px 22px; font-size:clamp(12px, 1.4vw, 18px); letter-spacing:0.28em; opacity:0.85">NUNCA TOCAMOS UN CONCIERTO</div>
-      <div style="position:absolute; bottom:14%; right:8vw; font-family:'La Belle Aurore', cursive; font-size:clamp(18px, 2vw, 26px); color:#a58e66">grabado con lo que había</div>
-      <div style="position:absolute; bottom:5vh; left:7vw; font-size:12px; letter-spacing:0.2em; color:#7a6a52">↓ baja al búnker</div>
-    </section>
-  </sc-if>
-
-  <!-- ══════════ PORTADA III · A CAPELA ══════════ -->
-  <sc-if value="{{ pC }}" hint-placeholder-val="{{ false }}">
-    <section data-screen-label="Portada — a capela" style="position:relative; min-height:100svh; overflow:hidden; display:flex; flex-direction:column; justify-content:space-between; padding:6vh 6vw 0">
-      <div style="display:flex; justify-content:space-between; font-size:12px; letter-spacing:0.2em; color:#9b8a6f">
-        <span>el arca de noé · 1999–2001</span>
-        <span>madrid</span>
-      </div>
-      <div style="max-width:22ch; margin:0 auto">
-        <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(40px, 6.2vw, 96px); line-height:1.06; color:#e8dbbc">«una chica cantando coplas, sola, a&nbsp;capela, en un bar que ya había cerrado.»</div>
-        <div style="margin-top:3vh; font-size:13px; letter-spacing:0.16em; color:#9b8a6f">el beni · detrás del teatro lope de vega · copas a 200 ptas.</div>
-        <div style="margin-top:1vh; font-size:13px; letter-spacing:0.16em; color:#b3a184">así empezó todo. así acabó en un sótano de las rozas.</div>
-      </div>
-      <div style="display:flex; gap:0; margin:0 -6vw; align-items:flex-end">
-        <img class="cover-triptych-photo" src="fotos/f03.png" alt="el búnker, luz roja" loading="lazy" decoding="async" style="width:34%; transform:translateY(12px)">
-        <img class="cover-triptych-photo" src="fotos/f07.png" alt="el búnker desde la puerta" loading="lazy" decoding="async" style="width:38%; transform:translateY(30px); z-index:2">
-        <img class="cover-triptych-photo" src="fotos/f04.png" alt="papeles y cables en el suelo" loading="lazy" decoding="async" style="width:34%; transform:translateY(10px)">
-      </div>
-    </section>
-  </sc-if>
-
-  <!-- ══════════ LOS TRES ══════════ -->
-  <section class="photo-stage" data-screen-label="Los tres" style="position:relative; padding:7vh 6vw 7vh; border-top:1px solid #3a2b1f; overflow:hidden">
-    <img class="members-photo blended-photo" src="fotos/f02.png" alt="" loading="lazy" decoding="async">
-    <div style="position:relative; font-size:11px; letter-spacing:0.3em; color:#7a6a52">— los tres —</div>
-
-    <div style="position:relative; margin:6vh 0 0 2vw">
-      <span style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(19px, 1.9vw, 25px); color:#a58e66">rober</span>
-      <div style="font-size:11px; letter-spacing:0.22em; color:#7a6a52; margin:8px 0 0 6vw">guitarras, pulso y memoria</div>
+    <div class="hero-inner">
+      <h1 class="hero-title">el arca <span class="hero-title-outline">de noé</span></h1>
+      <div class="hero-meta">trece canciones · diez fotos · un búnker</div>
     </div>
 
-    <div style="position:relative; margin:4vh 13vw 0 auto; text-align:right; max-width:36ch">
-      <span style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(19px, 1.9vw, 25px); color:#a58e66">noelia</span>
-      <div style="font-size:11px; letter-spacing:0.22em; color:#7a6a52; margin:8px 4vw 0 0">voz, melodía y heridas</div>
-      <div style="display:inline-block; background:#d3bd6b; color:#332a18; font-family:'La Belle Aurore', cursive; font-size:16px; line-height:1.3; padding:12px 14px 18px; max-width:17ch; box-shadow:0 8px 20px rgba(0,0,0,0.55); margin-top:14px; text-align:left">tenía 19 años y una voz desgarrada</div>
-    </div>
-
-    <div style="position:relative; margin:5vh 0 0 24vw">
-      <span style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(19px, 1.9vw, 25px); color:#a58e66">néstor</span>
-      <div style="font-size:11px; letter-spacing:0.22em; color:#7a6a52; margin:8px 0 0 5vw">letras, guitarras y ausencias</div>
-    </div>
-
-    <div style="position:relative; width:fit-content; margin:6vh 6vw 0 auto; background:linear-gradient(115deg, rgba(0,0,0,0.16) 0%, transparent 14%), linear-gradient(245deg, rgba(0,0,0,0.12) 0%, transparent 20%), linear-gradient(65deg, rgba(255,255,255,0.14) 0%, transparent 24%), linear-gradient(160deg, #cfc0a0 0%, #b3a37c 55%, #c8b992 100%); clip-path:polygon(2% 6%, 12% 1%, 38% 4%, 62% 0%, 88% 5%, 98% 2%, 100% 30%, 96% 55%, 100% 78%, 94% 98%, 60% 95%, 34% 100%, 10% 96%, 0% 88%, 3% 52%); padding:24px 22px 28px; max-width:20ch; font-family:'La Belle Aurore', cursive; color:#42361f; font-size:17px; line-height:1.5; filter:drop-shadow(0 12px 20px rgba(0,0,0,0.55))">uns berros entre catro paredes, bolboretas loitan pola fiestra.</div>
+    <p class="hero-lyric">e son a última merda no blues.</p>
+    <div class="hero-scroll">↓ entra en el muro</div>
   </section>
 
-  <!-- ══════════ LA HISTORIA ══════════ -->
-  <section class="photo-stage" data-screen-label="La historia" style="position:relative; padding:6vh 6vw 7vh; border-top:1px solid #3a2b1f; overflow:hidden">
-    <img class="history-photo blended-photo" src="fotos/f07.png" alt="" loading="lazy" decoding="async">
-    <div style="font-size:12px; letter-spacing:0.3em; color:#7a6a52; margin-bottom:4vh">— lo que se recuerda · lo que se olvidó —</div>
+  <main class="black-wall">
+    <img class="wall-ambient wall-ambient--top" src="fotos/f07.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
+    <img class="wall-ambient wall-ambient--bottom" src="fotos/f07.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
 
-    <div style="position:relative; max-width:52ch">
-      <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(24px, 2.6vw, 38px); color:#b7a684; line-height:1.4">un bar detrás del teatro lope de vega. copas a doscientas pesetas.</div>
-      <div style="font-size:13px; line-height:1.9; color:#9b8a6f; margin:26px 0 0 8vw; max-width:34ch">cerraron el local con la gente dentro. en el encierro, una chica se puso a cantar coplas, sola, a capela.</div>
-      <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(20px, 2vw, 28px); color:#b3a184; margin:30px 0 0 16vw">se llamaba noelia.</div>
-      <div class="history-date-note" style="position:absolute; top:-10px; right:-9vw; background:#ddc87e; color:#332a18; font-family:'La Belle Aurore', cursive; font-size:16px; line-height:1.3; padding:12px 14px 18px; max-width:13ch; box-shadow:0 8px 20px rgba(0,0,0,0.55)">¿el 98? ¿el 99? aún en pesetas</div>
-    </div>
+    <section class="wall-section wall-intro" data-screen-label="Los tres">
+      <p class="wall-kicker">madrid · 1999–2001 · lo que quedó en las cintas</p>
+      <h2 class="wall-display">los tres</h2>
 
-    <figure class="polaroid polaroid--left">
-      <img class="polaroid__image" src="fotos/f01.png" alt="el local de ensayo, con la batería, las guitarras y la pedalera" loading="lazy" decoding="async">
-      <figcaption>guitarras, batería y pedalera</figcaption>
-    </figure>
+      <div class="wall-row intro-composition">
+        <figure class="instant p-f02">
+          <img src="fotos/f02.png" alt="el local con la batería, las guitarras, los amplificadores y el teclado" loading="lazy" decoding="async">
+        </figure>
 
-    <div class="history-basement-block" style="position:relative; max-width:52ch; margin:4vh 0 0 auto">
-      <div style="font-size:13px; line-height:1.9; color:#9b8a6f; max-width:32ch">un sótano bajo un chalet de las rozas, forrado de cajas de huevos. montado para tocar doom metal; acabó siendo otra cosa.</div>
-      <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(24px, 2.6vw, 38px); color:#b7a684; line-height:1.4; margin:28px 0 0 10vw">de madrugada, a oscuras, con una luz roja siempre encendida.</div>
-      <div style="font-size:13px; color:#7a6a52; margin:24px 14vw 0 0">sesiones de muchas horas que nadie medía.</div>
-      <div class="history-basement-note" style="position:absolute; bottom:-4vh; left:-5vw; background:#c4ad5c; color:#332a18; font-family:'La Belle Aurore', cursive; font-size:16px; line-height:1.3; padding:12px 14px 18px; max-width:13ch; box-shadow:0 8px 20px rgba(0,0,0,0.55)">bajo tierra, sin ventanas</div>
-    </div>
-
-    <figure class="polaroid polaroid--right">
-      <img class="polaroid__image" src="fotos/f08.png" alt="la batería y los amplificadores del local vistos desde arriba" loading="lazy" decoding="async">
-      <figcaption>batería y amplificadores</figcaption>
-    </figure>
-
-    <div style="position:relative; max-width:52ch; margin:4vh 0 0 8vw">
-      <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(24px, 2.6vw, 38px); color:#b7a684; line-height:1.4">siete meses, quizá ocho.</div>
-      <div style="font-size:13px; line-height:1.9; color:#9b8a6f; margin:24px 0 0 6vw; max-width:36ch">fados, coplas, canciones tristes que salían solas — en gallego, en castellano, en sílabas que no eran de ningún idioma.</div>
-      <div style="font-size:13px; line-height:1.9; color:#7a6a52; margin:22px 0 0 18vw; max-width:30ch">carreras a medio querer, relaciones desordenadas, sustancias. y en medio, el mejor momento compositivo.</div>
-      <div style="display:inline-block; background:#d3bd6b; color:#332a18; font-family:'La Belle Aurore', cursive; font-size:16px; line-height:1.3; padding:12px 14px 18px; max-width:16ch; box-shadow:0 8px 20px rgba(0,0,0,0.55); margin:22px 0 0 2vw">trece canciones grabadas con lo que había</div>
-    </div>
-
-    <figure class="polaroid polaroid--center">
-      <img class="polaroid__image" src="fotos/f10.png" alt="el búnker con la luz roja encendida y los instrumentos preparados" loading="lazy" decoding="async">
-      <figcaption>la luz roja, siempre encendida</figcaption>
-    </figure>
-
-    <div class="history-awake-block" style="position:relative; max-width:52ch; margin:4vh 3vw 0 auto">
-      <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(24px, 2.6vw, 38px); color:#b7a684; line-height:1.4">un día decidió irse a vivir al extranjero, y se fue.</div>
-      <div style="font-size:13px; line-height:1.9; color:#9b8a6f; margin:24px 0 0 12vw; max-width:30ch">venía de una casa compleja y destructiva. no hubo despedida a la altura.</div>
-      <div style="font-size:13px; color:#7a6a52; margin:22px 0 0 4vw">nunca volvieron a tocar juntos.</div>
-      <sc-if value="{{ fragmentos }}" hint-placeholder-val="{{ true }}">
-        <div class="history-awake-note" style="position:absolute; bottom:-4vh; right:2vw; background:linear-gradient(115deg, rgba(0,0,0,0.16) 0%, transparent 14%), linear-gradient(245deg, rgba(0,0,0,0.12) 0%, transparent 20%), linear-gradient(65deg, rgba(255,255,255,0.14) 0%, transparent 24%), linear-gradient(160deg, #cfc0a0 0%, #b3a37c 55%, #c8b992 100%); clip-path:polygon(2% 6%, 12% 1%, 38% 4%, 62% 0%, 88% 5%, 98% 2%, 100% 30%, 96% 55%, 100% 78%, 94% 98%, 60% 95%, 34% 100%, 10% 96%, 0% 88%, 3% 52%); padding:24px 22px 28px; max-width:19ch; font-family:'La Belle Aurore', cursive; color:#42361f; font-size:17px; line-height:1.5; filter:drop-shadow(0 12px 20px rgba(0,0,0,0.55)); pointer-events:none">sola, sola, me vuelvo a despertar.</div>
-      </sc-if>
-    </div>
-  </section>
-
-  <!-- ══════════ EL ARCHIVO ══════════ -->
-  <section class="photo-stage" data-screen-label="El archivo — trece canciones" style="position:relative; padding:6vh 6vw 8vh; border-top:1px solid #3a2b1f; overflow:hidden">
-    <img class="archive-photo archive-photo--right blended-photo" src="fotos/f06.png" alt="" loading="lazy" decoding="async">
-    <img class="archive-photo archive-photo--left blended-photo" src="fotos/f05.png" alt="" loading="lazy" decoding="async">
-    <div style="position:relative; display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:12px; margin-bottom:2vh">
-      <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(44px, 6.5vw, 100px); color:#e8dbbc">el archivo</div>
-      <div style="font-size:12px; letter-spacing:0.24em; color:#7a6a52">trece canciones · 1999–2001 · transcripción con lo que se oye</div>
-      <div style="background:#c4ad5c; color:#332a18; font-family:'La Belle Aurore', cursive; font-size:16px; line-height:1.3; padding:12px 14px 18px; max-width:13ch; box-shadow:0 8px 20px rgba(0,0,0,0.55)">pendiente: subir los audios</div>
-    </div>
-    <div style="position:relative; font-size:13px; color:#9b8a6f; max-width:60ch; line-height:1.8; margin-bottom:3vh">Lo que va entre corchetes no se entiende. Se deja así: el olvido también forma parte de la grabación. Toca una canción para abrirla.</div>
-
-    <sc-if value="{{ fragmentos }}" hint-placeholder-val="{{ true }}">
-      <div class="archive-fragment-note" style="position:absolute; top:15vh; right:3vw; background:linear-gradient(115deg, rgba(0,0,0,0.16) 0%, transparent 14%), linear-gradient(245deg, rgba(0,0,0,0.12) 0%, transparent 20%), linear-gradient(65deg, rgba(255,255,255,0.14) 0%, transparent 24%), linear-gradient(160deg, #cfc0a0 0%, #b3a37c 55%, #c8b992 100%); clip-path:polygon(2% 6%, 12% 1%, 38% 4%, 62% 0%, 88% 5%, 98% 2%, 100% 30%, 96% 55%, 100% 78%, 94% 98%, 60% 95%, 34% 100%, 10% 96%, 0% 88%, 3% 52%); padding:24px 22px 28px; max-width:18ch; font-family:'La Belle Aurore', cursive; color:#42361f; font-size:17px; line-height:1.5; filter:drop-shadow(0 12px 20px rgba(0,0,0,0.55)); pointer-events:none">maldito el día que te conocí. ¿por qué sin ti no quiero vivir?</div>
-    </sc-if>
-
-    <div style="position:relative; border-bottom:1px solid #3a2b1f">
-      <sc-for list="{{ canciones }}" as="c" hint-placeholder-count="13">
-        <div style="{{ c.st }}">
-          <div onClick="{{ c.abrir }}" style="display:grid; grid-template-columns:clamp(70px, 8vw, 130px) 1fr auto; gap:2vw; align-items:baseline; border-top:1px solid #3a2b1f; padding:15px 0 13px; cursor:pointer" style-hover="background:rgba(209,48,29,0.04)">
-            <div style="font-family:'Cormorant Garamond', serif; font-size:clamp(40px, 5vw, 76px); line-height:1; color:transparent; -webkit-text-stroke:1px #5a4530">{{ c.n }}</div>
-            <div>
-              <div style="font-family:'Cormorant Garamond', serif; font-size:clamp(28px, 3.4vw, 52px); line-height:1.05; color:#e8dbbc">{{ c.t }}<span style="color:#a3502e; font-style:italic; font-size:0.55em">{{ c.vozTag }}</span></div>
-              <div style="font-size:12px; letter-spacing:0.14em; color:#9b8a6f; margin-top:8px">{{ c.idioma }} · {{ c.conf }}</div>
-            </div>
-            <div style="font-size:13px; color:#7a6a52">{{ c.dur }}</div>
-          </div>
-          <sc-if value="{{ c.activa }}" hint-placeholder-val="{{ false }}">
-            <div style="padding:0 0 4vh clamp(70px, 8vw, 130px)">
-              <sc-if value="{{ c.tieneNota }}" hint-placeholder-val="{{ false }}">
-                <div style="font-size:12px; font-style:italic; color:#7a6a52; max-width:52ch; line-height:1.8; margin-bottom:26px">nota del archivo — {{ c.nota }}</div>
-              </sc-if>
-              <div style="display:inline-block; border:1px dashed #5a4530; color:#9b8a6f; font-size:12px; letter-spacing:0.18em; padding:12px 20px; margin-bottom:34px">[ cinta pendiente de digitalizar — audio próximamente ]</div>
-              <div style="font-family:'Cormorant Garamond', serif; font-size:clamp(19px, 1.9vw, 25px); line-height:1.55; max-width:44ch">
-                <sc-for list="{{ c.lineas }}" as="v" hint-placeholder-count="4">
-                  <div style="{{ v.st }}">{{ v.t }}</div>
-                </sc-for>
-              </div>
-              <div style="font-size:11px; letter-spacing:0.22em; color:#5a4530; margin-top:36px">archivo de letras · trece canciones · 1999–2001</div>
-            </div>
-          </sc-if>
+        <div class="members-block">
+          <p class="wall-prose"><strong>rober</strong><br>guitarras, pulso y memoria.</p>
+          <p class="wall-prose"><strong>noelia</strong><br>voz, melodía y heridas.</p>
+          <p class="wall-prose"><strong>néstor</strong><br>letras, guitarras y ausencias.</p>
+          <blockquote class="wall-lyric wall-lyric--red">uns berros entre catro paredes.</blockquote>
         </div>
-      </sc-for>
-    </div>
+      </div>
+    </section>
 
-    <sc-if value="{{ fragmentos }}" hint-placeholder-val="{{ true }}">
-      <div style="position:absolute; bottom:5vh; left:4vw; background:linear-gradient(115deg, rgba(0,0,0,0.16) 0%, transparent 14%), linear-gradient(245deg, rgba(0,0,0,0.12) 0%, transparent 20%), linear-gradient(65deg, rgba(255,255,255,0.14) 0%, transparent 24%), linear-gradient(160deg, #cfc0a0 0%, #b3a37c 55%, #c8b992 100%); clip-path:polygon(2% 6%, 12% 1%, 38% 4%, 62% 0%, 88% 5%, 98% 2%, 100% 30%, 96% 55%, 100% 78%, 94% 98%, 60% 95%, 34% 100%, 10% 96%, 0% 88%, 3% 52%); padding:24px 22px 28px; max-width:19ch; font-family:'La Belle Aurore', cursive; color:#42361f; font-size:17px; line-height:1.5; filter:drop-shadow(0 12px 20px rgba(0,0,0,0.55)); pointer-events:none">mientras asoman en tus uñas, jirones de mi piel.</div>
-    </sc-if>
-  </section>
+    <section class="wall-section wall-story" data-screen-label="La historia">
+      <p class="wall-kicker">lo que se recuerda · lo que se olvidó</p>
 
-  <!-- ══════════ CODA ══════════ -->
-  <section class="photo-stage" data-screen-label="Coda" style="position:relative; border-top:1px solid #3a2b1f; display:flex; flex-direction:column; justify-content:center; padding:9vh 8vw; overflow:hidden">
-    <img class="coda-photo coda-photo--left blended-photo" src="fotos/f04.png" alt="" loading="lazy" decoding="async">
-    <img class="coda-photo coda-photo--right blended-photo" src="fotos/f09.png" alt="" loading="lazy" decoding="async">
-    <div style="position:absolute; bottom:-30%; right:-16%; width:70vmin; height:70vmin; border-radius:50%; background:radial-gradient(circle, rgba(255,42,23,0.16) 0%, transparent 65%); animation:parpadeo 11s infinite; pointer-events:none"></div>
-    <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(44px, 7vw, 110px); line-height:1; color:#e8dbbc; max-width:14ch; position:relative">Un día, Noelia se fue.</div>
-    <div style="position:relative; margin:4vh 0 0 4vw; display:flex; flex-direction:column; gap:14px; font-size:14px; letter-spacing:0.14em; color:#9b8a6f">
-      <div>nunca tocamos un concierto.</div>
-      <div style="margin-left:5vw">nunca salimos del búnker.</div>
-      <div style="margin-left:11vw">nunca se volvieron a ver.</div>
-    </div>
-    <div style="margin:5vh 0 0 auto; max-width:30ch; text-align:right; font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(22px, 2.6vw, 36px); line-height:1.3; color:#b3a184; position:relative">Veintisiete años después quedan trece canciones, diez fotos y esta página.</div>
-    <div style="position:relative; width:fit-content; margin:6vh 0 0 10vw; background:linear-gradient(115deg, rgba(0,0,0,0.16) 0%, transparent 14%), linear-gradient(245deg, rgba(0,0,0,0.12) 0%, transparent 20%), linear-gradient(65deg, rgba(255,255,255,0.14) 0%, transparent 24%), linear-gradient(160deg, #cfc0a0 0%, #b3a37c 55%, #c8b992 100%); clip-path:polygon(2% 6%, 12% 1%, 38% 4%, 62% 0%, 88% 5%, 98% 2%, 100% 30%, 96% 55%, 100% 78%, 94% 98%, 60% 95%, 34% 100%, 10% 96%, 0% 88%, 3% 52%); padding:24px 22px 28px; max-width:21ch; font-family:'La Belle Aurore', cursive; color:#42361f; font-size:17px; line-height:1.5; filter:drop-shadow(0 12px 20px rgba(0,0,0,0.55))">de mucho, de poco, de nada y de todo, de ti y de mí.</div>
-    <div style="position:absolute; bottom:12vh; left:8vw; width:6px; height:6px; border-radius:50%; background:#ff3a24; box-shadow:0 0 18px 7px rgba(255,42,23,0.45); animation:parpadeo 6s infinite"></div>
-  </section>
+      <div class="wall-row story-a">
+        <article class="wall-prose">
+          <p><strong>un bar detrás del teatro lope de vega.</strong></p>
+          <p>copas a doscientas pesetas. cerraron el local con la gente dentro. en el encierro, una chica se puso a cantar coplas, sola, a capela.</p>
+          <p>se llamaba noelia.</p>
+        </article>
 
-  <!-- ══════════ PIE ══════════ -->
-  <footer data-screen-label="Pie" style="border-top:1px solid #3a2b1f; padding:26px 6vw; display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; font-size:11px; letter-spacing:0.2em; color:#7a6a52">
+        <figure class="instant p-f01">
+          <img src="fotos/f01.png" alt="la pedalera, las guitarras y la batería dentro del local" loading="lazy" decoding="async">
+        </figure>
+      </div>
+
+      <blockquote class="wall-lyric wall-lyric--right wall-lyric--wide">de madrugada, a oscuras, con una luz roja siempre encendida.</blockquote>
+
+      <div class="wall-row story-b">
+        <figure class="instant p-f08">
+          <img src="fotos/f08.png" alt="la batería y los amplificadores vistos desde arriba" loading="lazy" decoding="async">
+        </figure>
+
+        <article class="wall-prose">
+          <p><strong>un sótano bajo un chalet de las rozas.</strong></p>
+          <p>forrado de cajas de huevos. montado para tocar doom metal; acabó siendo otra cosa.</p>
+          <p>sesiones de muchas horas que nadie medía.</p>
+        </article>
+      </div>
+
+      <div class="wall-row story-c">
+        <article class="wall-prose">
+          <p><strong>siete meses, quizá ocho.</strong></p>
+          <p>fados, coplas, canciones tristes que salían solas — en gallego, en castellano, en sílabas que no eran de ningún idioma.</p>
+          <p>carreras a medio querer, relaciones desordenadas, sustancias. y en medio, el mejor momento compositivo.</p>
+          <p>un día decidió irse a vivir al extranjero. nunca volvieron a tocar juntos.</p>
+        </article>
+
+        <figure class="instant p-f10">
+          <img src="fotos/f10.png" alt="el búnker preparado con batería, amplificadores, guitarras y pedalera" loading="lazy" decoding="async">
+        </figure>
+
+        <blockquote class="wall-lyric wall-lyric--red">sola, sola, me vuelvo a despertar.</blockquote>
+      </div>
+    </section>
+
+    <section class="wall-section archive-wall" data-screen-label="Trece canciones">
+      <div class="archive-intro">
+        <div>
+          <p class="wall-kicker">archivo · transcripción con lo que se oye</p>
+          <h2 class="wall-display"><span class="outline">13</span> canciones</h2>
+        </div>
+        <p class="wall-prose">lo que va entre corchetes no se entiende. el olvido también forma parte de la grabación. toca una canción para abrirla.</p>
+      </div>
+
+      <div class="wall-row archive-a">
+        <div class="song-pack">
+          <sc-for list="{{ cancionesA }}" as="c" hint-placeholder-count="3">
+            <article class="song-card">
+              <button type="button" class="song-trigger" onClick="{{ c.abrir }}">
+                <span class="song-number">{{ c.n }}</span>
+                <span class="song-title">{{ c.t }}<span class="song-voice">{{ c.vozTag }}</span></span>
+                <span class="song-duration">{{ c.dur }}</span>
+                <span class="song-meta">{{ c.idioma }} · {{ c.conf }}</span>
+              </button>
+              <sc-if value="{{ c.activa }}" hint-placeholder-val="{{ false }}">
+                <div class="song-open">
+                  <sc-if value="{{ c.tieneNota }}" hint-placeholder-val="{{ false }}">
+                    <p class="song-note">nota del archivo — {{ c.nota }}</p>
+                  </sc-if>
+                  <div class="tape-status">[ cinta pendiente de digitalizar ]</div>
+                  <div class="song-lyrics">
+                    <sc-for list="{{ c.lineas }}" as="v" hint-placeholder-count="4">
+                      <div style="{{ v.st }}">{{ v.t }}</div>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-if>
+            </article>
+          </sc-for>
+        </div>
+
+        <figure class="instant p-f04">
+          <img src="fotos/f04.png" alt="el suelo del local con cables, pedales y hojas manuscritas" loading="lazy" decoding="async">
+        </figure>
+      </div>
+
+      <blockquote class="wall-lyric wall-lyric--right">e son a última merda no blues.</blockquote>
+
+      <div class="wall-row archive-b">
+        <figure class="instant p-f05">
+          <img src="fotos/f05.png" alt="amplificadores, cables y hojas con letras sobre la moqueta" loading="lazy" decoding="async">
+        </figure>
+
+        <div class="song-pack">
+          <sc-for list="{{ cancionesB }}" as="c" hint-placeholder-count="3">
+            <article class="song-card">
+              <button type="button" class="song-trigger" onClick="{{ c.abrir }}">
+                <span class="song-number">{{ c.n }}</span>
+                <span class="song-title">{{ c.t }}<span class="song-voice">{{ c.vozTag }}</span></span>
+                <span class="song-duration">{{ c.dur }}</span>
+                <span class="song-meta">{{ c.idioma }} · {{ c.conf }}</span>
+              </button>
+              <sc-if value="{{ c.activa }}" hint-placeholder-val="{{ false }}">
+                <div class="song-open">
+                  <sc-if value="{{ c.tieneNota }}" hint-placeholder-val="{{ false }}">
+                    <p class="song-note">nota del archivo — {{ c.nota }}</p>
+                  </sc-if>
+                  <div class="tape-status">[ cinta pendiente de digitalizar ]</div>
+                  <div class="song-lyrics">
+                    <sc-for list="{{ c.lineas }}" as="v" hint-placeholder-count="4">
+                      <div style="{{ v.st }}">{{ v.t }}</div>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-if>
+            </article>
+          </sc-for>
+        </div>
+      </div>
+
+      <blockquote class="wall-lyric wall-lyric--red">maldito el día que te conocí.</blockquote>
+
+      <div class="wall-row archive-c">
+        <div class="song-pack">
+          <sc-for list="{{ cancionesC }}" as="c" hint-placeholder-count="3">
+            <article class="song-card">
+              <button type="button" class="song-trigger" onClick="{{ c.abrir }}">
+                <span class="song-number">{{ c.n }}</span>
+                <span class="song-title">{{ c.t }}<span class="song-voice">{{ c.vozTag }}</span></span>
+                <span class="song-duration">{{ c.dur }}</span>
+                <span class="song-meta">{{ c.idioma }} · {{ c.conf }}</span>
+              </button>
+              <sc-if value="{{ c.activa }}" hint-placeholder-val="{{ false }}">
+                <div class="song-open">
+                  <sc-if value="{{ c.tieneNota }}" hint-placeholder-val="{{ false }}">
+                    <p class="song-note">nota del archivo — {{ c.nota }}</p>
+                  </sc-if>
+                  <div class="tape-status">[ cinta pendiente de digitalizar ]</div>
+                  <div class="song-lyrics">
+                    <sc-for list="{{ c.lineas }}" as="v" hint-placeholder-count="4">
+                      <div style="{{ v.st }}">{{ v.t }}</div>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-if>
+            </article>
+          </sc-for>
+        </div>
+
+        <figure class="instant p-f06">
+          <img src="fotos/f06.png" alt="la pedalera rodeada de cuadernos, letras y cintas" loading="lazy" decoding="async">
+        </figure>
+      </div>
+
+      <blockquote class="wall-lyric wall-lyric--right wall-lyric--wide">mientras asoman en tus uñas, jirones de mi piel.</blockquote>
+
+      <div class="wall-row archive-d">
+        <figure class="instant p-f09">
+          <img src="fotos/f09.png" alt="la batería, las guitarras y el teclado vistos desde la entrada del búnker" loading="lazy" decoding="async">
+        </figure>
+
+        <div class="song-pack">
+          <sc-for list="{{ cancionesD }}" as="c" hint-placeholder-count="4">
+            <article class="song-card">
+              <button type="button" class="song-trigger" onClick="{{ c.abrir }}">
+                <span class="song-number">{{ c.n }}</span>
+                <span class="song-title">{{ c.t }}<span class="song-voice">{{ c.vozTag }}</span></span>
+                <span class="song-duration">{{ c.dur }}</span>
+                <span class="song-meta">{{ c.idioma }} · {{ c.conf }}</span>
+              </button>
+              <sc-if value="{{ c.activa }}" hint-placeholder-val="{{ false }}">
+                <div class="song-open">
+                  <sc-if value="{{ c.tieneNota }}" hint-placeholder-val="{{ false }}">
+                    <p class="song-note">nota del archivo — {{ c.nota }}</p>
+                  </sc-if>
+                  <div class="tape-status">[ cinta pendiente de digitalizar ]</div>
+                  <div class="song-lyrics">
+                    <sc-for list="{{ c.lineas }}" as="v" hint-placeholder-count="4">
+                      <div style="{{ v.st }}">{{ v.t }}</div>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-if>
+            </article>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section class="wall-section wall-coda" data-screen-label="Coda">
+      <p class="wall-kicker">lo que quedó después</p>
+      <h2 class="wall-display">un día, noelia se fue.</h2>
+      <div class="coda-lines">
+        <span>nunca tocamos un concierto.</span>
+        <span>nunca salimos del búnker.</span>
+        <span>nunca se volvieron a ver.</span>
+      </div>
+      <blockquote class="wall-lyric wall-lyric--red wall-lyric--wide">de mucho, de poco, de nada y de todo, de ti y de mí.</blockquote>
+    </section>
+  </main>
+
+  <footer class="site-footer">
     <span>el arca de noé — rober · noelia · néstor</span>
     <span>madrid, 1999–2001</span>
   </footer>
 
-  <!-- grano -->
   <sc-if value="{{ granulado }}" hint-placeholder-val="{{ true }}">
-    <div style="position:fixed; inset:0; pointer-events:none; z-index:50; opacity:0.025; mix-blend-mode:overlay; background-image:url('data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%27300%27%20height=%27300%27%3E%3Cfilter%20id=%27n%27%3E%3CfeTurbulence%20type=%27fractalNoise%27%20baseFrequency=%270.85%27%20numOctaves=%272%27%20stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect%20width=%27300%27%20height=%27300%27%20filter=%27url(%23n)%27/%3E%3C/svg%3E')"></div>
+    <div class="grain"></div>
   </sc-if>
 </div>
 </x-dc>
+
 <script type="text/x-dc" data-dc-script data-props="{
-  &quot;portada&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;la luz roja&quot;, &quot;el inventario&quot;, &quot;a capela&quot;], &quot;default&quot;: &quot;la luz roja&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;portada&quot; },
-  &quot;granulado&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;atmósfera&quot; },
-  &quot;fragmentos&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;atmósfera&quot; }
+  &quot;granulado&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;atmósfera&quot; }
 }">
 class Component extends DCLogic {
   state = { open: null, songs: [] };
@@ -675,7 +1016,6 @@ class Component extends DCLogic {
   }
 
   renderVals() {
-    const portada = this.props.portada ?? 'la luz roja';
     const open = this.state.open;
 
     const canciones = this.state.songs.map((s, i) => {
@@ -686,15 +1026,16 @@ class Component extends DCLogic {
             return {
               t: l === '' ? '\u00a0' : l,
               st: dudosa
-                ? { color: '#8a7a60', fontStyle: 'italic' }
-                : { color: '#e0d3b6' },
+                ? { color: '#8e7c61', fontStyle: 'italic' }
+                : { color: '#e4d8c0' },
             };
           })
         : [];
+
       return {
         n: s.n,
         t: s.t,
-        vozTag: '',
+        vozTag: s.voz ? ' · voz: ' + s.voz : '',
         idioma: s.idioma,
         dur: s.dur,
         conf: s.conf,
@@ -702,21 +1043,16 @@ class Component extends DCLogic {
         tieneNota: !!s.nota,
         activa,
         lineas,
-        st: {
-          marginLeft: ((i % 5) * 2.8) + 'vw',
-          marginRight: (((i * 7) % 5) * 1.4) + 'vw',
-        },
         abrir: () => this.setState({ open: this.state.open === i ? null : i }),
       };
     });
 
     return {
-      pA: portada === 'la luz roja',
-      pB: portada === 'el inventario',
-      pC: portada === 'a capela',
       granulado: this.props.granulado ?? true,
-      fragmentos: this.props.fragmentos ?? true,
-      canciones,
+      cancionesA: canciones.slice(0, 3),
+      cancionesB: canciones.slice(3, 6),
+      cancionesC: canciones.slice(6, 9),
+      cancionesD: canciones.slice(9, 13),
     };
   }
 }
