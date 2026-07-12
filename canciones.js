@@ -2,7 +2,7 @@
 export const CANCIONES = [
   {
     n: '01', t: 'Bolboretas', idioma: 'gallego', dur: '3:42',
-    conf: 'confianza global: baja',
+    frase: 'berros contra a fiestra',
     nota: 'varias palabras quedan enmascaradas por la música y la dicción cantada.',
     letra: [
       'Uns berros entre catro paredes,',
@@ -33,7 +33,7 @@ export const CANCIONES = [
   },
   {
     n: '02', t: 'De ti y de mí', idioma: 'castellano', dur: '4:32',
-    conf: 'confianza global: alta',
+    frase: 'arena donde hubo mar',
     nota: 'salvo una palabra indicada.',
     letra: [
       'De la misma razón que del frío al calor,',
@@ -78,7 +78,7 @@ export const CANCIONES = [
   },
   {
     n: '03', t: 'Ioeo', idioma: 'latín', dur: '3:08',
-    conf: 'transcripción confirmada',
+    frase: 'la vida canta tu nombre',
     nota: '',
     letra: [
       'Ioeo, cantet te vita... (x9)',
@@ -105,7 +105,7 @@ export const CANCIONES = [
   },
   {
     n: '04', t: 'Irmán de Breogán', idioma: 'gallego, con alguna palabra castellana', dur: '9:59',
-    conf: 'confianza global: media-baja',
+    frase: 'a infancia chama de lonxe',
     nota: 'la parte cantada más inteligible ocupa aproximadamente del minuto 1 al 6; después hay repeticiones, vocalizaciones y voces de ensayo.',
     letra: [
       'Nos corpos da lúa',
@@ -151,7 +151,7 @@ export const CANCIONES = [
   },
   {
     n: '05', t: 'Mía', idioma: 'castellano', dur: '3:05',
-    conf: 'confianza global: alta',
+    frase: 'volver con las manos llenas',
     nota: 'salvo una frase indicada.',
     letra: [
       'Nada tengo que ver,',
@@ -186,7 +186,7 @@ export const CANCIONES = [
   },
   {
     n: '06', t: 'No quiero vivir', idioma: 'castellano', dur: '5:18',
-    conf: 'confianza global: alta',
+    frase: 'amarte es sangrar despacio',
     nota: 'con dos versos de lectura probable.',
     letra: [
       'Dicen que quererte',
@@ -229,7 +229,7 @@ export const CANCIONES = [
   },
   {
     n: '07', t: 'Por haberte perdido', idioma: 'castellano', dur: '2:50',
-    conf: 'confianza global: alta',
+    frase: 'un amanecer sin tu piel',
     nota: '',
     letra: [
       'Intentando soportar',
@@ -269,7 +269,7 @@ export const CANCIONES = [
   },
   {
     n: '08', t: 'Rompiendo los cristales', idioma: 'castellano', dur: '5:02',
-    conf: 'confianza global: media-alta',
+    frase: 'renacer al otro lado',
     nota: 'se señalan dos versos poco nítidos.',
     letra: [
       '¿Cuántas veces, atrapada entre tus garras,',
@@ -329,7 +329,7 @@ export const CANCIONES = [
   },
   {
     n: '09', t: 'Sin ti me muero', idioma: 'castellano', dur: '4:23',
-    conf: 'confianza global: alta',
+    frase: 'gritos desde el destierro',
     nota: 'a partir de aproximadamente 02:21 predomina el desarrollo instrumental.',
     letra: [
       'Sin ti me muero,',
@@ -360,7 +360,7 @@ export const CANCIONES = [
   },
   {
     n: '10', t: 'Sola', idioma: 'castellano', dur: '4:31',
-    conf: 'confianza global: media-alta',
+    frase: 'jazmines después del llanto',
     nota: 'excepto una estrofa parcialmente cubierta por la música.',
     letra: [
       'Sangrando canciones',
@@ -409,7 +409,7 @@ export const CANCIONES = [
   },
   {
     n: '11', t: 'Soños', idioma: 'gallego', dur: '2:14',
-    conf: 'confianza global: media-baja',
+    frase: 'soños vellos ao solpor',
     nota: 'la primera estrofa y parte de la segunda quedan poco definidas en la mezcla.',
     letra: [
       'Soños',
@@ -443,7 +443,7 @@ export const CANCIONES = [
   },
   {
     n: '12', t: 'Tequila y Ron', idioma: 'gallego', dur: '0:22',
-    conf: 'confianza global: baja',
+    frase: 'raparigas e vellos bailando',
     nota: 'fragmento. la grabación contiene solo una frase breve.',
     letra: [
       'E aínda [¿as?] raparigas',
@@ -455,7 +455,7 @@ export const CANCIONES = [
   },
   {
     n: '13', t: 'Un día', idioma: 'castellano', dur: '3:43',
-    conf: 'confianza global: alta',
+    frase: 'querer sin pertenecer',
     nota: '',
     letra: [
       'El color de tus ojos no importa.',
