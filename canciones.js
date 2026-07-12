@@ -453,7 +453,7 @@ export const CANCIONES = [
     ],
   },
   {
-    n: '12', t: 'Tequila y Ron', idioma: 'gallego', dur: '1:34',
+    n: '12', t: 'Tequila y Ron', idioma: 'gallego', dur: '1:32',
     audio: 'audio/12-tequila-y-ron.mp3',
     frase: 'raparigas e vellos bailando',
     nota: 'fragmento. la grabación contiene solo una frase breve.',
