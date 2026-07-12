@@ -228,7 +228,7 @@ export const CANCIONES = [
     ],
   },
   {
-    n: '07', t: 'Por haberte perdido', voz: 'Noelia', idioma: 'castellano', dur: '2:50',
+    n: '07', t: 'Por haberte perdido', idioma: 'castellano', dur: '2:50',
     conf: 'confianza global: alta',
     nota: '',
     letra: [
@@ -454,7 +454,7 @@ export const CANCIONES = [
     ],
   },
   {
-    n: '13', t: 'Un día', voz: 'Noelia', idioma: 'castellano', dur: '3:43',
+    n: '13', t: 'Un día', idioma: 'castellano', dur: '3:43',
     conf: 'confianza global: alta',
     nota: '',
     letra: [
