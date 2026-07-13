@@ -573,9 +573,13 @@
     .story-a .p-f01 { grid-column: 7 / 12; justify-self: end; }
     .story-b .p-f08 { grid-column: 1 / 6; justify-self: center; }
     .story-b .wall-prose { grid-column: 6 / 12; align-self: center; }
+    .story-night .wall-prose:first-child { grid-column: 1 / 7; max-width: 42ch; }
+    .story-night .wall-prose:last-child { grid-column: 8 / 13; max-width: 30ch; margin-top: 12%; }
     .story-c .wall-prose { grid-column: 1 / 4; align-self: center; }
     .story-c .p-f10 { grid-column: 4 / 9; justify-self: center; }
     .story-c .wall-lyric { grid-column: 9 / 13; align-self: end; }
+    .story-memory .wall-prose { grid-column: 3 / 11; max-width: 48ch; }
+    .story-memory .wall-prose em { color: #dbc9aa; }
 
     /* CANCIONES ENTRE EL MURO */
     .archive-intro {
@@ -1096,6 +1100,16 @@
         font-size: clamp(18px, 5vw, 22px);
       }
 
+      .story-night .wall-prose:first-child,
+      .story-night .wall-prose:last-child,
+      .story-memory .wall-prose {
+        max-width: 100%;
+      }
+
+      .story-night .wall-prose:last-child {
+        margin-top: 0;
+      }
+
       .members-block {
         gap: 8px;
       }
@@ -1309,7 +1323,21 @@
         <article class="wall-prose">
           <p><strong>un sótano bajo un chalet de las rozas.</strong></p>
           <p>forrado de cajas de huevos. montado para tocar doom metal; acabó siendo otra cosa.</p>
+        </article>
+      </div>
+
+      <blockquote class="wall-lyric wall-lyric--wide">a veces todo empezaba y ya no acababa nunca.</blockquote>
+
+      <div class="wall-row story-night">
+        <article class="wall-prose">
+          <p>una estación de metro. solo dos cervezas. ningún plan. después llegaban los rusos blancos, el humo y otra noche sin hora de regreso.</p>
+          <p>no éramos un grupo que ensayaba. éramos personas que llegaban de la vida y se quedaban hasta que amanecía, sin un camino claro y sin demasiada prisa por encontrarlo.</p>
+        </article>
+
+        <article class="wall-prose">
+          <p>noches eternas componiendo. una frase, un acorde, una voz al otro lado de la habitación. las canciones aparecían antes de que nadie supiera qué estaban diciendo.</p>
           <p>sesiones de muchas horas que nadie medía.</p>
+          <p>excesos que entonces no parecían excesos.</p>
         </article>
       </div>
 
@@ -1318,7 +1346,6 @@
           <p><strong>siete meses, quizá ocho, quizás nueve… no pasaba el tiempo o pasó muy rápido.</strong></p>
           <p>fados, coplas, canciones que salían solas — en gallego, en latín, en castellano, en sílabas que no eran de ningún idioma y de todos.</p>
           <p>personas a medio querer, relaciones desordenadas, sustancias que no ayudaban. y en medio, el mejor momento.</p>
-          <p>un día decidió irse, ella y todos. nunca volvieron a tocar.</p>
         </article>
 
         <figure class="instant p-f10">
@@ -1326,6 +1353,16 @@
         </figure>
 
         <blockquote class="wall-lyric wall-lyric--red">sola, sola, me vuelvo a despertar.</blockquote>
+      </div>
+
+      <blockquote class="wall-lyric wall-lyric--right wall-lyric--wide">no hay ninguna foto de nosotros. solo del lugar donde estuvimos.</blockquote>
+
+      <div class="wall-row story-memory">
+        <article class="wall-prose">
+          <p><em>quizá las paredes recuerden mejor que nosotros.</em></p>
+          <p><em>nadie sabía que aquello era una época mientras la estaba viviendo.</em></p>
+          <p>cada uno acabó siguiendo su camino. nunca volvieron a tocar. las canciones se quedaron esperando.</p>
+        </article>
       </div>
     </section>
 
